@@ -10,7 +10,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   onClickHandler,
 }) => {
   return (
-    <button className={classes.primary} onClick={onClickHandler}>
+    <button className={classes["primary-button"]} onClick={onClickHandler}>
       {text}
     </button>
   );
