@@ -1,0 +1,9 @@
+@import "../../../styles.css";
+
+.label {
+  font-weight: bold;
+  margin: 0;
+
+  font-family: var(--PRIMARY-FONT-FAMILY);
+  font-style: var(--PRIMARY-FONT-STYLE);
+}

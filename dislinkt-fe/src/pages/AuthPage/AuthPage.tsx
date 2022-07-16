@@ -1,9 +1,10 @@
 import React from "react";
+import AuthPane from "../../components/organisms/AuthPane/AuthPane";
 
 import "./AuthPage.module.css";
 
 const AuthPage: React.FC = () => {
-  return <div>Auth Page</div>;
+  return <AuthPane />;
 };
 
 export default AuthPage;
