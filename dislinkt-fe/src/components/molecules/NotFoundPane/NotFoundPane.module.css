@@ -1,0 +1,33 @@
+@import "../../../styles.css";
+
+.center-div {
+  width: 40%;
+  height: 60%;
+
+  background: #ffff;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+}
+
+.picture-holder {
+  height: 70%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+
+  background-image: url("../../../../public/images/not-found.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.button-holder {
+  margin-left: 15%;
+  margin-right: 15%;
+}
