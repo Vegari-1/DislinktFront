@@ -21,3 +21,17 @@
 
   cursor: pointer;
 }
+
+.primary-button:hover {
+  border: 1px solid var(--PRIMARY-COLOR-DARKER);
+  background-color: var(--PRIMARY-COLOR-DARKER);
+}
+
+.primary-button:active {
+  border: 1px solid var(--PRIMARY-COLOR-DARKER);
+  background-color: var(--PRIMARY-COLOR-DARKER);
+}
+
+.primary-button:focus-visible {
+  outline: 1px solid var(--PRIMARY-COLOR-DARKER);
+}

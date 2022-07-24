@@ -6,7 +6,7 @@ import PrimaryButton from "../../atoms/PrimaryButton/PrimaryButton";
 const NotFoundPane: React.FC = () => {
   const navigate = useNavigate();
 
-  const onGoToLoginHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const goToLoginHandler = () => {
     navigate("/auth");
   };
 
@@ -14,7 +14,7 @@ const NotFoundPane: React.FC = () => {
     <div className={classes["center-div"]}>
       <div className={classes["picture-holder"]} />
       <div className={classes["button-holder"]}>
-        <PrimaryButton text="Go to Login" onClickHandler={onGoToLoginHandler} />
+        <PrimaryButton text="Go to Login" onClickHandler={goToLoginHandler} />
       </div>
     </div>
   );

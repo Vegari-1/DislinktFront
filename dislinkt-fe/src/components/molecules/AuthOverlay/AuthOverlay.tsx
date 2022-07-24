@@ -18,14 +18,10 @@ const AuthOverlay: React.FC<AuthOverlayProps> = ({
   onClickHandler,
 }) => {
   return (
-    <div className={classes["overlay-container"]}>
-      <div className={classes["overlay"]}>
-        <div className={`${classes["overlay-panel"]} ${classes[overlayClass]}`}>
-          <h1>{header}</h1>
-          <p>{text}</p>
-          <GhostButton text={buttonText} onClickHandler={onClickHandler} />
-        </div>
-      </div>
+    <div className={`${classes["overlay-panel"]} ${classes[overlayClass]}`}>
+      <h1>{header}</h1>
+      <p>{text}</p>
+      <GhostButton text={buttonText} onClickHandler={onClickHandler} />
     </div>
   );
 };

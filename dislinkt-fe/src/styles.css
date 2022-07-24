@@ -2,7 +2,12 @@
 
 :root {
   --PRIMARY-COLOR: #f7c0a3;
+  --PRIMARY-COLOR-LIGHTER: #f7d1bd;
+  --PRIMARY-COLOR-DARKER: #efaa85;
+
   --SECONDARY-COLOR: #dfe9fd;
+
+  --DANGER: #ff7e92;
 
   --PRIMARY-FONT-FAMILY: "Nunito", sans-serif;
   --PRIMARY-FONT-STYLE: "normal";

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AuthOverlay from "../../molecules/AuthOverlay/AuthOverlay";
 import SignInForm from "../../molecules/SignInForm/SignInForm";
 import SignUpForm from "../../molecules/SignUpForm/SignUpForm";
-import classes from "./AuthPane.module.css";
+import "./AuthPane.css";
 
 const AuthPane: React.FC = () => {
   const [signInActive, setSignInActive] = useState(true);
@@ -16,28 +16,33 @@ const AuthPane: React.FC = () => {
   };
 
   return (
-    <div className={classes.container}>
-      <div
-        className={`${classes["form-container"]} ${classes["sign-in-container"]}`}
-      >
+    <div
+      className={`${"container"} ${!signInActive ? "right-panel-active" : ""}`}
+    >
+      <div className={`${"form-container"} ${"sign-in-container"}`}>
         <SignInForm />
       </div>
-      <div
-        className={`${classes["form-container"]} ${classes["sign-up-container"]}`}
-      >
+      <div className={`${"form-container"} ${"sign-up-container"}`}>
         <SignUpForm />
       </div>
-      <AuthOverlay
-        overlayClass={signInActive ? "overlay-right" : "overlay-left"}
-        header={signInActive ? "Hello, Friend!" : "Welcome back!"}
-        text={
-          signInActive
-            ? "Enter your personal details and start journey with us"
-            : "To keep connected with us please login with your personal info"
-        }
-        buttonText={signInActive ? "Sign Up" : "Sign In"}
-        onClickHandler={onChangeSignInHandler}
-      />
+      <div className={"overlay-container"}>
+        <div className={"overlay"}>
+          <AuthOverlay
+            overlayClass={"overlay-left"}
+            header={"Connect to Dislinkt!"}
+            text={"If you already have an account sign in below"}
+            buttonText={"Sign In"}
+            onClickHandler={onChangeSignInHandler}
+          />
+          <AuthOverlay
+            overlayClass={"overlay-right"}
+            header={"Welcome to Dislinkt!"}
+            text={"If you don't have an account sign up below"}
+            buttonText={"Sign Up"}
+            onClickHandler={onChangeSignInHandler}
+          />
+        </div>
+      </div>
     </div>
   );
 };
