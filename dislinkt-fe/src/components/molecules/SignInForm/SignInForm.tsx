@@ -1,6 +1,9 @@
 import { Field, Formik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
 
 import SignInFormValues from "../../../models/SignInFormValues";
+import { authActions } from "../../../store/slices/auth";
+import { RootState } from "../../../store/store";
 import signInValidationSchema from "../../../validations/signInValidationSchema";
 import PrimaryButton from "../../atoms/PrimaryButton/PrimaryButton";
 import PrimaryInputField from "../../atoms/PrimaryInputField/PrimaryInputField";
@@ -13,8 +16,15 @@ const signInFormInitialValues: SignInFormValues = {
 };
 
 const SignInForm: React.FC = () => {
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated
+  );
+
   const submitHandler = (values: SignInFormValues) => {
     console.log({ values });
+
+    dispatch(authActions.login());
   };
 
   return (
@@ -25,7 +35,7 @@ const SignInForm: React.FC = () => {
     >
       {({ handleSubmit }) => (
         <div className={classes["sing-in-form"]}>
-          <h1 className={classes.label}>Sign In</h1>
+          <h1 className={classes.label}>{isAuthenticated}</h1>
           <img className={classes.logo} src="./images/dislinkt.png" />
           <div className={classes.fields}>
             <Field
