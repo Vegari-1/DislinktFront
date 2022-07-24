@@ -21,3 +21,11 @@
 
   cursor: pointer;
 }
+
+.ghost-button:hover {
+  background-color: var(--PRIMARY-COLOR-LIGHTER);
+}
+
+.ghost-button:active {
+  background-color: var(--PRIMARY-COLOR-LIGHTER);
+}
