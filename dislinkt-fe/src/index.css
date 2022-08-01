@@ -1,0 +1,31 @@
+@import "./styles.css";
+
+.Toastify__toast--success {
+  background: var(--SUCCESS);
+  backdrop-filter: blur(4px);
+
+  border-radius: var(--BORDER-RADIUS);
+
+  font-family: var(--PRIMARY-FONT-FAMILY);
+  font-style: var(--PRIMARY-FONT-STYLE);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #fff;
+}
+
+.Toastify__toast--error {
+  background: var(--ERROR);
+  backdrop-filter: blur(4px);
+
+  border-radius: var(--BORDER-RADIUS);
+
+  font-family: var(--PRIMARY-FONT-FAMILY);
+  font-style: var(--PRIMARY-FONT-STYLE);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #fff;
+}

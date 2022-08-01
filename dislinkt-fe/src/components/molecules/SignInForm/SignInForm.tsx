@@ -1,8 +1,9 @@
 import { Field, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import SignInFormValues from "../../../models/SignInFormValues";
-import { authActions } from "../../../store/slices/auth";
+import { signIn } from "../../../store/slices/auth";
 import { RootState } from "../../../store/store";
 import signInValidationSchema from "../../../validations/signInValidationSchema";
 import PrimaryButton from "../../atoms/PrimaryButton/PrimaryButton";
@@ -16,15 +17,11 @@ const signInFormInitialValues: SignInFormValues = {
 };
 
 const SignInForm: React.FC = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector(
-    (state: RootState) => state.auth.isAuthenticated
-  );
 
-  const submitHandler = (values: SignInFormValues) => {
-    console.log({ values });
-
-    dispatch(authActions.login());
+  const submitHandler = (formValues: SignInFormValues) => {
+    dispatch(signIn({ formValues, navigate }));
   };
 
   return (
@@ -35,7 +32,6 @@ const SignInForm: React.FC = () => {
     >
       {({ handleSubmit }) => (
         <div className={classes["sing-in-form"]}>
-          <h1 className={classes.label}>{isAuthenticated}</h1>
           <img className={classes.logo} src="./images/dislinkt.png" />
           <div className={classes.fields}>
             <Field
