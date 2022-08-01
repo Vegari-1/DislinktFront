@@ -1,7 +1,7 @@
 import { NavigateFunction } from "react-router-dom";
 
-import SignInFormValues from "../SignInFormValues";
-import SignUpFormValues from "../SingUpFormValues";
+import SignInFormValues from "../forms/SignInFormValues";
+import SignUpFormValues from "../forms/SingUpFormValues";
 
 export interface SignInPayload {
   formValues: SignInFormValues;

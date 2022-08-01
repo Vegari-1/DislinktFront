@@ -1,18 +1,17 @@
 import { toast } from "react-toastify";
 import { call, put } from "redux-saga/effects";
-import SignUpFormValues from "../../models/SingUpFormValues";
 
-import Token from "../../models/storage/Token";
+import UserModel from "../../models/UserModel";
 import authService from "../../services/AuthService";
 import { goToSignIn, signIn, signUp } from "../slices/auth";
 
 export function* handleSignIn({
   payload,
-}: ReturnType<typeof signIn>): Generator<any, any, Token> {
+}: ReturnType<typeof signIn>): Generator<any, any, string> {
   try {
-    //const token: Token = yield call(authService.signIn, payload.formValues);
+    const token: string = yield call(authService.signIn, payload.formValues);
 
-    //localStorage.setItem("token", token.authToken);
+    sessionStorage.setItem("token", token);
     yield payload.navigate("/home");
     yield toast.success("Successfully signed in");
   } catch (error: any) {
@@ -22,9 +21,9 @@ export function* handleSignIn({
 
 export function* handleSignUp({
   payload,
-}: ReturnType<typeof signUp>): Generator<any, any, SignUpFormValues> {
+}: ReturnType<typeof signUp>): Generator<any, any, UserModel> {
   try {
-    //const {user} = yield call(authService.signUp, payload.formValues);
+    const user: UserModel = yield call(authService.signUp, payload.formValues);
 
     yield put(goToSignIn());
     yield toast.success("Successfully signed up");

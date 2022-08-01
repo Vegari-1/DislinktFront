@@ -1,7 +1,7 @@
 interface SignUpFormValues {
   email: string;
+  username: string;
   password: string;
-  name: string;
 }
 
 export default SignUpFormValues;

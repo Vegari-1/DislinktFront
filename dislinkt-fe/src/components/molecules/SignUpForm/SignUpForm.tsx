@@ -1,6 +1,6 @@
 import { Field, Formik } from "formik";
 import { useDispatch } from "react-redux";
-import SignUpFormValues from "../../../models/SingUpFormValues";
+import SignUpFormValues from "../../../models/forms/SingUpFormValues";
 import { signUp } from "../../../store/slices/auth";
 import signUpValidationSchema from "../../../validations/signUpValidationSchema";
 import PrimaryButton from "../../atoms/PrimaryButton/PrimaryButton";
@@ -10,8 +10,8 @@ import classes from "./SignUpForm.module.css";
 
 const signUpFormInitialValues: SignUpFormValues = {
   email: "",
+  username: "",
   password: "",
-  name: "",
 };
 
 const SignUpForm: React.FC = () => {
@@ -33,17 +33,17 @@ const SignUpForm: React.FC = () => {
           <div className={classes.fields}>
             <Field
               component={PrimaryInputField}
-              text="Name"
-              type="text"
-              name="name"
-              value="name"
-            />
-            <Field
-              component={PrimaryInputField}
               text="Email"
               type="email"
               name="email"
               value="email"
+            />
+            <Field
+              component={PrimaryInputField}
+              text="Username"
+              type="text"
+              name="username"
+              value="username"
             />
             <Field
               component={PrimaryInputField}
