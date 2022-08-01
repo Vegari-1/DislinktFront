@@ -1,7 +1,10 @@
 import { all, takeLatest } from "redux-saga/effects";
-import { signIn } from "../slices/auth";
-import { handleLogin } from "./auth-saga";
+import { signIn, signUp } from "../slices/auth";
+import { handleSignIn, handleSignUp } from "./auth-saga";
 
 export default function* rootSaga() {
-  yield all([takeLatest(signIn.type, handleLogin)]);
+  yield all([
+    takeLatest(signIn.type, handleSignIn),
+    takeLatest(signUp.type, handleSignUp),
+  ]);
 }
