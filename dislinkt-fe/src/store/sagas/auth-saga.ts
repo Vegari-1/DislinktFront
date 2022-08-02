@@ -15,7 +15,7 @@ export function* handleSignIn({
     yield payload.navigate("/home");
     yield toast.success("Successfully signed in");
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -28,6 +28,6 @@ export function* handleSignUp({
     yield put(goToSignIn());
     yield toast.success("Successfully signed up");
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
