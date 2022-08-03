@@ -31,6 +31,7 @@ const SignInForm: React.FC = () => {
     >
       {({ handleSubmit }) => (
         <div className={classes["sing-in-form"]}>
+        <h1 className={classes.label}>Sign In</h1>
           <img className={classes.logo} src="./images/dislinkt.png" />
           <div className={classes.fields}>
             <Field

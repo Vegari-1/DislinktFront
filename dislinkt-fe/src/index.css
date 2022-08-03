@@ -1,5 +1,10 @@
 @import "./styles.css";
 
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
 .Toastify__toast--success {
   background: var(--SUCCESS);
   backdrop-filter: blur(4px);
