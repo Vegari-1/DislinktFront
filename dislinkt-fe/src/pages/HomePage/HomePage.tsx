@@ -1,5 +1,7 @@
+import Layout from "../../components/organisms/Layout/Layout";
+
 const HomePage: React.FC = () => {
-  return <div>Home page</div>;
+  return <Layout>Home Page</Layout>;
 };
 
 export default HomePage;
