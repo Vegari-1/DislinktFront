@@ -25,6 +25,7 @@ const AuthPane: React.FC = () => {
   };
 
   return (
+    <div className='page-wrapper'>
     <div
       className={`${"container"} ${!signInActive ? "right-panel-active" : ""}`}
     >
@@ -52,6 +53,7 @@ const AuthPane: React.FC = () => {
           />
         </div>
       </div>
+    </div>
     </div>
   );
 };
