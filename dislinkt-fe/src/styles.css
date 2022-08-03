@@ -7,7 +7,7 @@
   --PRIMARY-COLOR-LIGHTER: #f7d1bd;
   --PRIMARY-COLOR-DARKER: #efaa85;
 
-  --SECONDARY-COLOR: #dfe9fd;
+  --SECONDARY-COLOR: #dfe7f5;
 
   --DANGER: #ff7e92;
   --SUCCESS: rgba(72, 202, 70, 0.6);
@@ -21,4 +21,5 @@
   /*STYLES*/
 
   --BORDER-RADIUS: 10px;
+  --SIDE-BAR-BOX-SHADOW: 5px 0px 10px rgba(0, 0, 0, 0.15);
 }
