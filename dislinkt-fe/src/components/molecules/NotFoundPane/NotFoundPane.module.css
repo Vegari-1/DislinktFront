@@ -18,6 +18,8 @@
   border-radius: 10px;
 
   text-align: center;
+
+  padding-bottom: 1%;
 }
 
 .picture-holder {
@@ -25,7 +27,7 @@
   margin-top: 5%;
   margin-bottom: 5%;
 
-  background-image: url("../../../../public/images/not-found.png");
+  background-image: url("../../../../public/images/not-found.jpg");
   background-size: contain;
   background-repeat: no-repeat;
 }
