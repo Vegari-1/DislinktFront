@@ -1,0 +1,13 @@
+@import "../../../styles.css";
+
+.header-wrapper {
+  padding: 15px 30px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-separator {
+  width: 100%;
+  border: 2px solid var(--SECONDARY-COLOR-LIGHTER);
+}
