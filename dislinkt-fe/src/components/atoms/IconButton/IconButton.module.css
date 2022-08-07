@@ -1,0 +1,31 @@
+@import "../../../styles.css";
+
+.icon-button {
+  height: 50px;
+  width: 20%;
+  padding: 5px 20px;
+
+  font-family: var(--PRIMARY-FONT-FAMILY);
+  font-style: var(--PRIMARY-FONT-STYLE);
+  font-weight: 200;
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #fff;
+
+  border-radius: var(--BORDER-RADIUS);
+  background: var(--PRIMARY-COLOR);
+
+  display: flex;
+  align-items: center;
+}
+
+.icon-button:hover {
+  background: var(--PRIMARY-COLOR-DARKER);
+
+  cursor: pointer;
+}
+
+.text {
+  margin-left: 25px;
+}
