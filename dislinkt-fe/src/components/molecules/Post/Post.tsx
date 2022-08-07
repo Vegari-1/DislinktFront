@@ -35,6 +35,15 @@ const Post: React.FC = () => {
           <span className={classes["text"]}>31 comments</span>
         </div>
       </div>
+
+      <div className={classes["pictures-wrapper"]}>
+        <div className={classes["pictures"]}>
+          <div className={classes["picture"]}></div>
+          <div className={classes["picture"]}></div>
+          <div className={classes["picture"]}></div>
+        </div>
+      </div>
+      <div className={classes["blur"]} />
     </div>
   );
 };

@@ -69,3 +69,36 @@
   color: grey;
   cursor: pointer;
 }
+
+.pictures-wrapper {
+  overflow: scroll;
+}
+
+.pictures-wrapper::-webkit-scrollbar {
+  background: transparent;
+  height: 10px;
+  width: 0px;
+}
+
+.pictures {
+  display: inline-flex;
+  margin-top: 20px;
+}
+
+.picture {
+  height: 200px;
+  width: 300px;
+  margin: 5px;
+  border: 1px solid burlywood;
+  border-radius: var(--BORDER-RADIUS);
+}
+
+.blur {
+  position: absolute;
+  width: 86px;
+  height: 40px;
+  top: 65%;
+
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, #fff 100%);
+  border-radius: 0px 0px 0px 10px;
+}
