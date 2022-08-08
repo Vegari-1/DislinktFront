@@ -11,7 +11,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <div className={classes["sidebar"]}>
         <Sidebar />
       </div>
-      <div className={classes["central-panel"]}>{children}</div>
+      <div className={classes["central-panel"]}>
+        {children}
+      </div>
     </div>
   );
 };
