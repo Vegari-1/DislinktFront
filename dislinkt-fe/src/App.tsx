@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import HomePage from "./pages/HomePage/HomePage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,7 +15,7 @@ function App() {
     <Fragment>
       <ToastContainer
         position="top-right"
-        autoClose={50000000}
+        autoClose={5000}
         hideProgressBar={true}
         closeOnClick={true}
         pauseOnHover={true}
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/auth" />} />
           <Route path="/auth" element={<AuthPage />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
