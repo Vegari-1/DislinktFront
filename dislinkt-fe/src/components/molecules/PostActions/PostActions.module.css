@@ -1,0 +1,24 @@
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.likes {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: grey;
+}
+
+.comments-count {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: grey;
+    cursor: pointer;
+}

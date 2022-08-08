@@ -5,6 +5,7 @@ const PostsFeed: React.FC = () => {
   return (
     <div className={classes["feed"]}>
       <Post />
+      <Post />
     </div>
   );
 };
