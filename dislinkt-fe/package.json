@@ -1,7 +1,14 @@
 {
-  "name": "dislinkt-fe",
+  "name": "@vegari-1/dislinkt-front",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Vegari-1/DislinktFront.git"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
     "@testing-library/jest-dom": "^5.16.4",
