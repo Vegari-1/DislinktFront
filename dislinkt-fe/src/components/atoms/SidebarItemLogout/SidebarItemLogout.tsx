@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
 
-import classes from "./SidebarItem.module.css";
+import classes from "./SidebarItemLogout.module.css";
 
-interface SidebatItemProps {
+interface SidebarItemLogoutProps {
   text: string;
   icon: ReactElement;
   value: string;
@@ -10,7 +10,7 @@ interface SidebatItemProps {
   onClick: (value: string) => void;
 }
 
-const SidebarItem: React.FC<SidebatItemProps> = ({
+const SidebarItemLogout: React.FC<SidebarItemLogoutProps> = ({
   text,
   icon,
   value,
@@ -30,4 +30,4 @@ const SidebarItem: React.FC<SidebatItemProps> = ({
   );
 };
 
-export default SidebarItem;
+export default SidebarItemLogout;

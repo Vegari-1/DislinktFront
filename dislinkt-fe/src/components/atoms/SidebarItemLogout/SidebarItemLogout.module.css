@@ -6,8 +6,9 @@
   margin-right: 5%;
   margin-bottom: 5%;
   border-radius: var(--BORDER-RADIUS);
+  border: 1px solid var(--DANGER);
 
-  background: var(--PRIMARY-COLOR);
+  background: var(--WHITE-LIGHTER);
 
   font-family: var(--PRIMARY-FONT-FAMILY);
   font-style: var(--PRIMARY-FONT-STYLE);
@@ -15,7 +16,7 @@
   font-size: 16px;
   line-height: 22px;
 
-  color: #fff;
+  color: var(--DANGER);
 
   display: flex;
   align-items: center;
@@ -25,11 +26,7 @@
 }
 
 .side-bar-item:hover {
-  background: var(--PRIMARY-COLOR-DARKER);
-}
-
-.side-bar-item-active {
-  background: var(--PRIMARY-COLOR-DARKER);
+  outline: 1px solid red;
 }
 
 .side-bar-item-icon {
