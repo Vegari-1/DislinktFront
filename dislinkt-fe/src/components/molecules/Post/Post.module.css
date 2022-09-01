@@ -1,6 +1,6 @@
 .post {
   display: block;
-  width: 60%;
+  /* width: 60%; */
   padding: 20px;
   margin: 20px auto;
   background: var(--SECONDARY-COLOR-LIGHTER);
