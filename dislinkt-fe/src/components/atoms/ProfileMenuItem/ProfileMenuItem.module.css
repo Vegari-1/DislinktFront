@@ -1,0 +1,28 @@
+@import "../../../styles.css";
+
+.header-item {
+  border-radius: 5px;
+
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 18px;
+
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.header-item:hover {
+  background: var(--PRIMARY-COLOR-DARKER);
+}
+
+.header-link {
+  color: #fff;
+  text-decoration: none;
+
+  border-radius: 5px;
+  padding: 7px 15px;
+}
