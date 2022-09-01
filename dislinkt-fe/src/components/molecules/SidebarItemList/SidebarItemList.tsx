@@ -15,7 +15,7 @@ import classes from "./SidebarItemList.module.css";
 const SidebarItemList: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
- 
+
   const selected = window.location.href.split("/").at(-1)!;
   const clickHandler = (value: string) => {
     navigate("/" + value);
@@ -27,12 +27,19 @@ const SidebarItemList: React.FC = () => {
   };
   return (
     <div className={classes["wrapper"]}>
-      <SidebarItem 
-        text="Home" 
+      <SidebarItem
+        text="Home"
         value="home"
         selected={selected}
         icon={<HomeIcon height={25} width={25} />}
-        onClick={clickHandler} 
+        onClick={clickHandler}
+      />
+      <SidebarItem
+        text="Profile"
+        value="profile"
+        selected={selected}
+        icon={<ProfileIcon height={25} width={25} />}
+        onClick={clickHandler}
       />
       <SidebarItem
         text="Job Offers"
@@ -56,13 +63,6 @@ const SidebarItemList: React.FC = () => {
         onClick={clickHandler}
       />
       <SidebarItem
-        text="Profile"
-        value="profile"
-        selected={selected}
-        icon={<ProfileIcon height={25} width={25} />}
-        onClick={clickHandler}
-      />
-      <SidebarItem
         text="Settings"
         value="settings"
         selected={selected}
@@ -70,10 +70,11 @@ const SidebarItemList: React.FC = () => {
         onClick={clickHandler}
       />
       <div className={classes["bottom"]}>
-        <SidebarItemLogout text="Logout" 
+        <SidebarItemLogout
+          text="Logout"
           value="logout"
           selected={selected}
-          icon={<LogoutIcon height={25} width={25} />} 
+          icon={<LogoutIcon height={25} width={25} />}
           onClick={logoutHandler}
         />
       </div>
