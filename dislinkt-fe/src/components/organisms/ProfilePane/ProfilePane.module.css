@@ -1,0 +1,9 @@
+.add-button {
+  width: 49px;
+  height: 41px;
+  position: fixed;
+  right: 2%;
+  bottom: 40px;
+
+  z-index: 10;
+}
