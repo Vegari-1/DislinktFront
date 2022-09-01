@@ -10,7 +10,6 @@ const Header: React.FC = () => {
     <Fragment>
       <div className={classes["header-wrapper"]}>
         <SearchBar placeholder="Search" />
-        <IconButton icon={<PlusIcon />} text="Create new post" />
       </div>
       <hr className={classes["header-separator"]} />
     </Fragment>
