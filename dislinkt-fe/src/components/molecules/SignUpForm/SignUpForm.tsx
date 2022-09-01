@@ -1,7 +1,7 @@
 import { Field, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import SignUpFormValues from "../../../models/forms/SingUpFormValues";
-import { signUp } from "../../../store/slices/auth";
+import { signUp } from "../../../store/actions/auth-actions";
 import signUpValidationSchema from "../../../validations/signUpValidationSchema";
 import PrimaryButton from "../../atoms/PrimaryButton/PrimaryButton";
 import PrimaryInputField from "../../atoms/PrimaryInputField/PrimaryInputField";
@@ -17,7 +17,7 @@ const signUpFormInitialValues: SignUpFormValues = {
 const SignUpForm: React.FC = () => {
   const dispatch = useDispatch();
   const submitHandler = (formValues: SignUpFormValues) => {
-    dispatch(signUp({ formValues }));
+    dispatch(signUp(formValues));
   };
 
   return (
@@ -29,7 +29,7 @@ const SignUpForm: React.FC = () => {
       {({ handleSubmit }) => (
         <div className={classes["sing-up-form"]}>
           <h1 className={classes.label}>Sign Up</h1>
-          <img className={classes.logo} src="./images/dislinkt.png" />
+          <img className={classes.logo} src="./images/dislinkt.png" alt="logo"/>
           <div className={classes.fields}>
             <Field
               component={PrimaryInputField}

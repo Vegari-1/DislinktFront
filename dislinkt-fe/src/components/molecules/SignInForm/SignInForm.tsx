@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import SignInFormValues from "../../../models/forms/SignInFormValues";
-import { signIn } from "../../../store/slices/auth";
+import { signIn } from "../../../store/actions/auth-actions";
 import signInValidationSchema from "../../../validations/signInValidationSchema";
 import PrimaryButton from "../../atoms/PrimaryButton/PrimaryButton";
 import PrimaryInputField from "../../atoms/PrimaryInputField/PrimaryInputField";
@@ -32,7 +32,7 @@ const SignInForm: React.FC = () => {
       {({ handleSubmit }) => (
         <div className={classes["sing-in-form"]}>
         <h1 className={classes.label}>Sign In</h1>
-          <img className={classes.logo} src="./images/dislinkt.png" />
+          <img className={classes.logo} src="./images/dislinkt.png" alt="logo"/>
           <div className={classes.fields}>
             <Field
               component={PrimaryInputField}

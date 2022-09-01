@@ -19,7 +19,7 @@ const registerFormInitialValues: RegisterFormValues = {
 
 const RegisterForm: React.FC = () => {
 
-  const submitHandler = (formValues : RegisterFormValues) {
+  const submitHandler = (formValues : RegisterFormValues) => {
     console.log({formValues})
 
   }
@@ -33,7 +33,7 @@ const RegisterForm: React.FC = () => {
       {({ handleSubmit }) => (
         <div className={classes["sing-in-form"]}>
           <h1 className={classes.label}>Sign In</h1>
-          <img className={classes.logo} src="./images/dislinkt.png" />
+          <img className={classes.logo} src="./images/dislinkt.png" alt="logo"/>
           <div className={classes.fields}>
             <Field
               component={PrimaryInputField}

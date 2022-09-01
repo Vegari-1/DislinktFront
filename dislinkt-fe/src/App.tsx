@@ -1,5 +1,5 @@
-import { Fragment } from "react";
-import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
+import { Fragment, useEffect } from "react";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import AuthPage from "./pages/AuthPage/AuthPage";
@@ -9,8 +9,16 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import { autoLogin } from "./store/actions/auth-actions";
 
 function App() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(autoLogin({ navigate }));
+  }, [dispatch, navigate]);
+
   return (
     <Fragment>
       <ToastContainer
@@ -22,15 +30,13 @@ function App() {
         closeButton={false}
         icon={false}
       />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Navigate to="/auth" />} />
-          <Route path="/auth" element={<AuthPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/auth" />} />
+        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </Fragment>
   );
 }
