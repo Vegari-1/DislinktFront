@@ -69,6 +69,13 @@ const SidebarItemList: React.FC = () => {
         icon={<SettingsIcon height={25} width={25} />}
         onClick={clickHandler}
       />
+      <SidebarItem
+        text="Events"
+        value="events"
+        selected={selected}
+        icon={<SettingsIcon height={25} width={25} />}
+        onClick={clickHandler}
+      />
       <div className={classes["bottom"]}>
         <SidebarItemLogout
           text="Logout"
