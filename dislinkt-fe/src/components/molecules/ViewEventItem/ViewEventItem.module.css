@@ -1,0 +1,46 @@
+@import "../../../styles.css";
+
+.item-wrapper {
+  height: 60px;
+  padding: 10px 1px;
+
+  border-top: 1px solid var(--VERY-LIGHT-GREY);
+  border-bottom: 1px solid var(--VERY-LIGHT-GREY);
+
+  display: flex;
+  align-items: center;
+  gap: 1.5%;
+
+  font-family: var(--PRIMARY-FONT-FAMILY);
+  font-style: var(--PRIMARY-FONT-STYLE);
+  font-size: 16px;
+  line-height: 18px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.timestamp {
+  min-width: 23%;
+  color: gray;
+}
+
+.source {
+  width: 15%;
+  text-align: center;
+}
+
+.type {
+  width: 6.9%;
+}
+
+.message {
+  width: 34.6%;
+  white-space: pre-wrap;
+}
+
+.status-text {
+  width: 9.6%;
+}
+
+.status-code {
+  width: 3.3%;
+}
