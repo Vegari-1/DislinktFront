@@ -21,7 +21,7 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({
       <input
         className={classes["toggle-input"]}
         type="checkbox"
-        id="switch"
+        id={name}
         name={name}
         value={value as string}
         onChange={(e) => {
@@ -33,7 +33,7 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({
           onBlur(name);
         }}
       />
-      <label className={classes["toggle-label"]} htmlFor="switch"></label>
+      <label className={classes["toggle-label"]} htmlFor={name}></label>
       <span className={classes["label-active"]}>{activeLabel}</span>
     </div>
   );
