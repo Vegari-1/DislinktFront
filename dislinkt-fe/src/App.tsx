@@ -43,6 +43,9 @@ function App() {
         <Route path="/profile/edu" element={<ProfileEducationPage />} />
         <Route path="/profile/work" element={<ProfileWorkPage />} />
         <Route path="/profile/posts" element={<ProfilePostsPage />} />
+
+        <Route path="/register" element={<RegisterPage />} />
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Fragment>
