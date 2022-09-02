@@ -1,6 +1,4 @@
-import IconButton from "../../atoms/IconButton/IconButton";
 import SearchBar from "../../atoms/SearchBar/SearchBar";
-import { ReactComponent as PlusIcon } from "../../../assets/svg/plus.svg";
 
 import classes from "./Header.module.css";
 import { Fragment } from "react";
