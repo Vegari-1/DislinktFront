@@ -1,5 +1,5 @@
-import { Fragment, useEffect } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Fragment } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import AuthPage from "./pages/AuthPage/AuthPage";
@@ -9,19 +9,18 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch } from "react-redux";
-import { autoLogin } from "./store/actions/auth-actions";
 import ProfileSkillsPage from "./pages/ProfileSkillsPage/ProfileSkillsPage";
 import ProfileEducationPage from "./pages/ProfileEducationPage/ProfileEducationPage";
 import ProfileWorkPage from "./pages/ProfileWorkPage/ProfileWorkPage";
 import ProfilePostsPage from "./pages/ProfilePostsPage/ProfilePostsPage";
+import ProfileInfoPage from "./pages/ProfileInfoPage/ProfileInfoPage";
 
 function App() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(autoLogin({ navigate }));
-  }, [dispatch, navigate]);
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(autoLogin({ navigate }));
+  // }, [dispatch, navigate]);
 
   return (
     <Fragment>
