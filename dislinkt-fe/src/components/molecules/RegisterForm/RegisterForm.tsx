@@ -13,6 +13,8 @@ import Select from "../../atoms/Select/Select";
 import ToggleButton from "../../atoms/ToggleButton/ToggleButton";
 
 import classes from "./RegisterForm.module.css";
+import { register } from "../../../store/actions/auth-actions";
+import { useNavigate } from "react-router-dom";
 
 const registerFormInitialValues: RegisterFormValues = {
   name: "",
@@ -43,10 +45,10 @@ const RegisterForm: React.FC = () => {
 
   const hasPicture: boolean = !(profileImage === BASE64_IMAGE_PREFIX);
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const submitHandler = (formValues: RegisterFormValues) => {
-    console.log(formValues);
-    // dispatch(signUp(formValues));
+    dispatch(register({ formValues, navigate }));
   };
 
   const styles = {

@@ -1,11 +1,12 @@
 import { toast } from "react-toastify";
-import { call, put } from "redux-saga/effects";
+import { call, put, select } from "redux-saga/effects";
 import { UserDataPayload } from "../../models/slices/auth";
-import UserModel from "../../models/UserModel";
 import authService from "../../services/AuthService";
 import jwt from "jwt-decode";
-import { autoLogin, signIn, signUp } from "../actions/auth-actions";
-import { setSignInActive, setUserData } from "../slices/auth";
+import { autoLogin, register, signIn, signUp } from "../actions/auth-actions";
+import { setSignInActive, setSignUpData, setUserData } from "../slices/auth";
+import { RootState } from "../store";
+import SignUpFormValues from "../../models/forms/SingUpFormValues";
 
 const getUserFromJwt = (token: string): UserDataPayload => {
   const tokenUserPayload: any = jwt(token);
@@ -19,11 +20,12 @@ const getUserFromJwt = (token: string): UserDataPayload => {
   return userDataPayload;
 };
 
+const getSignUpData = (state: RootState) => state.auth.signUpData;
+
 export function* handleSignIn({
   payload,
 }: ReturnType<typeof signIn>): Generator<any, void, string> {
   try {
-    console.log(payload.formValues)
     const token: string = yield call(authService.signIn, payload.formValues);
 
     localStorage.setItem("token", token);
@@ -43,11 +45,25 @@ export function* handleSignIn({
 
 export function* handleSignUp({
   payload,
-}: ReturnType<typeof signUp>): Generator<any, void, UserModel> {
+}: ReturnType<typeof signUp>): Generator<any, void, void> {
   try {
-    console.log(payload)
-    yield call(authService.signUp, payload);
+    yield put(setSignUpData(payload));
+  } catch (error: any) {
+    yield toast.error(error.response.data.message);
+  }
+}
 
+export function* handleRegister({
+  payload,
+}: ReturnType<typeof register>): Generator<any, void, any> {
+  try {
+    const signUpData: SignUpFormValues = yield select(getSignUpData);
+    // yield call(authService.signUp, signUpData);
+    console.log(payload.formValues);
+    console.log(signUpData);
+    // posalji authservisu i sve ostale podatke koje on prosledju profil servisu (asinhrono/sinhrono, kako god)
+
+    yield payload.navigate("/auth");
     yield put(setSignInActive(true));
     yield toast.success("Successfully signed up");
   } catch (error: any) {
