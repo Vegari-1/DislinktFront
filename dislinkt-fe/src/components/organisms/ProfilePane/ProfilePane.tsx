@@ -18,20 +18,16 @@ const ProfilePane: React.FC<ProfilePaneProps> = ({
   const profile: ProfileInfoData = {
     name: "Ksenija",
     surname: "Prcic",
-    username: "@resetKsenija",
+    username: "resetKsenija",
     email: "ksenija@ksenija.com",
     gender: "Female",
     dateOfBirth: new Date(),
     phone: "392055235",
     info: "I am a robot human hybrid sent to this planet to investigate.",
-    public: true,
+    public: false,
     picture: "picture",
   };
   return (
-    // redirektuj ga na formu i on popuni sve te informacije, izmeni ih i sta vec hoce
-    // za ostale (skil, expierince i ostalo) se pravi posebna komponenta koja je kao tabelica
-    // koja ce imati kanticu i plusic, da doda novi red i da obrise postojeci
-    // voditi racuna da bude lep prikaz za experience i education (da ima uvuceno ispod)
     <Fragment>
       <ProfileInfo profile={profile} />
       <ProfileMenu
@@ -47,7 +43,6 @@ const ProfilePane: React.FC<ProfilePaneProps> = ({
         <IconButton icon={<PlusIcon />} boxShadow onClick={onAddButtonClick!} />
       </div>
     </Fragment>
-    // <Skills />
   );
 };
 
