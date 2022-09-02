@@ -1,8 +1,11 @@
 @import "./styles.css";
 
-html, body {
+html,
+body {
   margin: 0;
   height: 100%;
+  font-family: var(--PRIMARY-FONT-FAMILY);
+  font-style: var(--PRIMARY-FONT-STYLE);
 }
 
 .Toastify__toast--success {

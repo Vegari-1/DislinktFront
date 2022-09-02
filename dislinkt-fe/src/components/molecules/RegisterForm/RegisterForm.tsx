@@ -1,11 +1,18 @@
 import { Field, Formik } from "formik";
-
+import { ChangeEvent, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { convertBlobToBase64 } from "../../../helpers/convertBlobToBase64";
+import { ReactComponent as UploadIcon } from "../../../assets/svg/upload.svg";
+import defaultProfileImage from "../../../assets/images/no-picture.png";
 import RegisterFormValues from "../../../models/forms/RegisterFormValues";
 import registerValidationSchema from "../../../validations/registerValidationSchema";
 import PrimaryButton from "../../atoms/PrimaryButton/PrimaryButton";
 import PrimaryInputField from "../../atoms/PrimaryInputField/PrimaryInputField";
+import PrimaryTextArea from "../../atoms/PrimaryTextArea/PrimaryTextArea";
+import Select from "../../atoms/Select/Select";
+import ToggleButton from "../../atoms/ToggleButton/ToggleButton";
 
-import classes from './RegisterForm.module.css';
+import classes from "./RegisterForm.module.css";
 
 const registerFormInitialValues: RegisterFormValues = {
   name: "",
@@ -17,12 +24,38 @@ const registerFormInitialValues: RegisterFormValues = {
   picture: "",
 };
 
+const GENDER_OPTIONS = ["Other", "Female", "Male"];
+const BASE64_IMAGE_PREFIX = "data:image/gif;base64,";
+
 const RegisterForm: React.FC = () => {
+  const [profileImage, setProfileImage] = useState(BASE64_IMAGE_PREFIX);
+  const inputFile = useRef<HTMLInputElement>(null);
 
-  const submitHandler = (formValues : RegisterFormValues) => {
-    console.log({formValues})
+  const openFileExplorerHandler = () => {
+    inputFile.current?.click();
+  };
 
-  }
+  const uploadImageHandler = async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files![0];
+    const base64 = await convertBlobToBase64(file);
+    setProfileImage(base64);
+  };
+
+  const hasPicture: boolean = !(profileImage === BASE64_IMAGE_PREFIX);
+
+  const dispatch = useDispatch();
+  const submitHandler = (formValues: RegisterFormValues) => {
+    console.log(formValues);
+    // dispatch(signUp(formValues));
+  };
+
+  const styles = {
+    image: {
+      backgroundImage: `url(${
+        hasPicture ? profileImage : defaultProfileImage
+      })`,
+    },
+  };
 
   return (
     <Formik
@@ -30,29 +63,102 @@ const RegisterForm: React.FC = () => {
       validationSchema={registerValidationSchema}
       onSubmit={submitHandler}
     >
-      {({ handleSubmit }) => (
-        <div className={classes["sing-in-form"]}>
-          <h1 className={classes.label}>Sign In</h1>
-          <img className={classes.logo} src="./images/dislinkt.png" alt="logo"/>
+      {({ handleSubmit, setFieldValue }) => (
+        <div className={classes["sing-up-form"]}>
+          <h1 className={classes.label}>Sign Up</h1>
+
+          <div className={classes["center"]}>
+            <div
+              className={classes["picture"]}
+              style={styles.image}
+              onClick={openFileExplorerHandler}
+            >
+              {!hasPicture && (
+                <div className={classes["upload"]}>
+                  <UploadIcon />
+                </div>
+              )}
+            </div>
+          </div>
+
           <div className={classes.fields}>
+            {/* ----------------PHOTO-------------------
+                Name                             Surname
+                Date                              Gender
+                Phone number                      Public
+                INFO -----------------------------------
+                                SIGN UP 
+            */}
+            <div className={classes["form-row"]}>
+              <Field
+                component={PrimaryInputField}
+                text="Name"
+                type="text"
+                name="name"
+                value="name"
+              />
+              <Field
+                component={PrimaryInputField}
+                text="Surname"
+                type="text"
+                name="surname"
+                value="surname"
+              />
+            </div>
+            <div className={classes["form-row"]}>
+              <Field
+                component={PrimaryInputField}
+                text="Date of Birth"
+                type="date"
+                name="dateOfBirth"
+                value="dateOfBirth"
+              />
+              <Field
+                component={Select}
+                placeholder="Gender"
+                options={GENDER_OPTIONS}
+                name="gender"
+                value="gender"
+              />
+            </div>
+            <div className={classes["form-row"]}>
+              <Field
+                component={PrimaryInputField}
+                text="Phone number"
+                type="text"
+                name="phone"
+                value="phone"
+              />
+              <Field
+                component={ToggleButton}
+                activeLabel="Public"
+                inactiveLabel="Private"
+                name="public"
+                value="public"
+              />
+            </div>
             <Field
-              component={PrimaryInputField}
-              text="Username"
+              component={PrimaryTextArea}
+              placeholder="Info"
               type="text"
-              name="username"
-              value="username"
-            />
-            <Field
-              component={PrimaryInputField}
-              text="Password"
-              type="password"
-              name="password"
-              value="password"
+              name="info"
+              value="info"
             />
           </div>
+          <input
+            type="file"
+            accept="image/*"
+            ref={inputFile}
+            className={classes["upload-file-input"]}
+            onChange={(event) => {
+              setFieldValue("flag", event.currentTarget.files![0]);
+              uploadImageHandler(event);
+            }}
+            name="flag"
+          />
           <div className={classes.button}>
             <PrimaryButton
-              text="Sign In"
+              text="Sign Up"
               onClickHandler={handleSubmit}
               isSubmit
             />

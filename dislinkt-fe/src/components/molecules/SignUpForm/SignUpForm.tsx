@@ -1,5 +1,6 @@
 import { Field, Formik } from "formik";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import SignUpFormValues from "../../../models/forms/SingUpFormValues";
 import { signUp } from "../../../store/actions/auth-actions";
 import signUpValidationSchema from "../../../validations/signUpValidationSchema";
@@ -16,7 +17,13 @@ const signUpFormInitialValues: SignUpFormValues = {
 
 const SignUpForm: React.FC = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const submitHandler = (formValues: SignUpFormValues) => {
+    navigate("/register");
+    // staviti na stanje vrednosti iz ove forme
+    // tek kada zavrsi celu registraciju, slati na bek (pokupiti sa stanja i ovo)
+    // tu moze provera da moze da pristupi onoj register stranici samo ako ima ovo na stanju
+    // na kraju ga vratiti na singIn formu
     dispatch(signUp(formValues));
   };
 
@@ -29,7 +36,11 @@ const SignUpForm: React.FC = () => {
       {({ handleSubmit }) => (
         <div className={classes["sing-up-form"]}>
           <h1 className={classes.label}>Sign Up</h1>
-          <img className={classes.logo} src="./images/dislinkt.png" alt="logo"/>
+          <img
+            className={classes.logo}
+            src="./images/dislinkt.png"
+            alt="logo"
+          />
           <div className={classes.fields}>
             <Field
               component={PrimaryInputField}
