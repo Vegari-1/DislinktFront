@@ -1,0 +1,8 @@
+.manage-requests {
+  width: 100%;
+}
+
+.no-requests {
+  font-family: var(--PRIMARY-FONT-FAMILY);
+  font-style: var(--PRIMARY-FONT-STYLE);
+}

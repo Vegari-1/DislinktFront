@@ -1,0 +1,83 @@
+@import "../../../styles.css";
+
+.manage-request-item-wrapper {
+  height: 60px;
+  padding: 10px 1px;
+
+  border-top: 1px solid var(--VERY-LIGHT-GREY);
+  border-bottom: 1px solid var(--VERY-LIGHT-GREY);
+
+  display: flex;
+  align-items: center;
+
+  font-family: var(--PRIMARY-FONT-FAMILY);
+  font-style: var(--PRIMARY-FONT-STYLE);
+  font-size: 18px;
+  line-height: 22px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.manage-request-item {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+}
+
+.blur {
+  opacity: 0.4;
+}
+
+.picture {
+  min-width: 7%;
+  min-height: 100%;
+  margin: 0 2%;
+
+  background-color: var(--LIGHT-GREY);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  border: 1px solid var(--PRIMARY-COLOR);
+  border-radius: 50%;
+}
+
+.full-name {
+  min-width: 20%;
+  margin-right: 2%;
+}
+
+.username {
+  color: gray;
+  min-width: 40%;
+  margin-right: 2%;
+}
+
+.actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  margin-right: 1%;
+}
+
+.space {
+  margin-left: 38px;
+}
+
+.delete-button {
+  width: 10%;
+  height: 80px;
+
+  background: var(--DANGER);
+  border: none;
+
+  color: white;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: bold;
+
+  text-align: center;
+
+  cursor: pointer;
+}

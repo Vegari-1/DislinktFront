@@ -15,6 +15,7 @@ import ProfileWorkPage from "./pages/ProfileWorkPage/ProfileWorkPage";
 import ProfilePostsPage from "./pages/ProfilePostsPage/ProfilePostsPage";
 import ProfileInfoPage from "./pages/ProfileInfoPage/ProfileInfoPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
+import ConnRequestsPage from "./pages/ConnRequestsPage/ConnRequestsPage";
 
 function App() {
   // const navigate = useNavigate();
@@ -45,6 +46,7 @@ function App() {
         <Route path="/profile/posts" element={<ProfilePostsPage />} />
         <Route path="/profile/info" element={<ProfileInfoPage />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/conn-requests" element={<ConnRequestsPage />} />
 
         <Route path="/register" element={<RegisterPage />} />
 
