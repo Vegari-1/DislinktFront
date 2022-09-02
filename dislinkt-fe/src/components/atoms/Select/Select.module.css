@@ -1,0 +1,65 @@
+@import "../../../styles.css";
+
+.select-field-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.select-wrapper::after {
+  width: 10px;
+  height: 10px;
+  top: 18px;
+  right: 27px;
+  content: url("../../../assets/images/arrow-down.png");
+  position: absolute;
+  pointer-events: none;
+}
+
+.select-field {
+  width: 100%;
+  margin: 8px 0;
+  height: 41px;
+  padding-left: 22px;
+
+  background: var(--LIGHT-GREY);
+  border-radius: 40px;
+  border: 1px solid transparent;
+
+  color: #000;
+
+  -webkit-appearance: none;
+}
+
+.select-field-no-error:focus-visible {
+  outline: 1px solid var(--PRIMARY-COLOR);
+}
+
+.select-field-error {
+  border-color: var(--DANGER);
+}
+
+.select-field-error:focus-visible {
+  outline: none;
+}
+
+.select-error-span {
+  height: 16px;
+  margin-top: 3px;
+
+  font-family: var(--PRIMARY-FONT-FAMILY);
+  font-style: var(--PRIMARY-FONT-STYLE);
+  font-weight: var(--FONT-WEIGHT-LIGHT);
+  font-size: 12px;
+  line-height: 16px;
+
+  display: block;
+
+  color: var(--DANGER);
+}
