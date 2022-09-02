@@ -1,5 +1,4 @@
 import { Field, Formik } from "formik";
-import { useDispatch } from "react-redux";
 import registerValidationSchema from "../../../validations/registerValidationSchema";
 import PrimaryButton from "../../atoms/PrimaryButton/PrimaryButton";
 import PrimaryInputField from "../../atoms/PrimaryInputField/PrimaryInputField";
@@ -26,7 +25,7 @@ const GENDER_OPTIONS = ["Other", "Female", "Male"];
 
 const ProfileInfoForm: React.FC = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const submitHandler = (formValues: ProfileInfoFormValues) => {
     console.log(formValues);
     // dispacuj da se sacuvaju promene i navigiraj na pregled profila u okviru sage
