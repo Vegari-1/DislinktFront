@@ -2,7 +2,6 @@
 
 .manage-item-wrapper {
   min-height: 40px;
-  padding: 10px 1px;
 
   border-top: 1px solid var(--VERY-LIGHT-GREY);
   border-bottom: 1px solid var(--VERY-LIGHT-GREY);
@@ -20,6 +19,7 @@
 .manage-item {
   height: 100%;
   width: 100%;
+  padding: 10px 1px;
 
   display: flex;
   align-items: center;
@@ -34,13 +34,29 @@
   font-weight: 600;
 }
 
-.minor {
-}
-
-.dates {
+.blur {
+  opacity: 0.4;
 }
 
 .actions {
   margin-left: auto;
   margin-right: 1%;
+}
+
+.delete-button {
+  width: 10%;
+  min-height: 50px;
+  height: inherit;
+
+  background: var(--DANGER);
+  border: none;
+
+  color: white;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: bold;
+
+  text-align: center;
+
+  cursor: pointer;
 }

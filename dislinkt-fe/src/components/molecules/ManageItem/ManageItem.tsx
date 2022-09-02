@@ -4,22 +4,30 @@ import classes from "./ManageItem.module.css";
 import SkillData from "../../../models/data/SkillData";
 import EducationData from "../../../models/data/EducationData";
 import WorkExperienceData from "../../../models/data/WorkExperienceData";
+import { useState } from "react";
 
 interface ManageItemProps {
-  // prosledjivati ikonicu koju treba da ima (skill, education, job)
   item: SkillData | EducationData | WorkExperienceData | any;
   deleteItem: (id: string) => void;
 }
 
 const ManageItem: React.FC<ManageItemProps> = ({ item, deleteItem }) => {
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const deleteHandler = () => {
+    setConfirmDelete(!confirmDelete);
+  };
+
+  const confirmDeleteHandler = () => {
     deleteItem(item.id);
   };
 
   return (
     <div className={classes["manage-item-wrapper"]}>
-      {/* ovde najverovatnije ide ikonica */}
-      <div className={classes["manage-item"]}>
+      <div
+        className={`${classes["manage-item"]} ${
+          confirmDelete && classes["blur"]
+        }`}
+      >
         <div className={classes["item"]}>
           <div className={classes["main"]}>
             {item.name || item.position || item.school}
@@ -46,6 +54,14 @@ const ManageItem: React.FC<ManageItemProps> = ({ item, deleteItem }) => {
           />
         </div>
       </div>
+      {confirmDelete && (
+        <button
+          className={classes["delete-button"]}
+          onClick={confirmDeleteHandler}
+        >
+          Delete
+        </button>
+      )}
     </div>
   );
 };
