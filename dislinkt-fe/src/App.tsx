@@ -14,6 +14,7 @@ import ProfileEducationPage from "./pages/ProfileEducationPage/ProfileEducationP
 import ProfileWorkPage from "./pages/ProfileWorkPage/ProfileWorkPage";
 import ProfilePostsPage from "./pages/ProfilePostsPage/ProfilePostsPage";
 import ProfileInfoPage from "./pages/ProfileInfoPage/ProfileInfoPage";
+import SettingsPage from "./pages/SettingsPage/SettingsPage";
 
 function App() {
   // const navigate = useNavigate();
@@ -43,6 +44,7 @@ function App() {
         <Route path="/profile/work" element={<ProfileWorkPage />} />
         <Route path="/profile/posts" element={<ProfilePostsPage />} />
         <Route path="/profile/info" element={<ProfileInfoPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
 
         <Route path="/register" element={<RegisterPage />} />
 
