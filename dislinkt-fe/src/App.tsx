@@ -11,18 +11,17 @@ import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { autoLogin } from "./store/actions/auth-actions";
-import ProfilePage from "./pages/ProfileSkillsPage/ProfileSkillsPage";
 import ProfileSkillsPage from "./pages/ProfileSkillsPage/ProfileSkillsPage";
 import ProfileEducationPage from "./pages/ProfileEducationPage/ProfileEducationPage";
 import ProfileWorkPage from "./pages/ProfileWorkPage/ProfileWorkPage";
 import ProfilePostsPage from "./pages/ProfilePostsPage/ProfilePostsPage";
 
 function App() {
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(autoLogin({ navigate }));
-  // }, [dispatch, navigate]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(autoLogin({ navigate }));
+  }, [dispatch, navigate]);
 
   return (
     <Fragment>
