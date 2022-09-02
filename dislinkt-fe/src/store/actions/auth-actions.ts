@@ -1,4 +1,3 @@
-import RegisterFormValues from "../../models/forms/RegisterFormValues";
 import SignUpFormValues from "../../models/forms/SingUpFormValues";
 import {
   AutoLoginPayload,
