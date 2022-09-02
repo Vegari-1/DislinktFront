@@ -36,6 +36,15 @@
   background-repeat: no-repeat;
 }
 
+.profile-content {
+  display: flex;
+  align-items: flex-end;
+}
+
+.content {
+  width: 90%;
+}
+
 .full-name {
   line-height: 28px;
   font-size: 24px;
@@ -60,4 +69,9 @@
   color: grey;
   line-height: 18px;
   font-size: 16px;
+}
+
+.edit-button {
+  width: 49px;
+  height: 41px;
 }

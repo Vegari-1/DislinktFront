@@ -1,10 +1,5 @@
 import { Field, Formik } from "formik";
-import { ChangeEvent, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { convertBlobToBase64 } from "../../../helpers/convertBlobToBase64";
-import { ReactComponent as UploadIcon } from "../../../assets/svg/upload.svg";
-import defaultProfileImage from "../../../assets/images/no-picture.png";
-import RegisterFormValues from "../../../models/forms/RegisterFormValues";
 import registerValidationSchema from "../../../validations/registerValidationSchema";
 import PrimaryButton from "../../atoms/PrimaryButton/PrimaryButton";
 import PrimaryInputField from "../../atoms/PrimaryInputField/PrimaryInputField";
@@ -12,78 +7,58 @@ import PrimaryTextArea from "../../atoms/PrimaryTextArea/PrimaryTextArea";
 import Select from "../../atoms/Select/Select";
 import ToggleButton from "../../atoms/ToggleButton/ToggleButton";
 
-import classes from "./RegisterForm.module.css";
-import { register } from "../../../store/actions/auth-actions";
+import classes from "./ProfileInfoForm.module.css";
 import { useNavigate } from "react-router-dom";
+import ProfileInfoFormValues from "../../../models/forms/ProfileInfoFormValues";
 
-const registerFormInitialValues: RegisterFormValues = {
+const profileInfoFormInitialValues: ProfileInfoFormValues = {
+  email: "",
+  username: "",
   name: "",
   surname: "",
   gender: "",
   dateOfBirth: new Date(),
   phone: "",
   public: false,
-  picture: "",
 };
 
 const GENDER_OPTIONS = ["Other", "Female", "Male"];
-const BASE64_IMAGE_PREFIX = "data:image/gif;base64,";
 
-const RegisterForm: React.FC = () => {
-  const [profileImage, setProfileImage] = useState(BASE64_IMAGE_PREFIX);
-  const inputFile = useRef<HTMLInputElement>(null);
-
-  const openFileExplorerHandler = () => {
-    inputFile.current?.click();
-  };
-
-  const uploadImageHandler = async (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files![0];
-    const base64 = await convertBlobToBase64(file);
-    setProfileImage(base64);
-  };
-
-  const hasPicture: boolean = !(profileImage === BASE64_IMAGE_PREFIX);
-
+const ProfileInfoForm: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const submitHandler = (formValues: RegisterFormValues) => {
-    dispatch(register({ formValues, navigate }));
-  };
-
-  const styles = {
-    image: {
-      backgroundImage: `url(${
-        hasPicture ? profileImage : defaultProfileImage
-      })`,
-    },
+  const submitHandler = (formValues: ProfileInfoFormValues) => {
+    console.log(formValues);
+    // dispacuj da se sacuvaju promene i navigiraj na pregled profila u okviru sage
+    navigate("/profile");
   };
 
   return (
     <Formik
-      initialValues={registerFormInitialValues}
+      initialValues={profileInfoFormInitialValues}
       validationSchema={registerValidationSchema}
       onSubmit={submitHandler}
     >
-      {({ handleSubmit, setFieldValue }) => (
+      {({ handleSubmit }) => (
         <div className={classes["sing-up-form"]}>
-          <h1 className={classes.label}>Sign Up</h1>
-
-          <div className={classes["center"]}>
-            <div
-              className={classes["picture"]}
-              style={styles.image}
-              onClick={openFileExplorerHandler}
-            >
-              {!hasPicture && (
-                <div className={classes["upload"]}>
-                  <UploadIcon />
-                </div>
-              )}
-            </div>
-          </div>
-
+          <h1 className={classes.label}>Edit profile info</h1>
           <div className={classes.fields}>
+            <div className={classes["form-row"]}>
+              <Field
+                component={PrimaryInputField}
+                text="Email"
+                type="text"
+                name="email"
+                value="email"
+              />
+              <Field
+                component={PrimaryInputField}
+                text="Username"
+                type="text"
+                name="username"
+                value="username"
+              />
+            </div>
             <div className={classes["form-row"]}>
               <Field
                 component={PrimaryInputField}
@@ -140,23 +115,8 @@ const RegisterForm: React.FC = () => {
               value="info"
             />
           </div>
-          <input
-            type="file"
-            accept="image/*"
-            ref={inputFile}
-            className={classes["upload-file-input"]}
-            onChange={(event) => {
-              setFieldValue("flag", event.currentTarget.files![0]);
-              uploadImageHandler(event);
-            }}
-            name="flag"
-          />
           <div className={classes.button}>
-            <PrimaryButton
-              text="Sign Up"
-              onClickHandler={handleSubmit}
-              isSubmit
-            />
+            <PrimaryButton text="Save" onClickHandler={handleSubmit} isSubmit />
           </div>
         </div>
       )}
@@ -164,4 +124,4 @@ const RegisterForm: React.FC = () => {
   );
 };
 
-export default RegisterForm;
+export default ProfileInfoForm;

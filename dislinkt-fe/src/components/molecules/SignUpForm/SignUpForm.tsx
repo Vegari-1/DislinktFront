@@ -20,10 +20,6 @@ const SignUpForm: React.FC = () => {
   const navigate = useNavigate();
   const submitHandler = (formValues: SignUpFormValues) => {
     navigate("/register");
-    // staviti na stanje vrednosti iz ove forme
-    // tek kada zavrsi celu registraciju, slati na bek (pokupiti sa stanja i ovo)
-    // tu moze provera da moze da pristupi onoj register stranici samo ako ima ovo na stanju
-    // na kraju ga vratiti na singIn formu
     dispatch(signUp(formValues));
   };
 
