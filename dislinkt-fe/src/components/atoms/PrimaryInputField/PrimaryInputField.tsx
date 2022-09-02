@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import FormikField from "../../../models/formik/FormikField";
 import FormikForm from "../../../models/formik/FormikForm";
 import classes from "./PrimaryInputField.module.css";
@@ -18,7 +17,7 @@ const PrimaryInputField: React.FC<PrimaryInputFieldProps> = ({
 }) => {
   const errorMsg = errors[name] && touched[name] ? errors[name] : "";
   return (
-    <Fragment>
+    <div className={classes["primary-input-field-wrapper"]}>
       <input
         placeholder={text}
         type={type}
@@ -37,7 +36,7 @@ const PrimaryInputField: React.FC<PrimaryInputFieldProps> = ({
         }}
       />
       <label className={classes["primary-input-error-label"]}>{errorMsg}</label>
-    </Fragment>
+    </div>
   );
 };
 
