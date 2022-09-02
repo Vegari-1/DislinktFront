@@ -1,5 +1,11 @@
 @import "../../../styles.css";
 
+.primary-input-field-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .primary-input-field {
   background-color: #f6f6f6;
   padding: 12px 20px;
