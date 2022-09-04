@@ -7,3 +7,16 @@
 
   z-index: 10;
 }
+
+.private {
+  text-align: center;
+  margin: 20px 32%;
+  padding: 15px 0;
+  border-radius: var(--BORDER-RADIUS);
+  background-color: var(--SECONDARY-COLOR-LIGHTER);
+}
+
+.private-title {
+  font-size: 18px;
+  font-weight: 600;
+}
