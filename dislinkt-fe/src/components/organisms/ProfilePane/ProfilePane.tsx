@@ -8,7 +8,7 @@ import ProfileMenu from "../../molecules/ProfileMenu/ProfileMenu";
 import classes from "./ProfilePane.module.css";
 
 interface ProfilePaneProps {
-  onAddButtonClick?: () => void;
+  onAddButtonClick: () => void;
   children?: ReactNode;
 }
 
@@ -38,16 +38,16 @@ const ProfilePane: React.FC<ProfilePaneProps> = ({
       {/* profile menu i ikonice vidljive samo ako je profil public
           ili ako je profil private, ali se prate! */}
       {(profile.public || profile.following) && (
-          <ProfileMenu
-            menuItems={[
-              { text: "Skills", link: "/profile/" + id },
-              { text: "Work experience", link: "/profile/" + id + "/work" },
-              { text: "Education", link: "/profile/" + id + "/edu" },
-              { text: "Posts", link: "/profile/" + id + "/posts" },
-            ]}
-          />
-        ) &&
-        children}
+        <ProfileMenu
+          menuItems={[
+            { text: "Skills", link: "/profile/" + id },
+            { text: "Work experience", link: "/profile/" + id + "/work" },
+            { text: "Education", link: "/profile/" + id + "/edu" },
+            { text: "Posts", link: "/profile/" + id + "/posts" },
+          ]}
+        />
+      )}
+      {(profile.public || profile.following) && children}
       {!profile.public && !profile.following && (
         <div className={classes["private"]}>
           <div className={classes["private-title"]}>

@@ -1,0 +1,85 @@
+@import "../../../styles.css";
+
+.label {
+  font-weight: bold;
+  margin: 0;
+
+  font-family: var(--PRIMARY-FONT-FAMILY);
+  font-style: var(--PRIMARY-FONT-STYLE);
+}
+
+.sing-up-form {
+  margin: 3% 0;
+  text-align: center;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.fields {
+  margin: 10px 10%;
+}
+
+.button {
+  margin: 10px 40%;
+}
+
+.logo {
+  width: 27%;
+  height: 27%;
+  margin-top: 10px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.picture {
+  width: 120px;
+  height: 120px;
+
+  background-color: var(--LIGHT-GREY);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  border: 1px solid var(--PRIMARY-COLOR);
+  border-radius: 50%;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.upload {
+  width: 40px;
+  height: 40px;
+
+  margin-left: 10px;
+
+  border-radius: 50%;
+
+  background: var(--LIGHT-GREY);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.upload-file-input {
+  display: none;
+}
