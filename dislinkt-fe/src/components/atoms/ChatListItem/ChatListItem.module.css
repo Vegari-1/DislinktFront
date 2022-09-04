@@ -1,0 +1,49 @@
+.discussion {
+  width: 100%;
+  height: 90px;
+  background-color: #fafafa;
+  border-bottom: solid 1px #e0e0e0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.message-active {
+  width: 98.5%;
+  height: 90px;
+  background-color: #fff;
+  border-bottom: solid 1px #e0e0e0;
+}
+
+.photo {
+  margin-left: 20px;
+  display: block;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #e6e7ed;
+  background-position: center;
+  background-image: url("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.desc-contact {
+  height: 43px;
+  width: 50%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.name {
+  margin: 0 0 0 20px;
+  font-size: 11pt;
+  color: #515151;
+}
+
+.message {
+  margin: 6px 0 0 20px;
+  font-size: 9pt;
+  color: #515151;
+}

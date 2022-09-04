@@ -17,6 +17,7 @@ import ProfileInfoPage from "./pages/ProfileInfoPage/ProfileInfoPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import ConnRequestsPage from "./pages/ConnRequestsPage/ConnRequestsPage";
 import SystemEventsPage from "./pages/SystemEventsPage/SystemEventsPage";
+import MessagesPage from "./pages/MessagesPage/MessagesPage";
 
 function App() {
   // const navigate = useNavigate();
@@ -48,6 +49,7 @@ function App() {
         <Route path="/profile/info" element={<ProfileInfoPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/conn-requests" element={<ConnRequestsPage />} />
+        <Route path="/messages" element={<MessagesPage />} />
 
         <Route path="/events" element={<SystemEventsPage />} />
 
