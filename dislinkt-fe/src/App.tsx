@@ -19,6 +19,7 @@ import ConnRequestsPage from "./pages/ConnRequestsPage/ConnRequestsPage";
 import SystemEventsPage from "./pages/SystemEventsPage/SystemEventsPage";
 import MessagesPage from "./pages/MessagesPage/MessagesPage";
 import JobOffersPage from "./pages/JobOffersPage/JobOffersPage";
+import PeoplePage from "./pages/PeoplePage/PeoplePage";
 
 function App() {
   // const navigate = useNavigate();
@@ -43,15 +44,18 @@ function App() {
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/profile" element={<ProfileSkillsPage />} />
-        <Route path="/profile/edu" element={<ProfileEducationPage />} />
-        <Route path="/profile/work" element={<ProfileWorkPage />} />
-        <Route path="/profile/posts" element={<ProfilePostsPage />} />
-        <Route path="/profile/info" element={<ProfileInfoPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/conn-requests" element={<ConnRequestsPage />} />
         <Route path="/messages" element={<MessagesPage />} />
         <Route path="/job-offers" element={<JobOffersPage />} />
+
+        <Route path="/people" element={<PeoplePage />} />
+
+        <Route path="/profile/:id" element={<ProfileSkillsPage />} />
+        <Route path="/profile/:id/edu" element={<ProfileEducationPage />} />
+        <Route path="/profile/:id/work" element={<ProfileWorkPage />} />
+        <Route path="/profile/:id/posts" element={<ProfilePostsPage />} />
+        <Route path="/profile/:id/info" element={<ProfileInfoPage />} />
 
         <Route path="/events" element={<SystemEventsPage />} />
 

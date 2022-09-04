@@ -1,0 +1,16 @@
+@import "../../styles.css";
+
+.streach {
+  height: 100%;
+  background: #fff;
+
+  flex: 1;
+  overflow: auto;
+  padding: 2% 15%;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+
+  font-weight: 300;
+}
