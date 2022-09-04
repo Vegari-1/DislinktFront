@@ -1,27 +1,30 @@
 .pictures-wrapper {
-    overflow: auto;
-    /* position: relative; */
+  overflow: auto;
+  /* position: relative; */
 }
 
 .pictures-wrapper::-webkit-scrollbar {
-    background: transparent;
-    height: 10px;
-    width: 0px;
+  background: transparent;
+  height: 10px;
+  width: 0px;
 }
 
 .pictures {
-    display: inline-flex;
-    margin-top: 20px;
+  display: inline-flex;
+  margin-top: 20px;
 }
 
 .picture {
-    height: 200px;
-    width: 300px;
-    margin: 5px;
-    border: 2px solid var(--PRIMARY-COLOR-DARKER);
-    border-radius: var(--BORDER-RADIUS);
+  height: 200px;
+  width: 300px;
+  margin: 5px;
+  border: 2px solid var(--PRIMARY-COLOR-DARKER);
+  border-radius: var(--BORDER-RADIUS);
+
+  background-size: contain;
+  background-repeat: no-repeat;
 }
-  
+
 /* .blur {
   position: absolute;
   width: 45px;
