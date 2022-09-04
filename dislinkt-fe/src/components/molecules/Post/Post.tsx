@@ -18,7 +18,7 @@ const Post: React.FC = () => {
     <div className={classes["post"]}>
       <TextPost imageSize="60px" hasBody={true} />
       <PostActions handleViewCommentsClick={onChangeCommentsHandler} />
-      <PicturePost />
+      <PicturePost pictures={["", "", ""]} />
       <PostComments active={commentsActive} />
     </div>
   );
