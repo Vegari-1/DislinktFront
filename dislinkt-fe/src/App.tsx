@@ -20,6 +20,8 @@ import SystemEventsPage from "./pages/SystemEventsPage/SystemEventsPage";
 import MessagesPage from "./pages/MessagesPage/MessagesPage";
 import JobOffersPage from "./pages/JobOffersPage/JobOffersPage";
 import PeoplePage from "./pages/PeoplePage/PeoplePage";
+import AddJobOfferPage from "./pages/AddJobOfferPage/AddJobOfferPage";
+import AddPostPage from "./pages/AddPostPage/AddPostPage";
 
 function App() {
   // const navigate = useNavigate();
@@ -47,14 +49,16 @@ function App() {
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/conn-requests" element={<ConnRequestsPage />} />
         <Route path="/messages" element={<MessagesPage />} />
-        <Route path="/job-offers" element={<JobOffersPage />} />
-
         <Route path="/people" element={<PeoplePage />} />
+
+        <Route path="/job-offers" element={<JobOffersPage />} />
+        <Route path="/job-offers/add" element={<AddJobOfferPage />} />
 
         <Route path="/profile/:id" element={<ProfileSkillsPage />} />
         <Route path="/profile/:id/edu" element={<ProfileEducationPage />} />
         <Route path="/profile/:id/work" element={<ProfileWorkPage />} />
         <Route path="/profile/:id/posts" element={<ProfilePostsPage />} />
+        <Route path="/profile/:id/posts/add" element={<AddPostPage />} />
         <Route path="/profile/:id/info" element={<ProfileInfoPage />} />
 
         <Route path="/events" element={<SystemEventsPage />} />
