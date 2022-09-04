@@ -1,8 +1,16 @@
 .discussions {
   width: 35%;
-  height: 700px;
+
+  height: 100%;
+  overflow: auto;
+
   box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
   background-color: var(--SECONDARY-COLOR);
   display: inline-block;
+}
+
+.discussions::-webkit-scrollbar {
+  background: transparent;
+  height: 10px;
+  width: 0px;
 }
