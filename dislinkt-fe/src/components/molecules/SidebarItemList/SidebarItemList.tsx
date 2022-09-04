@@ -6,6 +6,7 @@ import { ReactComponent as MessagesIcon } from "../../../assets/svg/messages.svg
 import { ReactComponent as ProfileIcon } from "../../../assets/svg/profile.svg";
 import { ReactComponent as PeopleIcon } from "../../../assets/svg/people.svg";
 import { ReactComponent as SettingsIcon } from "../../../assets/svg/settings.svg";
+import { ReactComponent as LoginIcon } from "../../../assets/svg/login.svg";
 import { ReactComponent as LogoutIcon } from "../../../assets/svg/logout-danger.svg";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -21,7 +22,9 @@ const SidebarItemList: React.FC = () => {
   const selectedProfile = window.location.href.split("/").slice(-2).join("/");
   const clickHandler = (value: string) => {
     navigate("/" + value);
-    console.log("DODATI DOBAVLJANJE ULOGOVANOG KORISNIKA");
+    console.log(
+      "DODATI DOBAVLJANJE ULOGOVANOG KORISNIKA I NA OSNOVU NJEGA RAZVRSTATI PO ROLAMA"
+    );
   };
 
   const logoutHandler = () => {
@@ -84,6 +87,13 @@ const SidebarItemList: React.FC = () => {
         value="events"
         selected={selected}
         icon={<SettingsIcon height={25} width={25} />}
+        onClick={clickHandler}
+      />
+      <SidebarItem
+        text="Login"
+        value="auth"
+        selected={selected}
+        icon={<LoginIcon height={25} width={25} />}
         onClick={clickHandler}
       />
       <div className={classes["bottom"]}>

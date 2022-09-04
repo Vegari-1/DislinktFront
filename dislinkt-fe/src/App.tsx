@@ -42,7 +42,8 @@ function App() {
         icon={false}
       />
       <Routes>
-        <Route path="/" element={<Navigate to="/auth" />} />
+        <Route path="/" element={<Navigate to="/people" />} />
+
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/home" element={<HomePage />} />
