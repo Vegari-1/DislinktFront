@@ -3,6 +3,7 @@
 .text-area-wrapper {
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 
 .text-area-label {

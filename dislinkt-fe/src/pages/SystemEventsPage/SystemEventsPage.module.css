@@ -15,7 +15,7 @@
 
   flex: 1;
   overflow: auto;
-  margin: 0 5%;
+  padding: 0 5%;
 
   font-family: var(--PRIMARY-FONT-FAMILY);
   font-style: var(--PRIMARY-FONT-STYLE);
