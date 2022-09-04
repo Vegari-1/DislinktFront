@@ -1,11 +1,11 @@
-import ProfileInfoData from "./ProfileInfoData";
-
 interface JobOfferData {
   id: string;
   positionName: string;
   description: string;
   qualifications: string[];
-  profile: ProfileInfoData;
+  profileName: string;
+  profileSurname: string;
+  profilePicture: string;
   companyLink?: string;
 }
 
