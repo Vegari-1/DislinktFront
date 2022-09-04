@@ -1,4 +1,5 @@
 interface ProfileInfoData {
+  id: string;
   name: string;
   surname: string;
   username: string;
@@ -9,6 +10,7 @@ interface ProfileInfoData {
   info: string;
   public: boolean;
   picture: string;
+  following: boolean;
 }
 
 export default ProfileInfoData;
