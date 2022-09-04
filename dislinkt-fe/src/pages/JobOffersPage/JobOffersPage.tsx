@@ -1,4 +1,6 @@
+import { ReactComponent as PlusIcon } from "../../assets/svg/plus.svg";
 import EntititesEmptyList from "../../components/atoms/EntitiesEmptyList/EntititesEmptyList";
+import IconButton from "../../components/atoms/IconButton/IconButton";
 import JobOfferCard from "../../components/atoms/JobOfferCard/JobOfferCard";
 import Header from "../../components/molecules/Header/Header";
 import Layout from "../../components/organisms/Layout/Layout";
@@ -12,18 +14,9 @@ const JobOffersPage: React.FC = () => {
       positionName: "Designer",
       description: "Most awesome designer ever",
       qualifications: ["Adobe", "CorelDraw"],
-      profile: {
-        name: "Eva",
-        surname: "Jankovic",
-        username: "eva10",
-        email: "nebitno",
-        gender: "",
-        dateOfBirth: new Date(),
-        phone: "",
-        info: "",
-        public: true,
-        picture: "slika",
-      },
+      profileName: "Eva",
+      profileSurname: "Jankovic",
+      profilePicture: "slika",
       companyLink: "https://agent-app-frontend-test.herokuapp.com/company/1",
     },
     {
@@ -31,38 +24,24 @@ const JobOffersPage: React.FC = () => {
       positionName: "Designer",
       description: "Most awesome designer ever",
       qualifications: ["Adobe", "CorelDraw"],
-      profile: {
-        name: "Eva",
-        surname: "Jankovic",
-        username: "eva10",
-        email: "nebitno",
-        gender: "",
-        dateOfBirth: new Date(),
-        phone: "",
-        info: "",
-        public: true,
-        picture: "slika",
-      },
+      profileName: "Eva",
+      profileSurname: "Jankovic",
+      profilePicture: "slika",
     },
     {
       id: "3",
       positionName: "Designer",
       description: "Most awesome designer ever",
       qualifications: ["Adobe", "CorelDraw"],
-      profile: {
-        name: "Eva",
-        surname: "Jankovic",
-        username: "eva10",
-        email: "nebitno",
-        gender: "",
-        dateOfBirth: new Date(),
-        phone: "",
-        info: "",
-        public: true,
-        picture: "slika",
-      },
+      profileName: "Eva",
+      profileSurname: "Jankovic",
+      profilePicture: "slika",
     },
   ];
+
+  const onAddButtonClick = () => {
+    console.log("add job offer");
+  };
 
   return (
     <Layout>
@@ -73,6 +52,9 @@ const JobOffersPage: React.FC = () => {
             <JobOfferCard key={offer.id} jobOffer={offer} />
           ))}
         {offers.length === 0 && <EntititesEmptyList entities="job offers" />}
+      </div>
+      <div className={classes["add-button"]}>
+        <IconButton icon={<PlusIcon />} boxShadow onClick={onAddButtonClick!} />
       </div>
     </Layout>
   );
