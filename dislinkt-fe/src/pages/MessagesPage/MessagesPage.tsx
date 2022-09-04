@@ -8,7 +8,7 @@ const MessagesPage: React.FC = () => {
   return (
     <Layout>
       <div className={classes["layout"]}>
-        <Chat />
+        <Chat name="Megan" surname="Leib" picture="picture" messages={[]} />
         <ChatList />
       </div>
     </Layout>
