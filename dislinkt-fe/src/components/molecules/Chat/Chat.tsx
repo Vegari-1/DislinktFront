@@ -3,11 +3,18 @@ import classes from "./Chat.module.css";
 
 const Chat: React.FC = () => {
   return (
-    <section className={classes["chat"]}>
+    <div className={classes["chat"]}>
       <div className={classes["header-chat"]}>
         <p className={classes["name"]}>Megan Leib</p>
       </div>
       <div className={classes["messages-chat"]}>
+        <Message text="Hello how are you?" />
+        <Message text="Great how are you?" response />
+        <Message text="Great how are you?" response />
+        <Message text="Great how are you?" response />
+        <Message text="Hello how are you?" />
+        <Message text="Great how are you?" response />
+        <Message text="Hello how are you?" />
         <Message text="Hello how are you?" />
         <Message text="Great how are you?" response />
         <Message text="Great how are you?" response />
@@ -18,21 +25,16 @@ const Chat: React.FC = () => {
         <Message text="Great how are you?" response />
         <Message text="Great how are you?" response />
         <Message text="Great how are you?" response />
-        <Message text="Great how are you?" response />
-        <Message text="Great how are you?" response />
-        <Message text="Great how are you?" response />
-        <Message text="Great how are you?" response />
-        <Message text="Great how are you?" response />
+        <Message text="Last message" response />
       </div>
       <div className={classes["footer-chat"]}>
-        <input
-          type="text"
+        <textarea
           className={classes["write-message"]}
           placeholder="Type your message here"
-        ></input>
+        ></textarea>
         <div className={classes["send"]} />
       </div>
-    </section>
+    </div>
   );
 };
 

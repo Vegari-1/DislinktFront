@@ -2,14 +2,18 @@
 
 .chat {
   width: 70%;
+
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .header-chat {
+  padding: 25px 0;
+
   background-color: #fff;
-  height: 90px;
   box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
 }
 
 .name {
@@ -21,29 +25,36 @@
 
 .messages-chat {
   padding: 25px 35px;
+
+  flex: 1;
+  height: 100%;
+  overflow: auto;
+}
+
+.messages-chat::-webkit-scrollbar {
+  background: transparent;
+  height: 10px;
+  width: 0px;
 }
 
 .footer-chat {
-  width: 53%;
-  height: 80px;
+  height: 70px;
+  padding: 10px 5px;
   display: flex;
   align-items: center;
-  position: absolute;
-  bottom: 0;
-  background-color: transparent;
+  justify-content: space-between;
+
   border-top: 2px solid #eee;
 }
 
 .send {
   height: 25px;
   width: 25px;
-  color: #fff;
-  background-color: var(--SECONDARY-COLOR);
-  position: absolute;
-  right: 50px;
+  margin-right: 15px;
   padding: 12px 12px 12px 12px;
+
+  background-color: var(--SECONDARY-COLOR);
   border-radius: 50%;
-  font-size: 14pt;
 
   cursor: pointer;
 }
@@ -62,27 +73,26 @@
 }
 
 .write-message {
+  background: var(--LIGHT-GREY);
   border: none !important;
-  width: 60%;
-  height: 50px;
+  border-radius: var(--BORDER-RADIUS);
+  width: 75%;
+  height: 40px;
   margin-left: 20px;
   padding: 10px;
+
+  font-size: 14px;
+
+  resize: none;
 }
 
-.footer-chat *::-webkit-input-placeholder {
-  color: #c0c0c0;
-  font-size: 13pt;
+.write-message:focus-visible {
+  outline: 1px solid var(--SECONDARY-COLOR);
+  border-radius: var(--BORDER-RADIUS);
 }
-.footer-chat input *:-moz-placeholder {
-  color: #c0c0c0;
-  font-size: 13pt;
-}
-.footer-chat input *::-moz-placeholder {
-  color: #c0c0c0;
-  font-size: 13pt;
-  margin-left: 5px;
-}
-.footer-chat input *:-ms-input-placeholder {
-  color: #c0c0c0;
-  font-size: 13pt;
+
+.write-message::-webkit-scrollbar {
+  background: transparent;
+  height: 10px;
+  width: 0px;
 }
