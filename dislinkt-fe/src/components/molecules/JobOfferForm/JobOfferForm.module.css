@@ -1,0 +1,28 @@
+@import "../../../styles.css";
+
+.label {
+  font-weight: bold;
+  margin: 0;
+
+  font-family: var(--PRIMARY-FONT-FAMILY);
+  font-style: var(--PRIMARY-FONT-STYLE);
+}
+
+.sing-up-form {
+  margin: 3% 0;
+  text-align: center;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.fields {
+  margin: 10px 10%;
+}
+
+.button {
+  margin: 10px 40%;
+}
