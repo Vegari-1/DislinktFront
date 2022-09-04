@@ -1,4 +1,5 @@
 import { Fragment, ReactNode } from "react";
+import { useParams } from "react-router-dom";
 import { ReactComponent as PlusIcon } from "../../../assets/svg/plus.svg";
 import ProfileInfoData from "../../../models/data/ProfileInfoData";
 import IconButton from "../../atoms/IconButton/IconButton";
@@ -15,7 +16,10 @@ const ProfilePane: React.FC<ProfilePaneProps> = ({
   onAddButtonClick,
   children,
 }) => {
+  const { id } = useParams();
+
   const profile: ProfileInfoData = {
+    id: "1",
     name: "Ksenija",
     surname: "Prcic",
     username: "resetKsenija",
@@ -26,19 +30,33 @@ const ProfilePane: React.FC<ProfilePaneProps> = ({
     info: "I am a robot human hybrid sent to this planet to investigate.",
     public: false,
     picture: "picture",
+    following: true,
   };
   return (
     <Fragment>
       <ProfileInfo profile={profile} />
-      <ProfileMenu
-        menuItems={[
-          { text: "Skills", link: "/profile" },
-          { text: "Work experience", link: "/profile/work" },
-          { text: "Education", link: "/profile/edu" },
-          { text: "Posts", link: "/profile/posts" },
-        ]}
-      />
-      {children}
+      {/* profile menu i ikonice vidljive samo ako je profil public
+          ili ako je profil private, ali se prate! */}
+      {(profile.public || profile.following) && (
+          <ProfileMenu
+            menuItems={[
+              { text: "Skills", link: "/profile/" + id },
+              { text: "Work experience", link: "/profile/" + id + "/work" },
+              { text: "Education", link: "/profile/" + id + "/edu" },
+              { text: "Posts", link: "/profile/" + id + "/posts" },
+            ]}
+          />
+        ) &&
+        children}
+      {!profile.public && !profile.following && (
+        <div className={classes["private"]}>
+          <div className={classes["private-title"]}>
+            This Profile is Private
+          </div>
+          <div>Link with this profile to view more content</div>
+        </div>
+      )}
+      {/* add icon je vidljivo samo ako je profil.id=ulogovan.id */}
       <div className={classes["add-button"]}>
         <IconButton icon={<PlusIcon />} boxShadow onClick={onAddButtonClick!} />
       </div>

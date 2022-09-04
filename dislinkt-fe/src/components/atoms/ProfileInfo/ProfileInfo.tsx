@@ -15,6 +15,15 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }) => {
   const onEditButtonClick = () => {
     navigate("info");
   };
+  const onBlockButtonClick = () => {
+    console.log("block the profile");
+  };
+  const onLinkButtonClick = () => {
+    console.log("connect to profile");
+  };
+  const onDislinkButtonClick = () => {
+    console.log("disconnect from profile");
+  };
 
   return (
     <div className={classes["profile"]}>
@@ -53,7 +62,34 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }) => {
           </div>
           <div className={classes["info"]}>{profile.info}</div>
         </div>
+        {/* ako je profile.id=ulogovani.id onda prikazi edit dugme */}
+        {/* ako profile.id!=ulogovani.id prikazi "Block", "Link"/"Dislink" dugmad */}
+        {/* AKO JE NALOG BLOKIRAN, NIGDE NE MOZES DA GA NADJES VISE -> uslov u pregledu svih profila i u porukama ako ih je ranije bilo */}
 
+        <div className={classes["actions"]}>
+          <button
+            className={classes["block-button"]}
+            onClick={onBlockButtonClick}
+          >
+            Block
+          </button>
+          {profile.following && (
+            <button
+              className={classes["action-button"]}
+              onClick={onDislinkButtonClick}
+            >
+              Dislink
+            </button>
+          )}
+          {!profile.following && (
+            <button
+              className={classes["action-button"]}
+              onClick={onLinkButtonClick}
+            >
+              Link
+            </button>
+          )}
+        </div>
         <div className={classes["edit-button"]}>
           <IconButton
             icon={<EditIcon width={30} height={30} />}
