@@ -18,6 +18,7 @@ import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import ConnRequestsPage from "./pages/ConnRequestsPage/ConnRequestsPage";
 import SystemEventsPage from "./pages/SystemEventsPage/SystemEventsPage";
 import MessagesPage from "./pages/MessagesPage/MessagesPage";
+import JobOffersPage from "./pages/JobOffersPage/JobOffersPage";
 
 function App() {
   // const navigate = useNavigate();
@@ -50,6 +51,7 @@ function App() {
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/conn-requests" element={<ConnRequestsPage />} />
         <Route path="/messages" element={<MessagesPage />} />
+        <Route path="/job-offers" element={<JobOffersPage />} />
 
         <Route path="/events" element={<SystemEventsPage />} />
 

@@ -28,7 +28,7 @@ export function* handleSignIn({
   try {
     const token: string = yield call(authService.signIn, payload.formValues);
 
-    localStorage.setItem("token", token);
+    localStorage.setItem("dislinkt-token", token);
     const userDataPayload: UserDataPayload = getUserFromJwt(token);
     yield put(setUserData(userDataPayload));
 
@@ -73,7 +73,7 @@ export function* handleRegister({
 
 export function* handleLogOut(): Generator<any, void, void> {
   try {
-    localStorage.removeItem("token");
+    localStorage.removeItem("dislinkt-token");
     yield put(setUserData({} as UserDataPayload));
   } catch (error: any) {
     yield toast.error(error.response.data.message);
@@ -83,7 +83,7 @@ export function* handleLogOut(): Generator<any, void, void> {
 export function* handleAutoLogin({
   payload,
 }: ReturnType<typeof autoLogin>): Generator<any, any, string> {
-  const token: string = localStorage.getItem("token")!;
+  const token: string = localStorage.getItem("dislinkt-token")!;
   if (token) {
     const decodedAuthToken: any = jwt(token);
     const dateNowSeconds = Math.round(new Date().getTime() / 1000);
