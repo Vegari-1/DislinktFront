@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as PlusIcon } from "../../assets/svg/plus.svg";
 import EntititesEmptyList from "../../components/atoms/EntitiesEmptyList/EntititesEmptyList";
 import IconButton from "../../components/atoms/IconButton/IconButton";
@@ -39,7 +40,9 @@ const JobOffersPage: React.FC = () => {
     },
   ];
 
+  const navigate = useNavigate();
   const onAddButtonClick = () => {
+    navigate("add");
     console.log("add job offer");
   };
 
