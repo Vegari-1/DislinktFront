@@ -24,7 +24,7 @@ const SkillFormOverlay: React.FC<SkillFormOverlayProps> = ({ onClose }) => {
     <div className={classes["modal-wrapper"]}>
       <div className={classes["modal"]}>
         <div className={classes["top-border-color"]}></div>
-        <div className={classes["text"]}>
+        <div className={classes["content"]}>
           <Formik
             initialValues={skillFormInitialValues}
             validationSchema={skillValidationSchema}
@@ -32,8 +32,8 @@ const SkillFormOverlay: React.FC<SkillFormOverlayProps> = ({ onClose }) => {
           >
             {({ handleSubmit }) => (
               <div>
-                <h2 className={classes.label}>Create Skill</h2>
-                <div className={classes.fields}>
+                <h2>Create Skill Info</h2>
+                <div>
                   <Field
                     component={PrimaryInputField}
                     text="Skill name"
