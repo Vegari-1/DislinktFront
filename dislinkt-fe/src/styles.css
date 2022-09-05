@@ -28,5 +28,6 @@
   /*STYLES*/
 
   --BORDER-RADIUS: 10px;
+  --BORDER-RADIUS-SMALL: 5px;
   --SIDE-BAR-BOX-SHADOW: 5px 0px 10px rgba(0, 0, 0, 0.15);
 }
