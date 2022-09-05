@@ -34,7 +34,7 @@ const ProfileEducationPage: React.FC = () => {
                 endDate: new Date(),
               },
             ]}
-            deleteItem={deleteEducationHandler}
+            onDeleteItem={deleteEducationHandler}
           />
         </ProfilePane>
       </div>

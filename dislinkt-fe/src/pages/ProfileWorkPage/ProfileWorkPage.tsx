@@ -42,7 +42,7 @@ const ProfileWorkPage: React.FC = () => {
                 endDate: new Date(),
               },
             ]}
-            deleteItem={deleteWorkHandler}
+            onDeleteItem={deleteWorkHandler}
           />
         </ProfilePane>
       </div>
