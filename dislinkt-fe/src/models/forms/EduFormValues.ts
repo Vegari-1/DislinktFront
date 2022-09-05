@@ -3,7 +3,7 @@ interface EduFormValues {
   degree: string;
   field: string;
   startDate: Date;
-  endDate: Date;
+  endDate?: Date;
 }
 
 export default EduFormValues;

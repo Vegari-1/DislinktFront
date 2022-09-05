@@ -13,7 +13,6 @@ const eduFormInitialValues: EduFormValues = {
   degree: "",
   field: "",
   startDate: new Date(),
-  endDate: new Date(),
 };
 
 const EduFormOverlay: React.FC<EduFormOverlayProps> = ({ onClose }) => {
