@@ -3,14 +3,14 @@ import classes from "./ManageItems.module.css";
 
 interface ManageItemsProps {
   items: any[];
-  deleteItem: (id: string) => void;
+  onDeleteItem: (id: string) => void;
 }
 
-const ManageItems: React.FC<ManageItemsProps> = ({ items, deleteItem }) => {
+const ManageItems: React.FC<ManageItemsProps> = ({ items, onDeleteItem }) => {
   return (
     <div className={classes["manage-items"]}>
       {items.map((item) => (
-        <ManageItem key={item.id} item={item} deleteItem={deleteItem} />
+        <ManageItem key={item.id} item={item} deleteItem={onDeleteItem} />
       ))}
     </div>
   );
