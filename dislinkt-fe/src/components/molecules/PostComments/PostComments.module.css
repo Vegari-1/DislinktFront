@@ -1,47 +1,18 @@
 .comments {
-    display: block;
-    padding: 10px;
-    margin: 0 auto;
+  display: block;
+  padding: 10px;
+  margin: 0 auto;
 
-    transition: max-height 0.5s ease-in-out;
+  transition: max-height 0.5s ease-in-out;
 }
-  
-/* ako budes zelela da radis promenu klasa -> za to mora da se ucita kao css, a ne kao module.css */
-/* pa sta ti bude draze */
-/* .comments-inactive {
-max-height: 0;
-overflow-y: auto;
-} */
-  
+.comments::-webkit-scrollbar {
+  background: transparent;
+  height: 10px;
+  width: 0px;
+}
+
 .comment {
-    border: solid 2px white;
-    border-radius: 10px;
-    padding: 10px;
+  border: solid 2px white;
+  border-radius: 10px;
+  padding: 10px;
 }
-
-.new-comment {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    background: var(--PRIMARY-COLOR-LIGHTER);
-}
-
-.comment-input {
-    box-sizing: border-box;
-
-    height: 60px;
-    width: 100%;
-    padding: 11px;
-    margin-top: 15px;
-
-    border: 1px solid transparent;
-    border-radius: var(--BORDER-RADIUS);
-
-    font-family: var(--PRIMARY-FONT-FAMILY);
-    font-style: var(--PRIMARY-FONT-STYLE);
-    font-weight: 200;
-    font-size: 14px;
-    line-height: 18px;
-
-    color: #000;
-}
-  

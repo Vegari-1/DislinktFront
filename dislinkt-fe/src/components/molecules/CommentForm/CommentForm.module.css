@@ -1,0 +1,27 @@
+.comment {
+  border: solid 2px white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.new-comment {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  background: var(--SECONDARY-COLOR);
+}
+
+.add-button {
+  width: 95px;
+  height: 30px;
+  margin-left: 85%;
+
+  background-color: var(--LIGHT-GREY);
+  border: none;
+  border-radius: var(--BORDER-RADIUS-SMALL);
+
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+
+  cursor: pointer;
+}
