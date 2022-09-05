@@ -11,6 +11,7 @@ import jobOfferValidationSchema from "../../../validations/jobOfferValidationSch
 const jobOfferFormInitialValues: JobOfferFormValues = {
   positionName: "",
   description: "",
+  companyLink: "",
   qualifications: [],
   qualificationsCombined: "",
 };
@@ -50,6 +51,13 @@ const JobOfferForm: React.FC = () => {
               type="text"
               name="description"
               value="description"
+            />
+            <Field
+              component={PrimaryInputField}
+              text="Company link"
+              type="text"
+              name="companyLink"
+              value="companyLink"
             />
             <Field
               component={PrimaryInputField}

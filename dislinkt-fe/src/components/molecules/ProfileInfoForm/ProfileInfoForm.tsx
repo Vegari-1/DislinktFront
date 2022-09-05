@@ -108,7 +108,7 @@ const ProfileInfoForm: React.FC = () => {
             </div>
             <Field
               component={PrimaryTextArea}
-              placeholder="Info"
+              placeholder="Biography"
               type="text"
               name="info"
               value="info"
