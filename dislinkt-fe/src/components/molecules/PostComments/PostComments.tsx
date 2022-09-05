@@ -1,4 +1,5 @@
 import TextPost from "../../atoms/TextPost/TextPost";
+import CommentForm from "../CommentForm/CommentForm";
 import classes from "./PostComments.module.css";
 
 interface PostCommentsProps {
@@ -15,14 +16,7 @@ const PostComments: React.FC<PostCommentsProps> = ({ active }) => {
       }}
     >
       <h3>Comments</h3>
-      <div className={`${classes["new-comment"]} ${classes["comment"]}`}>
-        <TextPost imageSize="45px" hasBody={false} />
-        <textarea
-          placeholder={"Write a comment..."}
-          className={classes["comment-input"]}
-        />
-      </div>
-
+      <CommentForm />
       <div className={classes["comment"]}>
         <TextPost imageSize="45px" hasBody={true} />
       </div>

@@ -58,7 +58,7 @@
   width: 105px;
   height: 35px;
 
-  background-color: var(--WHITE);
+  background-color: white;
   border: 1px solid var(--PRIMARY-COLOR);
   border-radius: var(--BORDER-RADIUS-SMALL);
 
