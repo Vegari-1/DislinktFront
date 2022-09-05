@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 
 const today = new Date();
-today.setHours(0, 0, 0, 0);
+today.setHours(23, 59, 59, 999);
 
 const registerValidationSchema = Yup.object().shape({
   name: Yup.string().required("* Required field"),
