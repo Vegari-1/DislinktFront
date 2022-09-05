@@ -18,8 +18,8 @@
 .modal {
   z-index: 100;
   overflow: hidden;
-  width: 30%;
-  height: 40%;
+  width: 35%;
+  height: 82%;
 
   background: white;
   border-radius: var(--BORDER-RADIUS);
@@ -42,6 +42,12 @@
   margin: 10% 10% 0%;
 }
 
+.form-row {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
 .action-buttons {
   margin: 5% 10% 0%;
   display: flex;
@@ -49,15 +55,15 @@
 }
 
 .cancel-button {
-  width: 95px;
-  height: 30px;
+  width: 105px;
+  height: 35px;
 
   background-color: var(--WHITE);
   border: 1px solid var(--PRIMARY-COLOR);
   border-radius: var(--BORDER-RADIUS-SMALL);
 
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 14px;
+  line-height: 18px;
   text-align: center;
 
   color: var(--PRIMARY-COLOR);
@@ -66,14 +72,15 @@
 }
 
 .create-button {
-  width: 95px;
-  height: 30px;
+  width: 105px;
+  height: 35px;
+
   border: none;
   background: var(--PRIMARY-COLOR);
   border-radius: var(--BORDER-RADIUS-SMALL);
 
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 14px;
+  line-height: 18px;
 
   color: white;
 

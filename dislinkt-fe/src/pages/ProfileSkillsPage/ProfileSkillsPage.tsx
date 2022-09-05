@@ -17,11 +17,11 @@ const ProfileSkillsPage: React.FC = () => {
     console.log("added skill");
     setModalVisible(true);
   };
-
   const onCloseHandler = () => {
     console.log("ugasi modal");
     setModalVisible(false);
   };
+
   return (
     <Layout>
       <div className={classes["streach"]}>
@@ -45,7 +45,7 @@ const ProfileSkillsPage: React.FC = () => {
       {modalVisible &&
         ReactDOM.createPortal(
           <SkillFormOverlay onClose={onCloseHandler} />,
-          document.getElementById("backdrop-root")!
+          document.getElementById("modal-root")!
         )}
     </Layout>
   );
