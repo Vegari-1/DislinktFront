@@ -21,7 +21,12 @@ const CommentForm: React.FC = () => {
       <Formik
         initialValues={commentFormInitialValues}
         validationSchema={commentValidationSchema}
-        onSubmit={submitHandler}
+        onSubmit={(formValues, { resetForm }) => {
+          submitHandler(formValues);
+          resetForm({
+            values: { content: "" },
+          });
+        }}
       >
         {({ handleSubmit }) => (
           <div>

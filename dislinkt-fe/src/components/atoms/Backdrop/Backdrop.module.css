@@ -9,5 +9,5 @@
 
 .backdrop-blur {
   background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(3px);
 }
