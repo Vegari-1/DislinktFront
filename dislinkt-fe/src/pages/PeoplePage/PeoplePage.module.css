@@ -2,9 +2,9 @@
 
 .streach {
   height: 100%;
-  background: #fff;
 
   flex: 1;
+  justify-content: center;
   overflow: auto;
   padding: 2% 15%;
 
