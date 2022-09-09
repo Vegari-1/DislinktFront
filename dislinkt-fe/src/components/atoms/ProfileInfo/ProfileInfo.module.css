@@ -93,6 +93,7 @@
   font-weight: 600;
 
   background: var(--SECONDARY-COLOR-LIGHTER);
+  border: 1px solid var(--SECONDARY-COLOR);
   border-radius: var(--BORDER-RADIUS);
 
   cursor: pointer;
@@ -109,8 +110,7 @@
 
 .block-button {
   display: block;
-  border: none;
-
+  background-color: white;
   margin: 10px 0;
   padding: 5px 10px;
 
@@ -118,7 +118,6 @@
   font-weight: 600;
 
   color: var(--DANGER);
-  background: white;
   border: 1px solid var(--DANGER);
   border-radius: var(--BORDER-RADIUS);
 
