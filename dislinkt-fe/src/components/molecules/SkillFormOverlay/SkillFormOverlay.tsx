@@ -1,5 +1,7 @@
 import { Field, Formik } from "formik";
+import { useDispatch } from "react-redux";
 import SkillFormValues from "../../../models/forms/SkillFormValues";
+import { addSkill } from "../../../store/actions/profile-actions";
 import skillValidationSchema from "../../../validations/skillValidationSchema";
 import PrimaryInputField from "../../atoms/PrimaryInputField/PrimaryInputField";
 import classes from "./SkillFormOverlay.module.css";
@@ -13,11 +15,10 @@ const skillFormInitialValues: SkillFormValues = {
 };
 
 const SkillFormOverlay: React.FC<SkillFormOverlayProps> = ({ onClose }) => {
+  const dispatch = useDispatch();
   const submitHandler = (formValues: SkillFormValues) => {
     onClose();
-    // dodaj skill
-    console.log(formValues);
-    console.log("dodaj skill");
+    dispatch(addSkill(formValues));
   };
 
   return (

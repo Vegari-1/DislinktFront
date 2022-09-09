@@ -2,11 +2,24 @@ import { Fragment } from "react";
 import classes from "./TextPost.module.css";
 
 interface TextPostProps {
+  name: string;
+  surname: string;
+  username: string;
+  timestamp: Date;
+  content: string;
   imageSize: string;
   hasBody: boolean;
 }
 
-const TextPost: React.FC<TextPostProps> = ({ imageSize, hasBody }) => {
+const TextPost: React.FC<TextPostProps> = ({
+  name,
+  surname,
+  username,
+  timestamp,
+  content,
+  imageSize,
+  hasBody,
+}) => {
   return (
     <Fragment>
       <div className={classes["post-header"]}>
@@ -15,24 +28,15 @@ const TextPost: React.FC<TextPostProps> = ({ imageSize, hasBody }) => {
           style={{ width: imageSize, height: imageSize }}
         />
         <span className={classes["full-name"]}>
-          <b>Ksenija Prcic</b>
+          <b>
+            {name} {surname}
+          </b>
         </span>
-        <span className={classes["username"]}>@ksenija</span>
+        <span className={classes["username"]}>{username}</span>
         <span className={classes["dot"]}>&#8226;</span>
-        <span className={classes["date"]}> 06:07:59 7/8/2022</span>
+        <span className={classes["date"]}> {timestamp.toLocaleString()}</span>
       </div>
-      {hasBody && (
-        <div className={classes["post-body"]}>
-          Lorem ipsum dolor sit amet,{" "}
-          <a href="http://www.google.com">consectetur adipiscing</a> elit, sed
-          do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-          ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-      )}
+      {hasBody && <div className={classes["post-body"]}>{content}</div>}
     </Fragment>
   );
 };

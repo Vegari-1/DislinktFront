@@ -1,12 +1,19 @@
+import CommentData from "../../../models/data/CommentData";
 import TextPost from "../../atoms/TextPost/TextPost";
 import CommentForm from "../CommentForm/CommentForm";
 import classes from "./PostComments.module.css";
 
 interface PostCommentsProps {
+  comments: CommentData[];
+  id: string;
   active: boolean;
 }
 
-const PostComments: React.FC<PostCommentsProps> = ({ active }) => {
+const PostComments: React.FC<PostCommentsProps> = ({
+  comments,
+  id,
+  active,
+}) => {
   return (
     <div
       className={classes["comments"]}
@@ -16,13 +23,21 @@ const PostComments: React.FC<PostCommentsProps> = ({ active }) => {
       }}
     >
       <h3>Comments</h3>
-      <CommentForm />
-      <div className={classes["comment"]}>
-        <TextPost imageSize="45px" hasBody={true} />
-      </div>
-      <div className={classes["comment"]}>
-        <TextPost imageSize="45px" hasBody={true} />
-      </div>
+      <CommentForm id={id} />
+      {comments.map((comment) => (
+        <div className={classes["comment"]}>
+          <TextPost
+            key={comment.id}
+            name={comment.name}
+            surname={comment.surname}
+            username={comment.username}
+            timestamp={comment.timestamp}
+            content={comment.content}
+            imageSize="45px"
+            hasBody
+          />
+        </div>
+      ))}
     </div>
   );
 };

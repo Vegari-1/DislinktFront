@@ -1,11 +1,11 @@
 interface JobOfferData {
   id: string;
+  name: string;
+  surname: string;
+  picture: string;
   positionName: string;
   description: string;
   qualifications: string[];
-  profileName: string;
-  profileSurname: string;
-  profilePicture: string;
   companyLink?: string;
 }
 

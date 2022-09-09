@@ -10,7 +10,7 @@ interface ProfileInfoData {
   info: string;
   public: boolean;
   picture: string;
-  following: boolean;
+  following?: boolean;
 }
 
 export default ProfileInfoData;

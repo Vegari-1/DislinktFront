@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as PlusIcon } from "../../assets/svg/plus.svg";
 import EntititesEmptyList from "../../components/atoms/EntitiesEmptyList/EntititesEmptyList";
@@ -6,55 +8,50 @@ import JobOfferCard from "../../components/atoms/JobOfferCard/JobOfferCard";
 import Header from "../../components/molecules/Header/Header";
 import Layout from "../../components/organisms/Layout/Layout";
 import JobOfferData from "../../models/data/JobOfferData";
+import {
+  getJobOffers,
+  searchJobOffers,
+} from "../../store/actions/jof-offer-actions";
+import { RootState } from "../../store/store";
 import classes from "./JobOffersPage.module.css";
 
 const JobOffersPage: React.FC = () => {
-  const offers: JobOfferData[] = [
-    {
-      id: "1",
-      positionName: "Designer",
-      description: "Most awesome designer ever",
-      qualifications: ["Adobe", "CorelDraw"],
-      profileName: "Eva",
-      profileSurname: "Jankovic",
-      profilePicture: "slika",
-      companyLink: "https://agent-app-frontend-test.herokuapp.com/company/1",
-    },
-    {
-      id: "2",
-      positionName: "Designer",
-      description: "Most awesome designer ever",
-      qualifications: ["Adobe", "CorelDraw"],
-      profileName: "Eva",
-      profileSurname: "Jankovic",
-      profilePicture: "slika",
-    },
-    {
-      id: "3",
-      positionName: "Designer",
-      description: "Most awesome designer ever",
-      qualifications: ["Adobe", "CorelDraw"],
-      profileName: "Eva",
-      profileSurname: "Jankovic",
-      profilePicture: "slika",
-    },
-  ];
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [query, setQuery] = useState("");
+  const jobOffers: JobOfferData[] = useSelector(
+    (state: RootState) => state.jobOffer.jobOffers
+  );
+
+  useEffect(() => {
+    dispatch(getJobOffers());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (query.trim().length === 0) {
+      dispatch(getJobOffers());
+    } else {
+      dispatch(searchJobOffers(query));
+    }
+  }, [dispatch, query]);
+
+  const searchHandler = (query: string) => {
+    setQuery(query);
+  };
+
   const onAddButtonClick = () => {
     navigate("add");
-    console.log("add job offer");
   };
 
   return (
     <Layout>
-      <Header />
+      <Header setSearchValue={searchHandler} />
       <div className={classes["streach"]}>
-        {offers.length !== 0 &&
-          offers.map((offer) => (
-            <JobOfferCard key={offer.id} jobOffer={offer} />
+        {jobOffers.length !== 0 &&
+          jobOffers.map((jobOffer) => (
+            <JobOfferCard key={jobOffer.id} jobOffer={jobOffer} />
           ))}
-        {offers.length === 0 && <EntititesEmptyList entities="job offers" />}
+        {jobOffers.length === 0 && <EntititesEmptyList entities="job offers" />}
       </div>
       <div className={classes["add-button"]}>
         <IconButton icon={<PlusIcon />} boxShadow onClick={onAddButtonClick!} />

@@ -4,6 +4,7 @@ interface RegisterFormValues {
   gender: string;
   dateOfBirth: Date;
   phone: string;
+  biography: string;
   public: boolean;
   picture: string;
 }

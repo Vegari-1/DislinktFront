@@ -5,25 +5,33 @@ import ToggleButton from "../../atoms/ToggleButton/ToggleButton";
 import classes from "./SettingsForm.module.css";
 import { useNavigate } from "react-router-dom";
 import SettingsFormValues from "../../../models/forms/SettingsFormValues";
+import { useDispatch } from "react-redux";
+import { updateNotifications } from "../../../store/actions/notification-actions";
 
-const settingsFormInitialValues: SettingsFormValues = {
-  messages: false,
-  connections: false,
-  posts: false,
-};
+interface SettingsFormProps {
+  notifications: SettingsFormValues;
+}
 
-const SettingsForm: React.FC = () => {
+const SettingsForm: React.FC<SettingsFormProps> = ({ notifications }) => {
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const submitHandler = (formValues: SettingsFormValues) => {
-    // samo posalji na bek novu konfiguraciju i redirektuj nazad na profil
-    // (moze ovde redirekcija jer se ne vide na profilu podesavanja)
-    console.log(formValues);
-    navigate("/profile");
+    dispatch(updateNotifications(formValues));
+    navigate("/profile/id_ulogovanog_korisnika");
+  };
+
+  const settingsFormInitialValues: SettingsFormValues = {
+    messages: notifications.messages,
+    connections: notifications.connections,
+    posts: notifications.posts,
   };
 
   return (
-    <Formik initialValues={settingsFormInitialValues} onSubmit={submitHandler}>
+    <Formik
+      enableReinitialize
+      initialValues={settingsFormInitialValues}
+      onSubmit={submitHandler}
+    >
       {({ handleSubmit }) => (
         <div className={classes["sing-up-form"]}>
           <h1 className={classes.label}>Notification Settings</h1>

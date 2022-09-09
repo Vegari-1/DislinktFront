@@ -1,5 +1,7 @@
 import { Field, Formik } from "formik";
+import { useDispatch } from "react-redux";
 import WorkExpFormValues from "../../../models/forms/WorkExpFormValues";
+import { addWorkExperience } from "../../../store/actions/profile-actions";
 import workExpValidationSchema from "../../../validations/workExpValidationSchema";
 import PrimaryInputField from "../../atoms/PrimaryInputField/PrimaryInputField";
 import classes from "./WorkExpFormOverlay.module.css";
@@ -15,11 +17,10 @@ const workExpFormInitialValues: WorkExpFormValues = {
 };
 
 const WorkExpFormOverlay: React.FC<WorkExpFormOverlayProps> = ({ onClose }) => {
+  const dispatch = useDispatch();
   const submitHandler = (formValues: WorkExpFormValues) => {
     onClose();
-    // dodaj work exp
-    console.log(formValues);
-    console.log("dodaj work exp");
+    dispatch(addWorkExperience(formValues));
   };
 
   return (

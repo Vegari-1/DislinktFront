@@ -22,6 +22,7 @@ const registerFormInitialValues: RegisterFormValues = {
   gender: "",
   dateOfBirth: new Date(),
   phone: "",
+  biography: "",
   public: false,
   picture: "",
 };
@@ -136,8 +137,8 @@ const RegisterForm: React.FC = () => {
               component={PrimaryTextArea}
               placeholder="Biography"
               type="text"
-              name="info"
-              value="info"
+              name="biography"
+              value="biography"
             />
           </div>
           <input

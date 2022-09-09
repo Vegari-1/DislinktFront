@@ -58,10 +58,7 @@ export function* handleRegister({
 }: ReturnType<typeof register>): Generator<any, void, any> {
   try {
     const signUpData: SignUpFormValues = yield select(getSignUpData);
-    // yield call(authService.signUp, signUpData);
-    console.log(payload.formValues);
-    console.log(signUpData);
-    // posalji authservisu i sve ostale podatke koje on prosledju profil servisu (asinhrono/sinhrono, kako god)
+    yield call(authService.signUp, { ...signUpData, ...payload.formValues });
 
     yield payload.navigate("/auth");
     yield put(setSignInActive(true));

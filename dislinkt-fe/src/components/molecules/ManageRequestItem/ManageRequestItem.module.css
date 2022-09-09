@@ -30,8 +30,8 @@
 }
 
 .picture {
-  min-width: 7%;
-  min-height: 100%;
+  min-width: 70px;
+  min-height: 70px;
   margin: 0 2%;
 
   background-color: var(--LIGHT-GREY);

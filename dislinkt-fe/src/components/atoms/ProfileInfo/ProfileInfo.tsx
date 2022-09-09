@@ -1,8 +1,14 @@
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as EditIcon } from "../../../assets/svg/edit.svg";
 import { ReactComponent as PrivateIcon } from "../../../assets/svg/lock.svg";
 import { ReactComponent as PublicIcon } from "../../../assets/svg/open-lock.svg";
 import ProfileInfoData from "../../../models/data/ProfileInfoData";
+import {
+  blockProfile,
+  dislinkWithProfile,
+  linkWithProfile,
+} from "../../../store/actions/profile-actions";
 import IconButton from "../IconButton/IconButton";
 import classes from "./ProfileInfo.module.css";
 
@@ -12,17 +18,19 @@ interface ProfileInfoProps {
 
 const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const onEditButtonClick = () => {
     navigate("info");
   };
   const onBlockButtonClick = () => {
-    console.log("block the profile");
+    dispatch(blockProfile(profile.id));
   };
   const onLinkButtonClick = () => {
-    console.log("connect to profile");
+    dispatch(linkWithProfile(profile.id));
   };
   const onDislinkButtonClick = () => {
-    console.log("disconnect from profile");
+    dispatch(dislinkWithProfile(profile.id));
   };
 
   return (
@@ -42,7 +50,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }) => {
               <PrivateIcon height={20} width={20} />
             )}
             <b>
-              {"   "} {profile.name} {profile.surname}
+              {profile.name} {profile.surname}
             </b>
             <span className={classes["username"]}>@{profile.username}</span>
           </div>

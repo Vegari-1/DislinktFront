@@ -1,50 +1,39 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/organisms/Layout/Layout";
 import ManageRequests from "../../components/organisms/ManageRequests/ManageRequests";
-import ConnRequestData from "../../models/data/ConnRequestData";
+import {
+  acceptConnectionRequest,
+  declineConnectionRequest,
+  getConnectionRequests,
+} from "../../store/actions/profile-actions";
+import { RootState } from "../../store/store";
 import classes from "./ConnRequestsPage.module.css";
 
 const ConnRequestsPage: React.FC = () => {
-  // const requests = useSelector(
-  //   (state: RootState) => state.company.companyRequests
-  // );
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getCompanyRequests());
-  // }, [dispatch]);
+  const dispatch = useDispatch();
+  const connectionRequests = useSelector(
+    (state: RootState) => state.profile.connectionRequests
+  );
+
+  useEffect(() => {
+    dispatch(getConnectionRequests());
+  }, [dispatch]);
 
   const declineRequestHandler = (id: string) => {
-    console.log("decline " + id);
-    // dispatch(declineConnRequest(id));
+    dispatch(declineConnectionRequest(id));
   };
 
   const acceptRequestHandler = (id: string) => {
-    console.log("accept " + id);
-    // dispatch(acceptConnRequest(id));
+    dispatch(acceptConnectionRequest(id));
   };
-
-  const requests: ConnRequestData[] = [
-    {
-      id: "1",
-      name: "Eva",
-      surname: "Jankovic",
-      username: "evaj10",
-      picture: "data:image/gif;base64,",
-    },
-    {
-      id: "2",
-      name: "Petar",
-      surname: "Petrovic",
-      username: "pera9",
-      picture: "data:image/gif;base64,",
-    },
-  ];
 
   return (
     <Layout>
       <div className={classes["streach"]}>
         <h1 className={classes.title}>Connection Requests</h1>
         <ManageRequests
-          requests={requests}
+          requests={connectionRequests}
           declineRequest={declineRequestHandler}
           acceptRequest={acceptRequestHandler}
         />

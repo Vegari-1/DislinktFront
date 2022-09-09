@@ -1,5 +1,7 @@
 import { Field, Formik } from "formik";
+import { useDispatch } from "react-redux";
 import CommentFormValues from "../../../models/forms/CommentFormValues";
+import { createComment } from "../../../store/actions/post-actions";
 import commentValidationSchema from "../../../validations/commentValidationSchema";
 import PrimaryTextArea from "../../atoms/PrimaryTextArea/PrimaryTextArea";
 import TextPost from "../../atoms/TextPost/TextPost";
@@ -9,15 +11,19 @@ const commentFormInitialValues: CommentFormValues = {
   content: "",
 };
 
-const CommentForm: React.FC = () => {
+interface CommentFormProps {
+  id: string;
+}
+
+const CommentForm: React.FC<CommentFormProps> = ({ id }) => {
+  const dispatch = useDispatch();
   const submitHandler = (formValues: CommentFormValues) => {
-    console.log(formValues);
-    console.log("dodaj komentar");
+    dispatch(createComment(id, formValues));
   };
 
   return (
     <div className={`${classes["new-comment"]} ${classes["comment"]}`}>
-      <TextPost imageSize="45px" hasBody={false} />
+      {/* <TextPost imageSize="45px" hasBody={false} /> */}
       <Formik
         initialValues={commentFormInitialValues}
         validationSchema={commentValidationSchema}

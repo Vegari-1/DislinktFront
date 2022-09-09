@@ -8,30 +8,18 @@ import ProfileMenu from "../../molecules/ProfileMenu/ProfileMenu";
 import classes from "./ProfilePane.module.css";
 
 interface ProfilePaneProps {
+  profile: ProfileInfoData;
   onAddButtonClick: () => void;
   children?: ReactNode;
 }
 
 const ProfilePane: React.FC<ProfilePaneProps> = ({
+  profile,
   onAddButtonClick,
   children,
 }) => {
   const { id } = useParams();
 
-  const profile: ProfileInfoData = {
-    id: "1",
-    name: "Ksenija",
-    surname: "Prcic",
-    username: "resetKsenija",
-    email: "ksenija@ksenija.com",
-    gender: "Female",
-    dateOfBirth: new Date(),
-    phone: "392055235",
-    info: "I am a robot human hybrid sent to this planet to investigate.",
-    public: false,
-    picture: "picture",
-    following: true,
-  };
   return (
     <Fragment>
       <ProfileInfo profile={profile} />

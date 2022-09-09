@@ -1,5 +1,5 @@
+import SignUpValues from "../models/data/SignUpValues";
 import SignInFormValues from "../models/forms/SignInFormValues";
-import SignUpFormValues from "../models/forms/SingUpFormValues";
 import ApiService from "./ApiService";
 
 const ENDPOINTS = {
@@ -10,11 +10,11 @@ const ENDPOINTS = {
 export class AuthService extends ApiService {
   signIn = async (signInData: SignInFormValues) => {
     const { data } = await this.apiClient.post(ENDPOINTS.SIGNIN, signInData);
-  
+
     return data;
   };
 
-  signUp = async (signUpData: SignUpFormValues) => {
+  signUp = async (signUpData: SignUpValues) => {
     const { data } = await this.apiClient.post(ENDPOINTS.SIGNUP, signUpData);
 
     return data;

@@ -20,6 +20,7 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({
       <span className={classes["label"]}>{inactiveLabel}</span>
       <input
         className={classes["toggle-input"]}
+        checked={value === true}
         type="checkbox"
         id={name}
         name={name}

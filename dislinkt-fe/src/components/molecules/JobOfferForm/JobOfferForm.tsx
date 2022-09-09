@@ -7,6 +7,8 @@ import classes from "./JobOfferForm.module.css";
 import { useNavigate } from "react-router-dom";
 import JobOfferFormValues from "../../../models/forms/JobOfferFormValues";
 import jobOfferValidationSchema from "../../../validations/jobOfferValidationSchema";
+import { useDispatch } from "react-redux";
+import { addJobOffer } from "../../../store/actions/jof-offer-actions";
 
 const jobOfferFormInitialValues: JobOfferFormValues = {
   positionName: "",
@@ -18,12 +20,12 @@ const jobOfferFormInitialValues: JobOfferFormValues = {
 
 const JobOfferForm: React.FC = () => {
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const submitHandler = (formValues: JobOfferFormValues) => {
     formValues.qualifications = formValues.qualificationsCombined
       .split(",")
       .map((qual) => qual.trim());
-    // dispatch()
+    dispatch(addJobOffer(formValues));
     navigate("/job-offers");
   };
 

@@ -1,5 +1,7 @@
 import { Field, Formik } from "formik";
+import { useDispatch } from "react-redux";
 import EduFormValues from "../../../models/forms/EduFormValues";
+import { addEducation } from "../../../store/actions/profile-actions";
 import eduValidationSchema from "../../../validations/eduValidationSchema";
 import PrimaryInputField from "../../atoms/PrimaryInputField/PrimaryInputField";
 import classes from "./EduFormOverlay.module.css";
@@ -16,11 +18,10 @@ const eduFormInitialValues: EduFormValues = {
 };
 
 const EduFormOverlay: React.FC<EduFormOverlayProps> = ({ onClose }) => {
+  const dispatch = useDispatch();
   const submitHandler = (formValues: EduFormValues) => {
     onClose();
-    // dodaj edu
-    console.log(formValues);
-    console.log("dodaj edu");
+    dispatch(addEducation(formValues));
   };
 
   return (

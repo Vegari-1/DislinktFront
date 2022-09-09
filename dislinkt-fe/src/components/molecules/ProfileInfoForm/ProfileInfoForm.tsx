@@ -9,6 +9,8 @@ import ToggleButton from "../../atoms/ToggleButton/ToggleButton";
 import classes from "./ProfileInfoForm.module.css";
 import { useNavigate } from "react-router-dom";
 import ProfileInfoFormValues from "../../../models/forms/ProfileInfoFormValues";
+import { useDispatch } from "react-redux";
+import { saveProfile } from "../../../store/actions/profile-actions";
 
 const profileInfoFormInitialValues: ProfileInfoFormValues = {
   email: "",
@@ -25,11 +27,11 @@ const GENDER_OPTIONS = ["Other", "Female", "Male"];
 
 const ProfileInfoForm: React.FC = () => {
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const submitHandler = (formValues: ProfileInfoFormValues) => {
-    console.log(formValues);
+    dispatch(saveProfile(formValues));
     // dispacuj da se sacuvaju promene i navigiraj na pregled profila u okviru sage
-    navigate("/profile");
+    navigate("/profile/id_ulogovanog_korisnika");
   };
 
   return (
