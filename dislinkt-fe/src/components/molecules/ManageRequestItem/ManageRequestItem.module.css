@@ -41,6 +41,8 @@
 
   border: 1px solid var(--PRIMARY-COLOR);
   border-radius: 50%;
+
+  cursor: pointer;
 }
 
 .full-name {

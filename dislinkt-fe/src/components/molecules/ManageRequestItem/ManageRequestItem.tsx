@@ -4,9 +4,11 @@ import { ReactComponent as AcceptIcon } from "../../../assets/svg/done.svg";
 import { ReactComponent as DeclineIcon } from "../../../assets/svg/close.svg";
 
 import classes from "./ManageRequestItem.module.css";
+import { useNavigate } from "react-router-dom";
 
 interface ManageRequestItemProps {
   id: string;
+  profileId: string;
   fullName: string;
   username: string;
   acceptRequest: (id: string) => void;
@@ -18,6 +20,7 @@ const BASE64_IMAGE_PREFIX = "data:image/gif;base64,";
 
 const ManageRequestItem: React.FC<ManageRequestItemProps> = ({
   id,
+  profileId,
   fullName,
   username,
   picture,
@@ -38,6 +41,11 @@ const ManageRequestItem: React.FC<ManageRequestItemProps> = ({
     declineRequest(id);
   };
 
+  const navigate = useNavigate();
+  const handleOnProfileClick = () => {
+    navigate("/profile/" + profileId);
+  };
+
   const hasPicture: boolean = !(picture === BASE64_IMAGE_PREFIX);
   const styles = {
     image: {
@@ -52,7 +60,11 @@ const ManageRequestItem: React.FC<ManageRequestItemProps> = ({
           confirmDecline && classes["blur"]
         }`}
       >
-        <div className={classes["picture"]} style={styles.image} />
+        <div
+          className={classes["picture"]}
+          style={styles.image}
+          onClick={handleOnProfileClick}
+        />
         <span className={classes["full-name"]}>{fullName}</span>
         <span className={classes["username"]}>{`@${username}`}</span>
         <div className={classes["actions"]}>

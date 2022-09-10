@@ -20,6 +20,7 @@ const ManageRequests: React.FC<ManageRequestsProps> = ({
         <ManageRequestItem
           key={request.id}
           id={request.id}
+          profileId={request.profileId}
           fullName={`${request.name} ${request.surname}`}
           username={request.username}
           picture={request.picture}

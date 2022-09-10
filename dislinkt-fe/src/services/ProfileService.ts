@@ -250,6 +250,7 @@ export class ProfileService extends ApiService {
     return [
       {
         id: "1",
+        profileId: "1",
         name: "Eva",
         surname: "Jankovic",
         username: "evaj10",
@@ -257,6 +258,7 @@ export class ProfileService extends ApiService {
       },
       {
         id: "2",
+        profileId: "2",
         name: "Petar",
         surname: "Petrovic",
         username: "pera9",

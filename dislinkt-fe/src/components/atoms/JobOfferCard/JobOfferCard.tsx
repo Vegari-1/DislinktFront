@@ -8,13 +8,13 @@ interface JobOfferCardProps {
 
 const JobOfferCard: React.FC<JobOfferCardProps> = ({ jobOffer }) => {
   const navigate = useNavigate();
-  const onProfileClick = () => {
+  const handleOnProfileClick = () => {
     navigate("/profile/" + jobOffer.profileId);
   };
 
   return (
     <div className={classes["card-wrapper"]}>
-      <div className={classes["card-title"]} onClick={onProfileClick}>
+      <div className={classes["card-title"]} onClick={handleOnProfileClick}>
         <div className={classes["picture"]}></div>
         <div className={classes["profile"]}>
           {`${jobOffer.name} ${jobOffer.surname}`}
