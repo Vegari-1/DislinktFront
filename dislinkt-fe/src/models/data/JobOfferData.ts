@@ -1,9 +1,8 @@
+import ProfileNestedData from "./ProfileNestedData";
+
 interface JobOfferData {
   id: string;
-  profileId: string;
-  name: string;
-  surname: string;
-  picture: string;
+  profile: ProfileNestedData;
   positionName: string;
   description: string;
   qualifications: string[];
