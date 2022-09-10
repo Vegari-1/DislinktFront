@@ -64,7 +64,7 @@ const SidebarItemList: React.FC = () => {
           />
           <SidebarItem
             text="My profile"
-            value="profile/id_ulogovanog_korisnika"
+            value={"profile/" + userData.id}
             selected={selectedProfile}
             icon={<ProfileIcon height={25} width={25} />}
             onClick={clickHandler}

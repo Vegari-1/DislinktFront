@@ -15,11 +15,7 @@ const PicturePost: React.FC<PicturePostProps> = ({ pictures }) => {
             style={{ backgroundImage: `url(${picture})` }}
           />
         ))}
-        {/* <div className={classes["picture"]}></div>
-        <div className={classes["picture"]}></div>
-        <div className={classes["picture"]}></div> */}
       </div>
-      {/* <div className={classes["blur"]} /> */}
     </div>
   );
 };

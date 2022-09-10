@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { saveProfile } from "../../../store/actions/profile-actions";
 
 interface ProfileInfoFormProps {
+  id: string;
   email: string;
   username: string;
   name: string;
@@ -27,6 +28,7 @@ interface ProfileInfoFormProps {
 const GENDER_OPTIONS = ["Other", "Female", "Male"];
 
 const ProfileInfoForm: React.FC<ProfileInfoFormProps> = ({
+  id,
   email,
   username,
   name,
@@ -53,8 +55,7 @@ const ProfileInfoForm: React.FC<ProfileInfoFormProps> = ({
   const dispatch = useDispatch();
   const submitHandler = (formValues: ProfileInfoFormValues) => {
     dispatch(saveProfile(formValues));
-    // dispacuj da se sacuvaju promene i navigiraj na pregled profila u okviru sage
-    navigate("/profile/id_ulogovanog_korisnika");
+    navigate("/profile/" + id);
   };
 
   return (

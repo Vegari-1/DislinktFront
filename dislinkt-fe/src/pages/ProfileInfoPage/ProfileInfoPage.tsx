@@ -23,6 +23,7 @@ const ProfileInfoPage: React.FC = () => {
     <Layout>
       <div className={classes["streach"]}>
         <ProfileInfoForm
+          id={id!}
           email={profile.email}
           username={profile.username}
           name={profile.name}

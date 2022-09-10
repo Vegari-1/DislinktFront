@@ -9,15 +9,19 @@ import { useDispatch } from "react-redux";
 import { updateNotifications } from "../../../store/actions/notification-actions";
 
 interface SettingsFormProps {
+  profileId: string;
   notifications: SettingsFormValues;
 }
 
-const SettingsForm: React.FC<SettingsFormProps> = ({ notifications }) => {
+const SettingsForm: React.FC<SettingsFormProps> = ({
+  profileId,
+  notifications,
+}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const submitHandler = (formValues: SettingsFormValues) => {
     dispatch(updateNotifications(formValues));
-    navigate("/profile/id_ulogovanog_korisnika");
+    navigate("/profile/" + profileId);
   };
 
   const settingsFormInitialValues: SettingsFormValues = {
