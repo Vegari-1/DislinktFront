@@ -75,7 +75,7 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }) => {
             {"Gender: "}
             {profile.gender}
           </div>
-          <div className={classes["info"]}>{profile.info}</div>
+          <div className={classes["info"]}>{profile.biography}</div>
         </div>
 
         {Object.keys(userData).length !== 0 && (

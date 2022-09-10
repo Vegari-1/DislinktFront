@@ -32,7 +32,7 @@ const ProfileInfoPage: React.FC = () => {
           dateOfBirth={profile.dateOfBirth}
           phone={profile.phone}
           publicProfile={profile.public}
-          biography={profile.info}
+          biography={profile.biography}
         />
       </div>
     </Layout>

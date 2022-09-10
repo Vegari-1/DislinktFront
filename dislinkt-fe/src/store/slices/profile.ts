@@ -17,7 +17,7 @@ const initProfileValues: ProfileSliceValues = {
     gender: "",
     dateOfBirth: new Date(),
     phone: "",
-    info: "",
+    biography: "",
     public: false,
     picture: "",
     following: false,

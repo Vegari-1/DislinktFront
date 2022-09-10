@@ -153,7 +153,7 @@ export class ProfileService extends ApiService {
   };
 
   linkWithProfile = async (id: string) => {
-    // const { data } = await this.apiClient.get(
+    // const { data } = await this.apiClient.post(
     //   ENDPOINTS.LINK_WITH_PROFILE + id
     // );
 
@@ -162,7 +162,7 @@ export class ProfileService extends ApiService {
   };
 
   dislinkWithProfile = async (id: string) => {
-    // const { data } = await this.apiClient.get(
+    // const { data } = await this.apiClient.delete(
     //   ENDPOINTS.DISLINK_WITH_PROFILE + id
     // );
 
@@ -171,7 +171,7 @@ export class ProfileService extends ApiService {
   };
 
   blockProfile = async (id: string) => {
-    // const { data } = await this.apiClient.get(
+    // const { data } = await this.apiClient.post(
     //   ENDPOINTS.BLOCK_PROFILE + id
     // );
 

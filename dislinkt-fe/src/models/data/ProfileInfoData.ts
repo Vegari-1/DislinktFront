@@ -7,7 +7,7 @@ interface ProfileInfoData {
   gender: string;
   dateOfBirth: Date;
   phone: string;
-  info: string;
+  biography: string;
   public: boolean;
   picture: string;
   following?: boolean;
