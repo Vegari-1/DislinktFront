@@ -4,9 +4,10 @@ interface ProfileInfoFormValues {
   name: string;
   surname: string;
   gender: string;
-  dateOfBirth: Date;
+  dateOfBirth: string;
   phone: string;
   public: boolean;
+  biography: string;
 }
 
 export default ProfileInfoFormValues;

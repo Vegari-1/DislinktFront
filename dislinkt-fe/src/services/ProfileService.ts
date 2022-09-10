@@ -31,7 +31,7 @@ export class ProfileService extends ApiService {
       username: "resetKsenija",
       email: "ksenija@ksenija.com",
       gender: "Female",
-      dateOfBirth: new Date(),
+      dateOfBirth: new Date(1998, 10, 10),
       phone: "392055235",
       info: "I am a robot human hybrid sent to this planet to investigate.",
       public: false,

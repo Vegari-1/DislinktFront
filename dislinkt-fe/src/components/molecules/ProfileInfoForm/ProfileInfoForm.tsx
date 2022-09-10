@@ -12,20 +12,43 @@ import ProfileInfoFormValues from "../../../models/forms/ProfileInfoFormValues";
 import { useDispatch } from "react-redux";
 import { saveProfile } from "../../../store/actions/profile-actions";
 
-const profileInfoFormInitialValues: ProfileInfoFormValues = {
-  email: "",
-  username: "",
-  name: "",
-  surname: "",
-  gender: "",
-  dateOfBirth: new Date(),
-  phone: "",
-  public: false,
-};
+interface ProfileInfoFormProps {
+  email: string;
+  username: string;
+  name: string;
+  surname: string;
+  gender: string;
+  dateOfBirth: Date;
+  phone: string;
+  publicProfile: boolean;
+  biography: string;
+}
 
 const GENDER_OPTIONS = ["Other", "Female", "Male"];
 
-const ProfileInfoForm: React.FC = () => {
+const ProfileInfoForm: React.FC<ProfileInfoFormProps> = ({
+  email,
+  username,
+  name,
+  surname,
+  gender,
+  dateOfBirth,
+  phone,
+  publicProfile,
+  biography,
+}) => {
+  const profileInfoFormInitialValues: ProfileInfoFormValues = {
+    email: email,
+    username: username,
+    name: name,
+    surname: surname,
+    gender: gender,
+    dateOfBirth: dateOfBirth.toLocaleDateString("en-CA"),
+    phone: phone,
+    public: publicProfile,
+    biography: biography,
+  };
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const submitHandler = (formValues: ProfileInfoFormValues) => {
@@ -36,6 +59,7 @@ const ProfileInfoForm: React.FC = () => {
 
   return (
     <Formik
+      enableReinitialize
       initialValues={profileInfoFormInitialValues}
       validationSchema={registerValidationSchema}
       onSubmit={submitHandler}
@@ -112,8 +136,8 @@ const ProfileInfoForm: React.FC = () => {
               component={PrimaryTextArea}
               placeholder="Biography"
               type="text"
-              name="info"
-              value="info"
+              name="biography"
+              value="biography"
             />
           </div>
           <div className={classes.button}>

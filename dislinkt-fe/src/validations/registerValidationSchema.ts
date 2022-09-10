@@ -12,6 +12,7 @@ const registerValidationSchema = Yup.object().shape({
     .required("* Required field"),
   phone: Yup.string().required("* Required field"),
   public: Yup.bool().required("* Required field"),
+  biography: Yup.string().required("* Required field"),
 });
 
 export default registerValidationSchema;
