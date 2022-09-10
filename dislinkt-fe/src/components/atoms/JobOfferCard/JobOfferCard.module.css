@@ -22,6 +22,7 @@
 
 .card-title {
   width: 25%;
+  cursor: pointer;
 }
 
 .card-info {

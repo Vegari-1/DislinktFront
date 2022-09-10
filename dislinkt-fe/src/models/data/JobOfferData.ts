@@ -1,5 +1,6 @@
 interface JobOfferData {
   id: string;
+  profileId: string;
   name: string;
   surname: string;
   picture: string;

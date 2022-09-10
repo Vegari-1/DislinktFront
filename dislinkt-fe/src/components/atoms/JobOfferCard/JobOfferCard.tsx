@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import JobOfferData from "../../../models/data/JobOfferData";
 import classes from "./JobOfferCard.module.css";
 
@@ -6,9 +7,14 @@ interface JobOfferCardProps {
 }
 
 const JobOfferCard: React.FC<JobOfferCardProps> = ({ jobOffer }) => {
+  const navigate = useNavigate();
+  const onProfileClick = () => {
+    navigate("/profile/" + jobOffer.profileId);
+  };
+
   return (
     <div className={classes["card-wrapper"]}>
-      <div className={classes["card-title"]}>
+      <div className={classes["card-title"]} onClick={onProfileClick}>
         <div className={classes["picture"]}></div>
         <div className={classes["profile"]}>
           {`${jobOffer.name} ${jobOffer.surname}`}
