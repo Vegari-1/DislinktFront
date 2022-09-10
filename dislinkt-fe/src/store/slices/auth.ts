@@ -7,6 +7,13 @@ const initAuthSliceValues = {
   signInActive: false,
   signUpData: {} as SignUpFormValues,
   userData: {} as UserDataPayload,
+  // userData: {
+  //   id: "1",
+  //   username: "username",
+  //   name: "name",
+  //   surname: "surname",
+  //   role: "ROLE_ADMIN",
+  // },
 };
 
 const authSlice = createSlice({
