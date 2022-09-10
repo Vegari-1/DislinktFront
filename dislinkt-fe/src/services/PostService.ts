@@ -25,7 +25,8 @@ export class PostService extends ApiService {
         name: "Ksenija",
         surname: "Prcic",
         username: "@ksenija",
-        picture: "picture",
+        picture:
+          "http://localhost:3000/static/media/dislinkt.9283e827b30c3e585c9c.png",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         timestamp: new Date(),
@@ -39,7 +40,8 @@ export class PostService extends ApiService {
             name: "Pera",
             surname: "Peric",
             username: "pera",
-            picture: "picture",
+            picture:
+              "http://localhost:3000/static/media/dislinkt.9283e827b30c3e585c9c.png",
             content: "Strava",
             timestamp: new Date(),
           },
@@ -61,7 +63,8 @@ export class PostService extends ApiService {
         name: "Ksenija",
         surname: "Prcic",
         username: "@ksenija",
-        picture: "picture",
+        picture:
+          "	http://localhost:3000/static/media/dislinkt.9283e827b30c3e585c9c.png",
         content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         timestamp: new Date(),
@@ -75,7 +78,8 @@ export class PostService extends ApiService {
             name: "Pera",
             surname: "Peric",
             username: "pera",
-            picture: "picture",
+            picture:
+              "	http://localhost:3000/static/media/dislinkt.9283e827b30c3e585c9c.png",
             content: "Strava",
             timestamp: new Date(),
           },

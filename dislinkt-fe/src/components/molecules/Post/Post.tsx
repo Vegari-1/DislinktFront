@@ -49,6 +49,7 @@ const Post: React.FC<PostProps> = ({
         name={name}
         surname={surname}
         username={username}
+        picture={picture}
         timestamp={timestamp}
         content={content}
         imageSize="60px"

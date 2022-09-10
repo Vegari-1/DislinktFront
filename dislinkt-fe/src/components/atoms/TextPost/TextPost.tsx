@@ -5,6 +5,7 @@ interface TextPostProps {
   name: string;
   surname: string;
   username: string;
+  picture: string;
   timestamp: Date;
   content: string;
   imageSize: string;
@@ -15,6 +16,7 @@ const TextPost: React.FC<TextPostProps> = ({
   name,
   surname,
   username,
+  picture,
   timestamp,
   content,
   imageSize,
@@ -25,7 +27,11 @@ const TextPost: React.FC<TextPostProps> = ({
       <div className={classes["post-header"]}>
         <div
           className={classes["post-header-image"]}
-          style={{ width: imageSize, height: imageSize }}
+          style={{
+            width: imageSize,
+            height: imageSize,
+            backgroundImage: `url(${picture})`,
+          }}
         />
         <span className={classes["full-name"]}>
           <b>

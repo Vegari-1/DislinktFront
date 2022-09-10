@@ -31,6 +31,7 @@ const PostComments: React.FC<PostCommentsProps> = ({
             name={comment.name}
             surname={comment.surname}
             username={comment.username}
+            picture={comment.picture}
             timestamp={comment.timestamp}
             content={comment.content}
             imageSize="45px"
