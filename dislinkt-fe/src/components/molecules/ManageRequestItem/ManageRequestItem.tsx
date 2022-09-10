@@ -1,5 +1,4 @@
 import { useState } from "react";
-import defaultPicture from "../../../assets/images/no-picture.png";
 import { ReactComponent as AcceptIcon } from "../../../assets/svg/done.svg";
 import { ReactComponent as DeclineIcon } from "../../../assets/svg/close.svg";
 
@@ -15,8 +14,6 @@ interface ManageRequestItemProps {
   declineRequest: (id: string) => void;
   picture?: string;
 }
-
-const BASE64_IMAGE_PREFIX = "data:image/gif;base64,";
 
 const ManageRequestItem: React.FC<ManageRequestItemProps> = ({
   id,
@@ -46,13 +43,6 @@ const ManageRequestItem: React.FC<ManageRequestItemProps> = ({
     navigate("/profile/" + profileId);
   };
 
-  const hasPicture: boolean = !(picture === BASE64_IMAGE_PREFIX);
-  const styles = {
-    image: {
-      backgroundImage: `url(${hasPicture ? picture : defaultPicture})`,
-    },
-  };
-
   return (
     <div className={classes["manage-request-item-wrapper"]}>
       <div
@@ -62,7 +52,7 @@ const ManageRequestItem: React.FC<ManageRequestItemProps> = ({
       >
         <div
           className={classes["picture"]}
-          style={styles.image}
+          style={{ backgroundImage: `url(${picture})` }}
           onClick={handleOnProfileClick}
         />
         <span className={classes["full-name"]}>{fullName}</span>

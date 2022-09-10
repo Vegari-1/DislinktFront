@@ -7,59 +7,73 @@ const ChatList: React.FC = () => {
       <ChatListItem
         name="Megan Leib"
         text="9 pm at the bar if possible 😳"
+        picture="picture"
         active
       />
       <ChatListItem
         name="Dave Corlew"
         text="Let's meet for a coffee or somethi"
-      />{" "}
+        picture="picture"
+      />
       <ChatListItem
         name="Dave Corlew"
         text="Let's meet for a coffee or somethi"
-      />{" "}
+        picture="picture"
+      />
       <ChatListItem
         name="Dave Corlew"
         text="Let's meet for a coffee or somethi"
-      />{" "}
+        picture="picture"
+      />
       <ChatListItem
         name="Dave Corlew"
         text="Let's meet for a coffee or somethi"
-      />{" "}
+        picture="picture"
+      />
       <ChatListItem
         name="Dave Corlew"
         text="Let's meet for a coffee or somethi"
-      />{" "}
+        picture="picture"
+      />
       <ChatListItem
         name="Dave Corlew"
         text="Let's meet for a coffee or somethi"
-      />{" "}
+        picture="picture"
+      />
       <ChatListItem
         name="Dave Corlew"
         text="Let's meet for a coffee or somethi"
-      />{" "}
+        picture="picture"
+      />
       <ChatListItem
         name="Dave Corlew"
         text="Let's meet for a coffee or somethi"
-      />{" "}
+        picture="picture"
+      />
       <ChatListItem
         name="Dave Corlew"
         text="Let's meet for a coffee or somethi"
-      />{" "}
+        picture="picture"
+      />
       <ChatListItem
         name="Dave Corlew"
         text="Let's meet for a coffee or somethi"
-      />{" "}
+        picture="picture"
+      />
       <ChatListItem
         name="Dave Corlew"
         text="Let's meet for a coffee or somethi"
-      />{" "}
+        picture="picture"
+      />
       <ChatListItem
         name="Dave Corlew"
         text="Let's meet for a coffee or somethi"
-      />{" "}
+        picture="picture"
+      />
       <ChatListItem
         name="Dave Corlew"
         text="Let's meet for a coffee or somethi"
+        picture="picture"
       />
     </div>
   );

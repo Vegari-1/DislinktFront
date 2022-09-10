@@ -23,7 +23,10 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 
   return (
     <div className={classes["card"]} onClick={onClickHandler}>
-      <div className={classes["picture"]} />
+      <div
+        className={classes["picture"]}
+        style={{ backgroundImage: `url(${picture})` }}
+      />
       <div className={classes["full-name"]}>{`${name} ${surname}`}</div>
       <div className={classes["username"]}>@{username}</div>
     </div>

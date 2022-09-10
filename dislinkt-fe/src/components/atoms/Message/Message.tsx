@@ -12,7 +12,6 @@ interface MessageProps {
 const Message: React.FC<MessageProps> = ({
   text,
   timestamp,
-  // dodati sliku
   picture,
   response = false,
   firstMessage = false,
@@ -20,7 +19,12 @@ const Message: React.FC<MessageProps> = ({
   return (
     <Fragment>
       <div className={classes["message"]}>
-        {!response && firstMessage && <div className={classes["photo"]} />}
+        {!response && firstMessage && (
+          <div
+            className={classes["photo"]}
+            style={{ backgroundImage: `url(${picture})` }}
+          />
+        )}
         <p
           className={`${classes["text"]} ${
             !firstMessage && classes["text-only"]

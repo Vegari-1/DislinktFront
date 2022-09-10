@@ -42,7 +42,10 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }) => {
       <div className={classes["profile-header"]}>
         <div className={classes["profile-header-cover"]} />
         <div className={classes["profile-header-image"]}>
-          <div className={classes["profile-image"]} />
+          <div
+            className={classes["profile-image"]}
+            style={{ backgroundImage: `url(${profile.picture})` }}
+          />
         </div>
       </div>
       <div className={classes["profile-content"]}>
