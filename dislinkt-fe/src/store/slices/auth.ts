@@ -12,7 +12,7 @@ const initAuthSliceValues = {
   //   username: "username",
   //   name: "name",
   //   surname: "surname",
-  //   role: "ROLE_ADMIN",
+  //   role: "ROLE_USER",
   // },
 };
 
