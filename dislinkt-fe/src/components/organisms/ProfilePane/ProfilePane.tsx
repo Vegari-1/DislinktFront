@@ -1,7 +1,9 @@
 import { Fragment, ReactNode } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ReactComponent as PlusIcon } from "../../../assets/svg/plus.svg";
 import ProfileInfoData from "../../../models/data/ProfileInfoData";
+import { RootState } from "../../../store/store";
 import IconButton from "../../atoms/IconButton/IconButton";
 import ProfileInfo from "../../atoms/ProfileInfo/ProfileInfo";
 import ProfileMenu from "../../molecules/ProfileMenu/ProfileMenu";
@@ -19,13 +21,12 @@ const ProfilePane: React.FC<ProfilePaneProps> = ({
   children,
 }) => {
   const { id } = useParams();
+  const userData = useSelector((state: RootState) => state.auth.userData);
 
   return (
     <Fragment>
       <ProfileInfo profile={profile} />
-      {/* profile menu i ikonice vidljive samo ako je profil public
-          ili ako je profil private, ali se prate! */}
-      {(profile.public || profile.following) && (
+      {(profile.public || profile.following || userData.id === id) && (
         <ProfileMenu
           menuItems={[
             { text: "Skills", link: "/profile/" + id },
@@ -35,8 +36,10 @@ const ProfilePane: React.FC<ProfilePaneProps> = ({
           ]}
         />
       )}
-      {(profile.public || profile.following) && children}
-      {!profile.public && !profile.following && (
+
+      {(profile.public || profile.following || userData.id === id) && children}
+
+      {!profile.public && !profile.following && userData.id !== id && (
         <div className={classes["private"]}>
           <div className={classes["private-title"]}>
             This Profile is Private
@@ -44,10 +47,16 @@ const ProfilePane: React.FC<ProfilePaneProps> = ({
           <div>Link with this profile to view more content</div>
         </div>
       )}
-      {/* add icon je vidljivo samo ako je profil.id=ulogovan.id */}
-      <div className={classes["add-button"]}>
-        <IconButton icon={<PlusIcon />} boxShadow onClick={onAddButtonClick!} />
-      </div>
+
+      {userData.id === id && (
+        <div className={classes["add-button"]}>
+          <IconButton
+            icon={<PlusIcon />}
+            boxShadow
+            onClick={onAddButtonClick!}
+          />
+        </div>
+      )}
     </Fragment>
   );
 };

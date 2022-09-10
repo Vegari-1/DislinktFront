@@ -1,5 +1,5 @@
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import { ReactComponent as EditIcon } from "../../../assets/svg/edit.svg";
 import { ReactComponent as PrivateIcon } from "../../../assets/svg/lock.svg";
 import { ReactComponent as PublicIcon } from "../../../assets/svg/open-lock.svg";
@@ -9,6 +9,7 @@ import {
   dislinkWithProfile,
   linkWithProfile,
 } from "../../../store/actions/profile-actions";
+import { RootState } from "../../../store/store";
 import IconButton from "../IconButton/IconButton";
 import classes from "./ProfileInfo.module.css";
 
@@ -19,6 +20,9 @@ interface ProfileInfoProps {
 const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const { id } = useParams();
+  const userData = useSelector((state: RootState) => state.auth.userData);
 
   const onEditButtonClick = () => {
     navigate("info");
@@ -70,41 +74,48 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }) => {
           </div>
           <div className={classes["info"]}>{profile.info}</div>
         </div>
-        {/* ako je profile.id=ulogovani.id onda prikazi edit dugme */}
-        {/* ako profile.id!=ulogovani.id prikazi "Block", "Link"/"Dislink" dugmad */}
-        {/* AKO JE NALOG BLOKIRAN, NIGDE NE MOZES DA GA NADJES VISE -> uslov u pregledu svih profila i u porukama ako ih je ranije bilo */}
 
-        <div className={classes["actions"]}>
-          <button
-            className={classes["block-button"]}
-            onClick={onBlockButtonClick}
-          >
-            Block
-          </button>
-          {profile.following && (
-            <button
-              className={classes["action-button"]}
-              onClick={onDislinkButtonClick}
-            >
-              Dislink
-            </button>
-          )}
-          {!profile.following && (
-            <button
-              className={classes["action-button"]}
-              onClick={onLinkButtonClick}
-            >
-              Link
-            </button>
-          )}
-        </div>
-        <div className={classes["edit-button"]}>
-          <IconButton
-            icon={<EditIcon width={30} height={30} />}
-            onClick={onEditButtonClick}
-            color={"--SECONDARY-COLOR-LIGHTER"}
-          />
-        </div>
+        {Object.keys(userData).length !== 0 && (
+          <div className={classes["actions"]}>
+            {userData.id !== id && (
+              <button
+                className={classes["block-button"]}
+                onClick={onBlockButtonClick}
+              >
+                Block
+              </button>
+            )}
+            {profile.following && userData.id !== id && (
+              <button
+                className={classes["action-button"]}
+                onClick={onDislinkButtonClick}
+              >
+                Dislink
+              </button>
+            )}
+            {!profile.following &&
+              !profile.pendingFollow &&
+              userData.id !== id && (
+                <button
+                  className={classes["action-button"]}
+                  onClick={onLinkButtonClick}
+                >
+                  Link
+                </button>
+              )}
+            {profile.pendingFollow && userData.id !== id && <p>Requested</p>}
+          </div>
+        )}
+
+        {userData.id === id && (
+          <div className={classes["edit-button"]}>
+            <IconButton
+              icon={<EditIcon width={30} height={30} />}
+              onClick={onEditButtonClick}
+              color={"--SECONDARY-COLOR-LIGHTER"}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

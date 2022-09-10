@@ -26,9 +26,6 @@ const SidebarItemList: React.FC = () => {
   const selectedProfile = window.location.href.split("/").slice(-2).join("/");
   const clickHandler = (value: string) => {
     navigate("/" + value);
-    console.log(
-      "DODATI DOBAVLJANJE ULOGOVANOG KORISNIKA I NA OSNOVU NJEGA RAZVRSTATI PO ROLAMA"
-    );
   };
 
   const logoutHandler = () => {

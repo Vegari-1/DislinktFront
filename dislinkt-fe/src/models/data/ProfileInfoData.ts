@@ -11,6 +11,7 @@ interface ProfileInfoData {
   public: boolean;
   picture: string;
   following?: boolean;
+  pendingFollow?: boolean;
 }
 
 export default ProfileInfoData;

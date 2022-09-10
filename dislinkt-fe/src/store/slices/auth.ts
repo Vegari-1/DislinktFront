@@ -8,7 +8,7 @@ const initAuthSliceValues = {
   signUpData: {} as SignUpFormValues,
   userData: {} as UserDataPayload,
   // userData: {
-  //   id: "1",
+  //   id: "2",
   //   username: "username",
   //   name: "name",
   //   surname: "surname",

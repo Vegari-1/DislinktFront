@@ -36,7 +36,8 @@ export class ProfileService extends ApiService {
       info: "I am a robot human hybrid sent to this planet to investigate.",
       public: false,
       picture: "picture",
-      following: true,
+      // following: true,
+      // pendingFollow: true,
     };
   };
 
