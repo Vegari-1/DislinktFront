@@ -19,11 +19,13 @@ import {
   deleteWorkExperience,
   dislinkWithProfile,
   getConnectionRequests,
+  getNotBlockedProfiles,
   getProfile,
   getProfileEducation,
   getProfileSkills,
   linkWithProfile,
   saveProfile,
+  searchNotBlockedProfiles,
   searchPublicProfiles,
 } from "../actions/profile-actions";
 import {
@@ -129,6 +131,41 @@ export function* handleSearchPublicProfiles({
   try {
     const profiles: ProfileSimple[] = yield call(
       profileService.searchPublicProfiles,
+      payload.query
+    );
+
+    yield put(setProfiles(profiles));
+  } catch (error: any) {
+    yield toast.error(error.response.data.message);
+  }
+}
+
+export function* handleGetNotBlockedProfiles(): Generator<
+  any,
+  void,
+  ProfileSimple[]
+> {
+  try {
+    const profiles: ProfileSimple[] = yield call(
+      profileService.getNotBlockedProfiles
+    );
+
+    yield put(setProfiles(profiles));
+  } catch (error: any) {
+    yield toast.error(error.response.data.message);
+  }
+}
+
+export function* handleSearchNotBlockedProfiles({
+  payload,
+}: ReturnType<typeof searchNotBlockedProfiles>): Generator<
+  any,
+  void,
+  ProfileSimple[]
+> {
+  try {
+    const profiles: ProfileSimple[] = yield call(
+      profileService.searchNotBlockedProfiles,
       payload.query
     );
 

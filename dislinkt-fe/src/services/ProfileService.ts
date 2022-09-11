@@ -12,6 +12,8 @@ const ENDPOINTS = {
   GET_PROFILE_EDUCATION: "/education",
   GET_PUBLIC_PROFILES: "/profile?isPublic=true",
   SEARCH_PUBLIC_PROFILES: "/profile?isPublic=true&query=",
+  GET_NOT_BLOCKED_PROFILES: "/profile",
+  SEARCH_NOT_BLOCKED_PROFILES: "/profile?query=",
   LINK_WITH_PROFILE: "/profile/link/",
   DISLINK_WITH_PROFILE: "/profile/dislink/",
   BLOCK_PROFILE: "/profile/block/",
@@ -138,6 +140,38 @@ export class ProfileService extends ApiService {
   searchPublicProfiles = async (query: string) => {
     // const { data } = await this.apiClient.get(
     //   ENDPOINTS.SEARCH_PUBLIC_PROFILES + query
+    // );
+
+    // return data;
+    return [
+      {
+        id: "347903f7-28d0-4dca-803d-3b0cc0e61e71",
+        name: "Ksenija",
+        surname: "Prcic",
+        username: "ksenija",
+        picture: "picture",
+      },
+    ];
+  };
+
+  getNotBlockedProfiles = async () => {
+    // const { data } = await this.apiClient.get(ENDPOINTS.GET_NOT_BLOCKED_PROFILES);
+
+    // return data;
+    return [
+      {
+        id: "347903f7-28d0-4dca-803d-3b0cc0e61e71",
+        name: "Ksenija",
+        surname: "Prcic",
+        username: "ksenija",
+        picture: "picture",
+      },
+    ];
+  };
+
+  searchNotBlockedProfiles = async (query: string) => {
+    // const { data } = await this.apiClient.get(
+    //   ENDPOINTS.SEARCH_NOT_BLOCKED_PROFILES + query
     // );
 
     // return data;

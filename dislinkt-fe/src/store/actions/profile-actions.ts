@@ -14,6 +14,7 @@ import {
   DELETE_WORK_EXPERIENCE,
   DISLINK_WITH_PROFILE,
   GET_CONNECTION_REQUESTS,
+  GET_NOT_BLOCKED_PROFILES,
   GET_PROFILE,
   GET_PROFILE_EDUCATION,
   GET_PROFILE_SKILLS,
@@ -57,6 +58,17 @@ export const getPublicProfiles = () => {
 };
 
 export const searchPublicProfiles = (query: string) => {
+  return {
+    type: SEARCH_PUBLIC_PROFILES,
+    payload: { query },
+  };
+};
+
+export const getNotBlockedProfiles = () => {
+  return { type: GET_NOT_BLOCKED_PROFILES };
+};
+
+export const searchNotBlockedProfiles = (query: string) => {
   return {
     type: SEARCH_PUBLIC_PROFILES,
     payload: { query },

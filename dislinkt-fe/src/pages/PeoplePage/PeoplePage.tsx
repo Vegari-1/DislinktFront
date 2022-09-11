@@ -4,8 +4,11 @@ import ProfileCard from "../../components/atoms/ProfileCard/ProfileCard";
 import Header from "../../components/molecules/Header/Header";
 import Layout from "../../components/organisms/Layout/Layout";
 import ProfileSimple from "../../models/data/ProfileSimple";
+import { UserDataPayload } from "../../models/slices/auth";
 import {
+  getNotBlockedProfiles,
   getPublicProfiles,
+  searchNotBlockedProfiles,
   searchPublicProfiles,
 } from "../../store/actions/profile-actions";
 import { RootState } from "../../store/store";
@@ -14,18 +17,35 @@ import classes from "./PeoplePage.module.css";
 const PeoplePage: React.FC = () => {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
+
   const profiles: ProfileSimple[] = useSelector(
     (state: RootState) => state.profile.profiles
   );
+  const userData: UserDataPayload = useSelector(
+    (state: RootState) => state.auth.userData
+  );
+
   useEffect(() => {
-    dispatch(getPublicProfiles());
+    if (userData.id === undefined) {
+      dispatch(getPublicProfiles());
+    } else {
+      dispatch(getNotBlockedProfiles());
+    }
   }, [dispatch]);
 
   useEffect(() => {
     if (query.trim().length === 0) {
-      dispatch(getPublicProfiles());
+      if (userData.id === undefined) {
+        dispatch(getPublicProfiles());
+      } else {
+        dispatch(getNotBlockedProfiles());
+      }
     } else {
-      dispatch(searchPublicProfiles(query));
+      if (userData.id === undefined) {
+        dispatch(searchPublicProfiles(query));
+      } else {
+        dispatch(searchNotBlockedProfiles(query));
+      }
     }
   }, [dispatch, query]);
 
