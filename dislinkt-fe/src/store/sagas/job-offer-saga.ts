@@ -34,7 +34,6 @@ export function* handleAddJobOffer({
   payload,
 }: ReturnType<typeof addJobOffer>): Generator<any, void, void> {
   try {
-    // dodaj podatke o useru u objekat -> AKO BUDE NEOPHODNO
     yield call(jobOfferService.addJobOffer, payload);
   } catch (error: any) {
     yield toast.error(error.response.data.message);

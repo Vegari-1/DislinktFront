@@ -10,8 +10,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import PostFormValues from "../../../models/forms/PostFormValues";
 import postValidationSchema from "../../../validations/postValidationSchema";
 import PicturePost from "../PicturePost/PicturePost";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addPost } from "../../../store/actions/post-actions";
+import { RootState } from "../../../store/store";
+import ProfileInfoData from "../../../models/data/ProfileInfoData";
 
 const postFormInitialValues: PostFormValues = {
   content: "",
@@ -20,6 +22,10 @@ const postFormInitialValues: PostFormValues = {
 
 const PostForm: React.FC = () => {
   const dispatch = useDispatch();
+  const profileData: ProfileInfoData = useSelector(
+    (state: RootState) => state.profile.profile
+  );
+
   const [postImages, setPostImages] = useState([] as string[]);
   const inputFile = useRef<HTMLInputElement>(null);
 
@@ -37,20 +43,18 @@ const PostForm: React.FC = () => {
     setPostImages(base64s);
   };
 
-  // const hasPicture: boolean = postImages.length !== 0;
-
   const { id } = useParams();
   const navigate = useNavigate();
   const submitHandler = (formValues: PostFormValues) => {
     navigate("/profile/" + id + "/posts");
+    formValues.profile = {
+      globalId: profileData.id,
+      name: profileData.name,
+      surname: profileData.surname,
+      avatar: profileData.picture,
+    };
     dispatch(addPost(formValues));
   };
-
-  // const styles = {
-  //   image: {
-  //     backgroundImage: `url(${defaultProfileImage})`,
-  //   },
-  // };
 
   return (
     <Formik
