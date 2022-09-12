@@ -15,8 +15,6 @@ export interface RegisterPayload {
 export interface UserDataPayload {
   id: string;
   username: string;
-  name: string;
-  surname: string;
   role: string;
 }
 

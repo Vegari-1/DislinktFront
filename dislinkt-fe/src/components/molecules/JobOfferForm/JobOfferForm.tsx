@@ -36,8 +36,8 @@ const JobOfferForm: React.FC = () => {
       .map((qual) => qual.trim());
     formValues.profile = {
       globalId: userData.id,
-      name: userData.name,
-      surname: userData.surname,
+      name: profileData.name,
+      surname: profileData.surname,
       avatar: profileData.picture,
     };
     dispatch(addJobOffer(formValues));

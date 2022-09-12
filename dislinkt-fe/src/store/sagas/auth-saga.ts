@@ -11,11 +11,9 @@ import SignUpFormValues from "../../models/forms/SingUpFormValues";
 const getUserFromJwt = (token: string): UserDataPayload => {
   const tokenUserPayload: any = jwt(token);
   const userDataPayload: UserDataPayload = {
-    id: tokenUserPayload.user.id,
-    username: tokenUserPayload.sub,
-    name: tokenUserPayload.user.name,
-    surname: tokenUserPayload.user.surname,
-    role: tokenUserPayload.user.authorities[0].name,
+    id: tokenUserPayload.id,
+    username: tokenUserPayload.username,
+    role: tokenUserPayload.Role,
   };
   return userDataPayload;
 };
@@ -35,7 +33,7 @@ export function* handleSignIn({
     if (userDataPayload.role === "ROLE_ADMIN") {
       yield payload.navigate("/requests");
     } else {
-      yield payload.navigate("/profile");
+      yield payload.navigate("/home");
     }
     yield toast.success("Successfully signed in");
   } catch (error: any) {

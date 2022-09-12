@@ -10,8 +10,6 @@ const initAuthSliceValues = {
   // userData: {
   //   id: "2",
   //   username: "username",
-  //   name: "name",
-  //   surname: "surname",
   //   role: "ROLE_USER",
   // },
 };

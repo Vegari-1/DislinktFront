@@ -3,8 +3,8 @@ import SignInFormValues from "../models/forms/SignInFormValues";
 import ApiService from "./ApiService";
 
 const ENDPOINTS = {
-  SIGNIN: "/user/login",
-  SIGNUP: "/user/register",
+  SIGNIN: "/auth-service/login",
+  SIGNUP: "/auth-service/register",
 };
 
 export class AuthService extends ApiService {
