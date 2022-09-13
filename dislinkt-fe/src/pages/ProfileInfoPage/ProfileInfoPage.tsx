@@ -4,19 +4,30 @@ import { useParams } from "react-router-dom";
 import ProfileInfoForm from "../../components/molecules/ProfileInfoForm/ProfileInfoForm";
 import Layout from "../../components/organisms/Layout/Layout";
 import ProfileInfoData from "../../models/data/ProfileInfoData";
-import { getProfile } from "../../store/actions/profile-actions";
+import { UserDataPayload } from "../../models/slices/auth";
+import {
+  getProfile,
+  getProfileAuthUser,
+} from "../../store/actions/profile-actions";
 import { RootState } from "../../store/store";
 import classes from "./ProfileInfoPage.module.css";
 
 const ProfileInfoPage: React.FC = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const userData: UserDataPayload = useSelector(
+    (state: RootState) => state.auth.userData
+  );
   const profile: ProfileInfoData = useSelector(
     (state: RootState) => state.profile.profile
   );
 
   useEffect(() => {
-    dispatch(getProfile(id!));
+    if (userData.id) {
+      dispatch(getProfileAuthUser(id!));
+    } else {
+      dispatch(getProfile(id!));
+    }
   }, [id, dispatch]);
 
   return (

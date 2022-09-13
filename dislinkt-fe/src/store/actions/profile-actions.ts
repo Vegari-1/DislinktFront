@@ -16,6 +16,7 @@ import {
   GET_CONNECTION_REQUESTS,
   GET_NOT_BLOCKED_PROFILES,
   GET_PROFILE,
+  GET_PROFILE_AUTH_USER,
   GET_PROFILE_EDUCATION,
   GET_PROFILE_SKILLS,
   GET_PROFILE_WORK_EXPERIENCE,
@@ -28,6 +29,13 @@ import {
 export const getProfile = (id: string) => {
   return {
     type: GET_PROFILE,
+    payload: { id },
+  };
+};
+
+export const getProfileAuthUser = (id: string) => {
+  return {
+    type: GET_PROFILE_AUTH_USER,
     payload: { id },
   };
 };

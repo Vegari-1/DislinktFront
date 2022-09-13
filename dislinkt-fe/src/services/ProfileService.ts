@@ -35,6 +35,14 @@ export class ProfileService extends ApiService {
     return data;
   };
 
+  getProfileAuthUser = async (id: string) => {
+    const { data } = await this.apiClient.get<ProfileInfoData>(
+      ENDPOINTS.GET_PROFILE + "auth/" + id
+    );
+    data.dateOfBirth = new Date(data.dateOfBirth);
+    return data;
+  };
+
   getProfileSkills = async (id: string) => {
     const { data } = await this.apiClient.get(
       ENDPOINTS.GET_PROFILE + id + ENDPOINTS.GET_PROFILE_SKILL

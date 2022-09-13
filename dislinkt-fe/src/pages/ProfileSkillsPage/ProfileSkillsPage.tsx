@@ -13,14 +13,21 @@ import { RootState } from "../../store/store";
 import {
   deleteSkill,
   getProfile,
+  getProfileAuthUser,
   getProfileSkills,
 } from "../../store/actions/profile-actions";
 import SkillData from "../../models/data/SkillData";
+import { UserDataPayload } from "../../models/slices/auth";
 
 const ProfileSkillsPage: React.FC = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+
   const [modalVisible, setModalVisible] = useState(false);
+
+  const userData: UserDataPayload = useSelector(
+    (state: RootState) => state.auth.userData
+  );
   const profile: ProfileInfoData = useSelector(
     (state: RootState) => state.profile.profile
   );
@@ -29,7 +36,11 @@ const ProfileSkillsPage: React.FC = () => {
   );
 
   useEffect(() => {
-    dispatch(getProfile(id!));
+    if (userData.id) {
+      dispatch(getProfileAuthUser(id!));
+    } else {
+      dispatch(getProfile(id!));
+    }
     dispatch(getProfileSkills(id!));
   }, [id, dispatch]);
 

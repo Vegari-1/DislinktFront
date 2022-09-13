@@ -27,6 +27,7 @@ import {
   getConnectionRequests,
   getNotBlockedProfiles,
   getProfile,
+  getProfileAuthUser,
   getProfileEducation,
   getProfileSkills,
   linkWithProfile,
@@ -51,7 +52,24 @@ export function* handleGetProfile({
       profileService.getProfile,
       payload.id
     );
-    console.log(profile);
+    yield put(setProfile(profile));
+  } catch (error: any) {
+    yield toast.error(error.response.data.Message);
+  }
+}
+
+export function* handleGetProfileAuthUser({
+  payload,
+}: ReturnType<typeof getProfileAuthUser>): Generator<
+  any,
+  void,
+  ProfileInfoData
+> {
+  try {
+    const profile: ProfileInfoData = yield call(
+      profileService.getProfileAuthUser,
+      payload.id
+    );
     yield put(setProfile(profile));
   } catch (error: any) {
     yield toast.error(error.response.data.Message);
@@ -186,7 +204,7 @@ export function* handleLinkWithProfile({
 }: ReturnType<typeof linkWithProfile>): Generator<any, void, void> {
   try {
     yield call(profileService.linkWithProfile, payload.id);
-    yield call(handleGetProfile, {
+    yield call(handleGetProfileAuthUser, {
       type: GET_PROFILE,
       payload: { id: payload.id },
     });
@@ -200,7 +218,7 @@ export function* handleDislinkWithProfile({
 }: ReturnType<typeof dislinkWithProfile>): Generator<any, void, void> {
   try {
     yield call(profileService.dislinkWithProfile, payload.id);
-    yield call(handleGetProfile, {
+    yield call(handleGetProfileAuthUser, {
       type: GET_PROFILE,
       payload: { id: payload.id },
     });
@@ -214,6 +232,7 @@ export function* handleBlockProfile({
 }: ReturnType<typeof blockProfile>): Generator<any, void, void> {
   try {
     yield call(profileService.blockProfile, payload.id);
+    yield call(handleGetNotBlockedProfiles);
   } catch (error: any) {
     yield toast.error(error.response.data.Message);
   }

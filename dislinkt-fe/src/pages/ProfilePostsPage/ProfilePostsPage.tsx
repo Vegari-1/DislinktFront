@@ -7,21 +7,33 @@ import ProfileInfoData from "../../models/data/ProfileInfoData";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { useEffect } from "react";
-import { getProfile } from "../../store/actions/profile-actions";
+import {
+  getProfile,
+  getProfileAuthUser,
+} from "../../store/actions/profile-actions";
 import PostData from "../../models/data/PostData";
 import { getProfilePosts } from "../../store/actions/post-actions";
+import { UserDataPayload } from "../../models/slices/auth";
 
 const ProfilePostsPage: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const userData: UserDataPayload = useSelector(
+    (state: RootState) => state.auth.userData
+  );
   const profile: ProfileInfoData = useSelector(
     (state: RootState) => state.profile.profile
   );
   const posts: PostData[] = useSelector((state: RootState) => state.post.posts);
 
   useEffect(() => {
-    dispatch(getProfile(id!));
+    if (userData.id) {
+      dispatch(getProfileAuthUser(id!));
+    } else {
+      dispatch(getProfile(id!));
+    }
     dispatch(getProfilePosts(id!));
   }, [dispatch, id]);
 
