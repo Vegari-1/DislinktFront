@@ -5,20 +5,22 @@ import WorkExpFormValues from "../models/forms/WorkExpFormValues";
 import ApiService from "./ApiService";
 
 const ENDPOINTS = {
-  GET_PROFILE: "/profile/",
-  SAVE_PROFILE: "/profile",
-  GET_PROFILE_SKILL: "/skill",
-  GET_PROFILE_WORK_EXPERIENCE: "/work-experience",
-  GET_PROFILE_EDUCATION: "/education",
-  GET_PUBLIC_PROFILES: "/profile?isPublic=true",
-  SEARCH_PUBLIC_PROFILES: "/profile?isPublic=true&query=",
-  GET_NOT_BLOCKED_PROFILES: "/profile",
-  SEARCH_NOT_BLOCKED_PROFILES: "/profile?query=",
-  LINK_WITH_PROFILE: "/profile/link/",
-  DISLINK_WITH_PROFILE: "/profile/dislink/",
-  BLOCK_PROFILE: "/profile/block/",
-  GET_CONNECTION_REQUESTS: "/profile/conn-req",
-  CONNECTION_REQUEST: "/profile/conn-req/:",
+  GET_PROFILE: "/profile-service/profile/",
+  SAVE_PROFILE: "/profile-service/profile",
+  GET_PROFILE_SKILL: "skill",
+  GET_PROFILE_WORK_EXPERIENCE: "work-experience",
+  GET_PROFILE_EDUCATION: "education",
+  GET_PUBLIC_PROFILES: "/profile-service/profile?isPublic=true",
+  SEARCH_PUBLIC_PROFILES: "/profile-service/profile?isPublic=true&query=",
+  GET_NOT_BLOCKED_PROFILES: "/profile-service/profile",
+  SEARCH_NOT_BLOCKED_PROFILES: "/profile-service/profile?query=",
+  CONNECT_WITH_PROFILE: "/profile-service/connection",
+  BLOCK_PROFILE: "/profile-service/profile/block/",
+  SKILL: "/profile-service/skill",
+  WORK_EXPERIENCE: "/profile-service/skill",
+  EDUCATION: "/profile-service/skill",
+  GET_CONNECTION_REQUESTS: "/profile-service/profile/conn-req",
+  CONNECTION_REQUEST: "/profile-service/conn-req/",
 };
 
 export class ProfileService extends ApiService {
@@ -188,7 +190,7 @@ export class ProfileService extends ApiService {
 
   linkWithProfile = async (id: string) => {
     // const { data } = await this.apiClient.post(
-    //   ENDPOINTS.LINK_WITH_PROFILE + id
+    //   ENDPOINTS.CONNECT_WITH_PROFILE + id
     // );
 
     // return data;
@@ -197,7 +199,7 @@ export class ProfileService extends ApiService {
 
   dislinkWithProfile = async (id: string) => {
     // const { data } = await this.apiClient.delete(
-    //   ENDPOINTS.DISLINK_WITH_PROFILE + id
+    //   ENDPOINTS.CONNECT_WITH_PROFILE + id
     // );
 
     // return data;
@@ -224,7 +226,7 @@ export class ProfileService extends ApiService {
 
   addSkill = async (skillFormValues: SkillFormValues) => {
     // const { data } = await this.apiClient.post(
-    //   ENDPOINTS.GET_PROFILE_SKILL,skillFormValues
+    //   ENDPOINTS.SKILL,skillFormValues
     // );
 
     // return data;
@@ -233,7 +235,7 @@ export class ProfileService extends ApiService {
 
   deleteSkill = async (id: string) => {
     // const { data } = await this.apiClient.delete(
-    //   ENDPOINTS.GET_PROFILE_SKILL + id
+    //   ENDPOINTS.SKILL + id
     // );
 
     // return data;
@@ -242,7 +244,7 @@ export class ProfileService extends ApiService {
 
   addWorkExperience = async (workExperienceFormValues: WorkExpFormValues) => {
     // const { data } = await this.apiClient.post(
-    //   ENDPOINTS.GET_PROFILE_WORK_EXPERIENCE,workExperienceFormValues
+    //   ENDPOINTS.WORK_EXPERIENCE,workExperienceFormValues
     // );
 
     // return data;
@@ -251,7 +253,7 @@ export class ProfileService extends ApiService {
 
   deleteWorkExperience = async (id: string) => {
     // const { data } = await this.apiClient.delete(
-    //   ENDPOINTS.GET_PROFILE_WORK_EXPERIENCE + id
+    //   ENDPOINTS.WORK_EXPERIENCE + id
     // );
 
     // return data;
@@ -260,7 +262,7 @@ export class ProfileService extends ApiService {
 
   addEducation = async (eduFormValues: EduFormValues) => {
     // const { data } = await this.apiClient.post(
-    //   ENDPOINTS.GET_PROFILE_EDUCATION,eduFormValues
+    //   ENDPOINTS.EDUCATION,eduFormValues
     // );
 
     // return data;
@@ -269,7 +271,7 @@ export class ProfileService extends ApiService {
 
   deleteEducation = async (id: string) => {
     // const { data } = await this.apiClient.delete(
-    //   ENDPOINTS.GET_PROFILE_WORK_EXPERIENCE + id
+    //   ENDPOINTS.EDUCATION + id
     // );
 
     // return data;

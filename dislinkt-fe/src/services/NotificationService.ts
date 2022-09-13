@@ -2,7 +2,7 @@ import SettingsFormValues from "../models/forms/SettingsFormValues";
 import ApiService from "./ApiService";
 
 const ENDPOINTS = {
-  NOTIFICATIONS: "/notification",
+  NOTIFICATIONS: "/notification-service",
 };
 
 export class NotificationService extends ApiService {

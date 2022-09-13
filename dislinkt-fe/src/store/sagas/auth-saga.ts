@@ -82,14 +82,15 @@ export function* handleAutoLogin({
   if (token) {
     const decodedAuthToken: any = jwt(token);
     const dateNowSeconds = Math.round(new Date().getTime() / 1000);
-    if (decodedAuthToken.exp - dateNowSeconds < 0) {
-      //expired token
-      yield call(handleLogOut);
-      yield payload.navigate("/auth");
-    } else {
-      const userDataPayload: UserDataPayload = getUserFromJwt(token);
-      yield put(setUserData(userDataPayload));
-    }
+    //if (decodedAuthToken.exp - dateNowSeconds < 0) {
+    //expired token
+    //yield call(handleLogOut);
+    //yield payload.navigate("/auth");
+    //} else {
+    const userDataPayload: UserDataPayload = getUserFromJwt(token);
+    yield put(setUserData(userDataPayload));
+    yield payload.navigate("/home");
+    //}
   } else {
     // no token
     yield payload.navigate("/auth");

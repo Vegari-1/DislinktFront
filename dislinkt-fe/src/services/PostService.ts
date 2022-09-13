@@ -4,10 +4,10 @@ import PostFormValues from "../models/forms/PostFormValues";
 import ApiService from "./ApiService";
 
 const ENDPOINTS = {
-  GET_POST: "/post/",
-  GET_POSTS: "/post",
-  GET_PROFILE_POSTS: "/post/profile/",
-  SEARCH_POSTS: "/post?query=",
+  GET_POST: "/post-service/",
+  GET_POSTS: "/post-service",
+  GET_PROFILE_POSTS: "/post-service/profile/",
+  SEARCH_POSTS: "/post-service?query=",
   CREATE_COMMENT: "/comment",
   CREATE_REACTION: "/reaction",
 };
@@ -52,7 +52,7 @@ export class PostService extends ApiService {
 
   getPosts = async () => {
     // const { data } = await this.apiClient.get(
-    //   ENDPOINTS.GET_POSTS + id
+    //   ENDPOINTS.GET_POSTS
     // );
 
     // return data;
@@ -128,7 +128,7 @@ export class PostService extends ApiService {
 
   addPost = async (postFormValues: PostFormValues) => {
     // await this.apiClient.post(
-    //   ENDPOINTS.GET_POST,
+    //   ENDPOINTS.GET_POSTS,
     //   postFormValues
     // );
 

@@ -2,8 +2,8 @@ import JobOfferFormValues from "../models/forms/JobOfferFormValues";
 import ApiService from "./ApiService";
 
 const ENDPOINTS = {
-  GET_JOB_OFFERS: "/joboffer",
-  SEARCH_JOB_OFFERS: "/joboffer?query=",
+  GET_JOB_OFFERS: "/job-offer-service",
+  SEARCH_JOB_OFFERS: "/job-offer-service?query=",
 };
 
 export class JobOfferService extends ApiService {
