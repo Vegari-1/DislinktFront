@@ -8,6 +8,12 @@ import SkillData from "../../models/data/SkillData";
 import WorkExperienceData from "../../models/data/WorkExperienceData";
 import profileService from "../../services/ProfileService";
 import {
+  GET_PROFILE,
+  GET_PROFILE_EDUCATION,
+  GET_PROFILE_SKILLS,
+  GET_PROFILE_WORK_EXPERIENCE,
+} from "../actions/action-types";
+import {
   acceptConnectionRequest,
   addEducation,
   addSkill,
@@ -45,10 +51,10 @@ export function* handleGetProfile({
       profileService.getProfile,
       payload.id
     );
-
+    console.log(profile);
     yield put(setProfile(profile));
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -63,7 +69,7 @@ export function* handleGetProfileSkills({
 
     yield put(setProfileSkills(skills));
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -82,7 +88,7 @@ export function* handleGetProfileWorkExperience({
 
     yield put(setProfileWorkExperiences(workExperiences));
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -101,7 +107,7 @@ export function* handleGetProfileEducation({
 
     yield put(setProfileEducations(educations));
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -117,7 +123,7 @@ export function* handleGetPublicProfiles(): Generator<
 
     yield put(setProfiles(profiles));
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -136,7 +142,7 @@ export function* handleSearchPublicProfiles({
 
     yield put(setProfiles(profiles));
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -152,7 +158,7 @@ export function* handleGetNotBlockedProfiles(): Generator<
 
     yield put(setProfiles(profiles));
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -171,7 +177,7 @@ export function* handleSearchNotBlockedProfiles({
 
     yield put(setProfiles(profiles));
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -180,8 +186,12 @@ export function* handleLinkWithProfile({
 }: ReturnType<typeof linkWithProfile>): Generator<any, void, void> {
   try {
     yield call(profileService.linkWithProfile, payload.id);
+    yield call(handleGetProfile, {
+      type: GET_PROFILE,
+      payload: { id: payload.id },
+    });
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -190,8 +200,12 @@ export function* handleDislinkWithProfile({
 }: ReturnType<typeof dislinkWithProfile>): Generator<any, void, void> {
   try {
     yield call(profileService.dislinkWithProfile, payload.id);
+    yield call(handleGetProfile, {
+      type: GET_PROFILE,
+      payload: { id: payload.id },
+    });
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -201,7 +215,7 @@ export function* handleBlockProfile({
   try {
     yield call(profileService.blockProfile, payload.id);
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -211,7 +225,7 @@ export function* handleSaveProfile({
   try {
     yield call(profileService.saveProfile, payload);
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -220,8 +234,12 @@ export function* handleAddSkill({
 }: ReturnType<typeof addSkill>): Generator<any, void, void> {
   try {
     yield call(profileService.addSkill, payload);
+    yield call(handleGetProfileSkills, {
+      type: GET_PROFILE_SKILLS,
+      payload: { id: payload.profileId! },
+    });
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -230,8 +248,12 @@ export function* handleDeleteSkill({
 }: ReturnType<typeof deleteSkill>): Generator<any, void, void> {
   try {
     yield call(profileService.deleteSkill, payload.id);
+    yield call(handleGetProfileSkills, {
+      type: GET_PROFILE_SKILLS,
+      payload: { id: payload.profileId },
+    });
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -240,8 +262,12 @@ export function* handleAddWorkExperience({
 }: ReturnType<typeof addWorkExperience>): Generator<any, void, void> {
   try {
     yield call(profileService.addWorkExperience, payload);
+    yield call(handleGetProfileWorkExperience, {
+      type: GET_PROFILE_WORK_EXPERIENCE,
+      payload: { id: payload.profileId! },
+    });
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -250,8 +276,12 @@ export function* handleDeleteWorkExperience({
 }: ReturnType<typeof deleteWorkExperience>): Generator<any, void, void> {
   try {
     yield call(profileService.deleteWorkExperience, payload.id);
+    yield call(handleGetProfileWorkExperience, {
+      type: GET_PROFILE_WORK_EXPERIENCE,
+      payload: { id: payload.profileId },
+    });
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -260,8 +290,12 @@ export function* handleAddEducation({
 }: ReturnType<typeof addEducation>): Generator<any, void, void> {
   try {
     yield call(profileService.addEducation, payload);
+    yield call(handleGetProfileEducation, {
+      type: GET_PROFILE_EDUCATION,
+      payload: { id: payload.profileId! },
+    });
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -270,8 +304,12 @@ export function* handleDeleteEducation({
 }: ReturnType<typeof deleteEducation>): Generator<any, void, void> {
   try {
     yield call(profileService.deleteEducation, payload.id);
+    yield call(handleGetProfileEducation, {
+      type: GET_PROFILE_EDUCATION,
+      payload: { id: payload.profileId },
+    });
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -287,7 +325,7 @@ export function* handleGetConnectionRequests(): Generator<
 
     yield put(setConnectionRequests(connectionRequests));
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -299,7 +337,7 @@ export function* handleAcceptConnectionRequest({
 
     yield handleGetConnectionRequests();
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -311,6 +349,6 @@ export function* handleDeclineConnectionRequest({
 
     yield handleGetConnectionRequests();
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }

@@ -23,7 +23,7 @@ export function* handleGetProfilePosts({
 
     yield put(setPosts(posts));
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -33,7 +33,7 @@ export function* handleGetPosts(): Generator<any, void, PostData[]> {
 
     yield put(setPosts(posts));
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -48,7 +48,7 @@ export function* handleSearchPosts({
 
     yield put(setPosts(posts));
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -64,7 +64,7 @@ export function* handleCreateComment({
 
     yield handleGetPosts();
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -76,7 +76,7 @@ export function* handleReactToPost({
 
     yield handleGetPosts();
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -86,6 +86,6 @@ export function* handleAddPost({
   try {
     yield call(postService.addPost, payload);
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }

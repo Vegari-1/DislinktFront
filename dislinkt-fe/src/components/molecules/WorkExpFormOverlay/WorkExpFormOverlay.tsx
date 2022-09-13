@@ -8,6 +8,7 @@ import classes from "./WorkExpFormOverlay.module.css";
 
 interface WorkExpFormOverlayProps {
   onClose: () => void;
+  profileId: string;
 }
 
 const workExpFormInitialValues: WorkExpFormValues = {
@@ -16,10 +17,14 @@ const workExpFormInitialValues: WorkExpFormValues = {
   startDate: new Date(),
 };
 
-const WorkExpFormOverlay: React.FC<WorkExpFormOverlayProps> = ({ onClose }) => {
+const WorkExpFormOverlay: React.FC<WorkExpFormOverlayProps> = ({
+  onClose,
+  profileId,
+}) => {
   const dispatch = useDispatch();
   const submitHandler = (formValues: WorkExpFormValues) => {
     onClose();
+    formValues.profileId = profileId;
     dispatch(addWorkExperience(formValues));
   };
 

@@ -37,7 +37,7 @@ export function* handleSignIn({
     }
     yield toast.success("Successfully signed in");
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -47,7 +47,7 @@ export function* handleSignUp({
   try {
     yield put(setSignUpData(payload));
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -62,7 +62,7 @@ export function* handleRegister({
     yield put(setSignInActive(true));
     yield toast.success("Successfully signed up");
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -71,7 +71,7 @@ export function* handleLogOut(): Generator<any, void, void> {
     localStorage.removeItem("dislinkt-token");
     yield put(setUserData({} as UserDataPayload));
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -82,17 +82,21 @@ export function* handleAutoLogin({
   if (token) {
     const decodedAuthToken: any = jwt(token);
     const dateNowSeconds = Math.round(new Date().getTime() / 1000);
-    //if (decodedAuthToken.exp - dateNowSeconds < 0) {
-    //expired token
-    //yield call(handleLogOut);
-    //yield payload.navigate("/auth");
-    //} else {
-    const userDataPayload: UserDataPayload = getUserFromJwt(token);
-    yield put(setUserData(userDataPayload));
-    yield payload.navigate("/home");
-    //}
+    if (decodedAuthToken.exp - dateNowSeconds < 0) {
+      // expired token
+      yield call(handleLogOut);
+      yield payload.navigate("/auth");
+    } else {
+      const userDataPayload: UserDataPayload = getUserFromJwt(token);
+      yield put(setUserData(userDataPayload));
+      if (!window.location.href.lastIndexOf("auth")) {
+        yield payload.navigate("/home");
+      }
+    }
   } else {
     // no token
-    yield payload.navigate("/auth");
+    if (!window.location.href.lastIndexOf("register")) {
+      yield payload.navigate("/auth");
+    }
   }
 }

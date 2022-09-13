@@ -49,6 +49,7 @@ const RegisterForm: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const submitHandler = (formValues: RegisterFormValues) => {
+    formValues.picture = profileImage;
     dispatch(register({ formValues, navigate }));
   };
 
@@ -147,10 +148,10 @@ const RegisterForm: React.FC = () => {
             ref={inputFile}
             className={classes["upload-file-input"]}
             onChange={(event) => {
-              setFieldValue("flag", event.currentTarget.files![0]);
+              setFieldValue("picture", event.currentTarget.files![0]);
               uploadImageHandler(event);
             }}
-            name="flag"
+            name="picture"
           />
           <div className={classes.button}>
             <PrimaryButton

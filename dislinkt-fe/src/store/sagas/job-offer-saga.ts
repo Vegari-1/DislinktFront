@@ -11,7 +11,7 @@ export function* handleGetJobOffers(): Generator<any, void, JobOfferData[]> {
 
     yield put(setJobOffers(jobOffers));
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -26,7 +26,7 @@ export function* handleSearchJobOffers({
 
     yield put(setJobOffers(jobOffers));
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -36,6 +36,6 @@ export function* handleAddJobOffer({
   try {
     yield call(jobOfferService.addJobOffer, payload);
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }

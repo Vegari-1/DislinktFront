@@ -17,7 +17,7 @@ export function* handleGetNotifications(): Generator<
 
     yield put(setNotifications(notifications));
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }
 
@@ -27,6 +27,6 @@ export function* handleUpdateNotifications({
   try {
     yield call(notificationService.updateNotifications, payload);
   } catch (error: any) {
-    yield toast.error(error.response.data.message);
+    yield toast.error(error.response.data.Message);
   }
 }

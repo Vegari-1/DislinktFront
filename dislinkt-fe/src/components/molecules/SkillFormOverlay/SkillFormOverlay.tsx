@@ -8,16 +8,21 @@ import classes from "./SkillFormOverlay.module.css";
 
 interface SkillFormOverlayProps {
   onClose: () => void;
+  profileId: string;
 }
 
 const skillFormInitialValues: SkillFormValues = {
   name: "",
 };
 
-const SkillFormOverlay: React.FC<SkillFormOverlayProps> = ({ onClose }) => {
+const SkillFormOverlay: React.FC<SkillFormOverlayProps> = ({
+  onClose,
+  profileId,
+}) => {
   const dispatch = useDispatch();
   const submitHandler = (formValues: SkillFormValues) => {
     onClose();
+    formValues.profileId = profileId;
     dispatch(addSkill(formValues));
   };
 

@@ -1,10 +1,12 @@
 import { ReactComponent as DeleteIcon } from "../../../assets/svg/delete.svg";
-
 import classes from "./ManageItem.module.css";
 import SkillData from "../../../models/data/SkillData";
 import EducationData from "../../../models/data/EducationData";
 import WorkExperienceData from "../../../models/data/WorkExperienceData";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store/store";
 
 interface ManageItemProps {
   item: SkillData | EducationData | WorkExperienceData | any;
@@ -13,6 +15,10 @@ interface ManageItemProps {
 
 const ManageItem: React.FC<ManageItemProps> = ({ item, deleteItem }) => {
   const [confirmDelete, setConfirmDelete] = useState(false);
+
+  const { id } = useParams();
+  const userData = useSelector((state: RootState) => state.auth.userData);
+
   const deleteHandler = () => {
     setConfirmDelete(!confirmDelete);
   };
@@ -45,14 +51,16 @@ const ManageItem: React.FC<ManageItemProps> = ({ item, deleteItem }) => {
             >{`${item.startDate.toLocaleDateString()} - ${item.endDate.toLocaleDateString()}`}</div>
           )}
         </div>
-        <div className={classes["actions"]}>
-          <DeleteIcon
-            width={25}
-            height={25}
-            cursor="pointer"
-            onClick={deleteHandler}
-          />
-        </div>
+        {userData.id === id && (
+          <div className={classes["actions"]}>
+            <DeleteIcon
+              width={25}
+              height={25}
+              cursor="pointer"
+              onClick={deleteHandler}
+            />
+          </div>
+        )}
       </div>
       {confirmDelete && (
         <button

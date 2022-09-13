@@ -8,6 +8,7 @@ import classes from "./EduFormOverlay.module.css";
 
 interface EduFormOverlayProps {
   onClose: () => void;
+  profileId: string;
 }
 
 const eduFormInitialValues: EduFormValues = {
@@ -17,10 +18,14 @@ const eduFormInitialValues: EduFormValues = {
   startDate: new Date(),
 };
 
-const EduFormOverlay: React.FC<EduFormOverlayProps> = ({ onClose }) => {
+const EduFormOverlay: React.FC<EduFormOverlayProps> = ({
+  onClose,
+  profileId,
+}) => {
   const dispatch = useDispatch();
   const submitHandler = (formValues: EduFormValues) => {
     onClose();
+    formValues.profileId = profileId;
     dispatch(addEducation(formValues));
   };
 

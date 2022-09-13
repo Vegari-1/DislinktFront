@@ -110,10 +110,10 @@ export const addSkill = (skillFormValues: SkillFormValues) => {
   };
 };
 
-export const deleteSkill = (id: string) => {
+export const deleteSkill = (id: string, profileId: string) => {
   return {
     type: DELETE_SKILL,
-    payload: { id },
+    payload: { id, profileId },
   };
 };
 
@@ -126,10 +126,10 @@ export const addWorkExperience = (
   };
 };
 
-export const deleteWorkExperience = (id: string) => {
+export const deleteWorkExperience = (id: string, profileId: string) => {
   return {
     type: DELETE_WORK_EXPERIENCE,
-    payload: { id },
+    payload: { id, profileId },
   };
 };
 
@@ -140,10 +140,10 @@ export const addEducation = (eduFormValues: EduFormValues) => {
   };
 };
 
-export const deleteEducation = (id: string) => {
+export const deleteEducation = (id: string, profileId: string) => {
   return {
     type: DELETE_EDUCATION,
-    payload: { id },
+    payload: { id, profileId },
   };
 };
 

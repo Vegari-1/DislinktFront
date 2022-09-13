@@ -4,6 +4,7 @@ interface EduFormValues {
   field: string;
   startDate: Date;
   endDate?: Date;
+  profileId?: string;
 }
 
 export default EduFormValues;

@@ -18,10 +18,6 @@ import {
 } from "../../store/actions/profile-actions";
 
 const ProfileWorkPage: React.FC = () => {
-  // dobavi informacije o korisniku (koristi se i za pregled sopstvenog i za pregled profila drugih korisnika)
-  // ako je korisnik koji gleda profil vlasnik profila, prikazi mu "Edit" i "Kanticu" za brisanje i "+" za dodavanje
-  // ako korisnik nije vlasnik profila, prikazi dugme "Block" (AKO JE BLOKIRAO PROFIL, NE TREBA DA MU ISKACE?)
-  // ako korisnik nije vlasnik profila i ne prati profil, prikazi dugme "Connect"
   const dispatch = useDispatch();
   const { id } = useParams();
   const [modalVisible, setModalVisible] = useState(false);
@@ -37,8 +33,8 @@ const ProfileWorkPage: React.FC = () => {
     dispatch(getProfileWorkExperience(id!));
   }, [dispatch, id]);
 
-  const deleteWorkHandler = (id: string) => {
-    dispatch(deleteWorkExperience(id));
+  const deleteWorkHandler = (workExpId: string) => {
+    dispatch(deleteWorkExperience(workExpId, id!));
   };
   const addWorkHandler = () => {
     setModalVisible(true);
@@ -65,7 +61,7 @@ const ProfileWorkPage: React.FC = () => {
         )}
       {modalVisible &&
         ReactDOM.createPortal(
-          <WorkExpFormOverlay onClose={onCloseHandler} />,
+          <WorkExpFormOverlay onClose={onCloseHandler} profileId={id!} />,
           document.getElementById("modal-root")!
         )}
     </Layout>

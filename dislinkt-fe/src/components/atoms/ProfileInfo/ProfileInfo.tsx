@@ -25,10 +25,11 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }) => {
   const userData = useSelector((state: RootState) => state.auth.userData);
 
   const onEditButtonClick = () => {
-    navigate("info");
+    navigate("/profile/" + id + "/info");
   };
   const onBlockButtonClick = () => {
     dispatch(blockProfile(profile.id));
+    navigate("/people");
   };
   const onLinkButtonClick = () => {
     dispatch(linkWithProfile(profile.id));

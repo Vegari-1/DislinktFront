@@ -3,6 +3,7 @@ interface WorkExpFormValues {
   company: string;
   startDate: Date;
   endDate?: Date;
+  profileId?: string;
 }
 
 export default WorkExpFormValues;

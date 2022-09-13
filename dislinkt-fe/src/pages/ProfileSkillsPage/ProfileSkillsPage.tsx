@@ -33,8 +33,8 @@ const ProfileSkillsPage: React.FC = () => {
     dispatch(getProfileSkills(id!));
   }, [id, dispatch]);
 
-  const deleteSkillHandler = (id: string) => {
-    dispatch(deleteSkill(id));
+  const deleteSkillHandler = (skillId: string) => {
+    dispatch(deleteSkill(skillId, id!));
   };
   const addSkillHandler = () => {
     setModalVisible(true);
@@ -58,7 +58,7 @@ const ProfileSkillsPage: React.FC = () => {
         )}
       {modalVisible &&
         ReactDOM.createPortal(
-          <SkillFormOverlay onClose={onCloseHandler} />,
+          <SkillFormOverlay onClose={onCloseHandler} profileId={id!} />,
           document.getElementById("modal-root")!
         )}
     </Layout>

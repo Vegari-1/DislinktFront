@@ -33,8 +33,8 @@ const ProfileEducationPage: React.FC = () => {
     dispatch(getProfileEducation(id!));
   }, [dispatch, id]);
 
-  const deleteEducationHandler = (id: string) => {
-    dispatch(deleteEducation(id));
+  const deleteEducationHandler = (eduId: string) => {
+    dispatch(deleteEducation(eduId, id!));
   };
   const addEducationHandler = () => {
     setModalVisible(true);
@@ -61,7 +61,7 @@ const ProfileEducationPage: React.FC = () => {
         )}
       {modalVisible &&
         ReactDOM.createPortal(
-          <EduFormOverlay onClose={onCloseHandler} />,
+          <EduFormOverlay onClose={onCloseHandler} profileId={id!} />,
           document.getElementById("modal-root")!
         )}
     </Layout>
