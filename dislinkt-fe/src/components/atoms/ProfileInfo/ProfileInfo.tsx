@@ -1,15 +1,22 @@
+import { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { ReactComponent as EditIcon } from "../../../assets/svg/edit.svg";
+import { ReactComponent as KeyIcon } from "../../../assets/svg/key.svg";
 import { ReactComponent as PrivateIcon } from "../../../assets/svg/lock.svg";
 import { ReactComponent as PublicIcon } from "../../../assets/svg/open-lock.svg";
 import ProfileInfoData from "../../../models/data/ProfileInfoData";
 import {
   blockProfile,
+  closeApiKeyModal,
   dislinkWithProfile,
+  getApiKey,
   linkWithProfile,
 } from "../../../store/actions/profile-actions";
 import { RootState } from "../../../store/store";
+import ApiKeyOverlay from "../ApiKeyOverlay/ApiKeyOverlay";
+import Backdrop from "../Backdrop/Backdrop";
 import IconButton from "../IconButton/IconButton";
 import classes from "./ProfileInfo.module.css";
 
@@ -21,12 +28,29 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const [modalVisible, setModalVisible] = useState(false);
+
   const { id } = useParams();
   const userData = useSelector((state: RootState) => state.auth.userData);
+  const openModal = useSelector(
+    (state: RootState) => state.profile.apiKeyModalOpen
+  );
+
+  useEffect(() => {
+    setModalVisible(openModal);
+  }, [openModal]);
 
   const onEditButtonClick = () => {
     navigate("/profile/" + id + "/info");
   };
+
+  const onKeyButtonClick = () => {
+    dispatch(getApiKey());
+  };
+  const onCloseHandler = () => {
+    dispatch(closeApiKeyModal());
+  };
+
   const onBlockButtonClick = () => {
     dispatch(blockProfile(profile.id));
     navigate("/people");
@@ -112,15 +136,35 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({ profile }) => {
         )}
 
         {userData.id === id && (
-          <div className={classes["edit-button"]}>
-            <IconButton
-              icon={<EditIcon width={30} height={30} />}
-              onClick={onEditButtonClick}
-              color={"--SECONDARY-COLOR-LIGHTER"}
-            />
+          <div>
+            <div className={classes["edit-button"]}>
+              <IconButton
+                icon={<EditIcon width={30} height={30} />}
+                onClick={onEditButtonClick}
+                color={"--SECONDARY-COLOR-LIGHTER"}
+              />
+            </div>
+            <div className={classes["edit-button"]}>
+              <IconButton
+                icon={<KeyIcon width={30} height={30} />}
+                onClick={onKeyButtonClick}
+                color={"--SECONDARY-COLOR-LIGHTER"}
+              />
+            </div>
           </div>
         )}
       </div>
+
+      {modalVisible &&
+        ReactDOM.createPortal(
+          <Backdrop onBackdropClick={onCloseHandler} blur />,
+          document.getElementById("backdrop-root")!
+        )}
+      {modalVisible &&
+        ReactDOM.createPortal(
+          <ApiKeyOverlay onClose={onCloseHandler} />,
+          document.getElementById("modal-root")!
+        )}
     </div>
   );
 };

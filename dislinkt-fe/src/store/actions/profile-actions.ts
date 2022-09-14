@@ -8,11 +8,13 @@ import {
   ADD_SKILL,
   ADD_WORK_EXPERIENCE,
   BLOCK_PROFILE,
+  CLOSE_API_KEY_MODAL,
   DECLINE_CONNECTION_REQUEST,
   DELETE_EDUCATION,
   DELETE_SKILL,
   DELETE_WORK_EXPERIENCE,
   DISLINK_WITH_PROFILE,
+  GET_API_KEY,
   GET_CONNECTION_REQUESTS,
   GET_NOT_BLOCKED_PROFILES,
   GET_PROFILE,
@@ -172,5 +174,17 @@ export const declineConnectionRequest = (id: string) => {
   return {
     type: DECLINE_CONNECTION_REQUEST,
     payload: { id },
+  };
+};
+
+export const getApiKey = () => {
+  return {
+    type: GET_API_KEY,
+  };
+};
+
+export const closeApiKeyModal = () => {
+  return {
+    type: CLOSE_API_KEY_MODAL,
   };
 };

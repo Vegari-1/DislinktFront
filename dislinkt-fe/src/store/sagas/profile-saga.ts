@@ -24,8 +24,6 @@ import {
   deleteSkill,
   deleteWorkExperience,
   dislinkWithProfile,
-  getConnectionRequests,
-  getNotBlockedProfiles,
   getProfile,
   getProfileAuthUser,
   getProfileEducation,
@@ -36,6 +34,8 @@ import {
   searchPublicProfiles,
 } from "../actions/profile-actions";
 import {
+  setApiKey,
+  setApiKeyModalOpen,
   setConnectionRequests,
   setProfile,
   setProfileEducations,
@@ -370,4 +370,18 @@ export function* handleDeclineConnectionRequest({
   } catch (error: any) {
     yield toast.error(error.response.data.Message);
   }
+}
+
+export function* handleGetApiKey(): Generator<any, void, string> {
+  try {
+    const apiKey: string = yield call(profileService.getApiKey);
+    yield put(setApiKey(apiKey));
+    yield put(setApiKeyModalOpen(true));
+  } catch (error: any) {
+    yield toast.error(error.response.data.Message);
+  }
+}
+
+export function* handleCloseApiKeyModal(): Generator<any, void, void> {
+  yield put(setApiKeyModalOpen(false));
 }

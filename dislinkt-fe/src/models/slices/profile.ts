@@ -12,4 +12,6 @@ export interface ProfileSliceValues {
   educations: EducationData[];
   profiles: ProfileSimple[];
   connectionRequests: ConnRequestData[];
+  apiKeyModalOpen: boolean;
+  apiKey: string;
 }

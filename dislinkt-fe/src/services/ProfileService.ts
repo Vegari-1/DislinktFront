@@ -24,6 +24,7 @@ const ENDPOINTS = {
   EDUCATION: "/profile-service/education",
   GET_CONNECTION_REQUESTS: "/profile-service/conn-req",
   CONNECTION_REQUEST: "/profile-service/conn-req/",
+  GET_API_KEY: "/profile-service/profile/api-key",
 };
 
 export class ProfileService extends ApiService {
@@ -58,6 +59,7 @@ export class ProfileService extends ApiService {
     data.map((elem) => {
       elem.startDate = new Date(elem.startDate);
       elem.endDate = new Date(elem.endDate);
+      return elem;
     });
 
     return data;
@@ -70,6 +72,7 @@ export class ProfileService extends ApiService {
     data.map((elem) => {
       elem.startDate = new Date(elem.startDate);
       elem.endDate = new Date(elem.endDate);
+      return elem;
     });
 
     return data;
@@ -203,6 +206,11 @@ export class ProfileService extends ApiService {
     const { data } = await this.apiClient.delete(
       ENDPOINTS.CONNECTION_REQUEST + id
     );
+    return data;
+  };
+
+  getApiKey = async () => {
+    const { data } = await this.apiClient.get(ENDPOINTS.GET_API_KEY);
     return data;
   };
 }

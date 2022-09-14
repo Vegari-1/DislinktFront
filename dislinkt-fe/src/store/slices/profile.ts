@@ -27,6 +27,8 @@ const initProfileValues: ProfileSliceValues = {
   educations: [],
   profiles: [],
   connectionRequests: [],
+  apiKeyModalOpen: false,
+  apiKey: "",
 };
 
 const profileSlice = createSlice({
@@ -54,6 +56,12 @@ const profileSlice = createSlice({
     setConnectionRequests(state, action: PayloadAction<ConnRequestData[]>) {
       state.connectionRequests = action.payload;
     },
+    setApiKeyModalOpen(state, action: PayloadAction<boolean>) {
+      state.apiKeyModalOpen = action.payload;
+    },
+    setApiKey(state, action: PayloadAction<string>) {
+      state.apiKey = action.payload;
+    },
   },
 });
 
@@ -64,6 +72,8 @@ export const {
   setProfileEducations,
   setProfiles,
   setConnectionRequests,
+  setApiKeyModalOpen,
+  setApiKey,
 } = profileSlice.actions;
 
 export default profileSlice.reducer;
