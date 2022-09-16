@@ -7,6 +7,7 @@ import profileReducer from "./slices/profile";
 import postReducer from "./slices/post";
 import jobOfferReducer from "./slices/job-offer";
 import notificationsReducer from "./slices/notifications";
+import eventReducer from "./slices/event";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -17,6 +18,7 @@ const store = configureStore({
     post: postReducer,
     jobOffer: jobOfferReducer,
     notifications: notificationsReducer,
+    events: eventReducer,
   },
   middleware: [sagaMiddleware],
 });

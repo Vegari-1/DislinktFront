@@ -8,6 +8,7 @@ interface ProfileInfoFormValues {
   phone: string;
   public: boolean;
   biography: string;
+  id?: string;
 }
 
 export default ProfileInfoFormValues;

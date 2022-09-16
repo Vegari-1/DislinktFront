@@ -135,6 +135,7 @@ export class ProfileService extends ApiService {
       ENDPOINTS.SAVE_PROFILE,
       profileInfoFormValues
     );
+    data.dateOfBirth = new Date(data.dateOfBirth);
 
     return data;
   };

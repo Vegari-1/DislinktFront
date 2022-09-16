@@ -17,6 +17,7 @@ import {
   DISLINK_WITH_PROFILE,
   GET_API_KEY,
   GET_CONNECTION_REQUESTS,
+  GET_EVENTS,
   GET_JOB_OFFERS,
   GET_NOTIFICATIONS,
   GET_NOT_BLOCKED_PROFILES,
@@ -48,6 +49,7 @@ import {
   handleSignIn,
   handleSignUp,
 } from "./auth-saga";
+import { handleGetEvents } from "./event-saga";
 import {
   handleAddJobOffer,
   handleGetJobOffers,
@@ -134,5 +136,6 @@ export default function* rootSaga() {
     takeLatest(DECLINE_CONNECTION_REQUEST, handleDeclineConnectionRequest),
     takeLatest(GET_NOTIFICATIONS, handleGetNotifications),
     takeLatest(UPDATE_NOTIFICATIONS, handleUpdateNotifications),
+    takeLatest(GET_EVENTS, handleGetEvents),
   ]);
 }

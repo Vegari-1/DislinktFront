@@ -240,9 +240,13 @@ export function* handleBlockProfile({
 
 export function* handleSaveProfile({
   payload,
-}: ReturnType<typeof saveProfile>): Generator<any, void, void> {
+}: ReturnType<typeof saveProfile>): Generator<any, void, any> {
   try {
-    yield call(profileService.saveProfile, payload);
+    const profile: ProfileInfoData = yield call(
+      profileService.saveProfile,
+      payload
+    );
+    yield put(setProfile(profile));
   } catch (error: any) {
     yield toast.error(error.response.data.Message);
   }

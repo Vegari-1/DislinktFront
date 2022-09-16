@@ -54,6 +54,7 @@ const ProfileInfoForm: React.FC<ProfileInfoFormProps> = ({
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const submitHandler = (formValues: ProfileInfoFormValues) => {
+    formValues.id = id;
     dispatch(saveProfile(formValues));
     navigate("/profile/" + id);
   };
