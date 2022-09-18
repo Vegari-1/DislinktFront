@@ -3,7 +3,6 @@ import PrimaryButton from "../../atoms/PrimaryButton/PrimaryButton";
 import ToggleButton from "../../atoms/ToggleButton/ToggleButton";
 
 import classes from "./SettingsForm.module.css";
-import { useNavigate } from "react-router-dom";
 import SettingsFormValues from "../../../models/forms/SettingsFormValues";
 import { useDispatch } from "react-redux";
 import { updateNotifications } from "../../../store/actions/notification-actions";
@@ -17,14 +16,14 @@ const SettingsForm: React.FC<SettingsFormProps> = ({
   profileId,
   notifications,
 }) => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const submitHandler = (formValues: SettingsFormValues) => {
+    formValues.profileId = profileId;
     dispatch(updateNotifications(formValues));
-    navigate("/profile/" + profileId);
   };
 
   const settingsFormInitialValues: SettingsFormValues = {
+    id: notifications.id,
     messages: notifications.messages,
     connections: notifications.connections,
     posts: notifications.posts,

@@ -4,6 +4,7 @@ import { NotificationSliceValues } from "../../models/slices/notifications";
 
 const initNotificationValues: NotificationSliceValues = {
   notifications: {
+    id: "",
     connections: false,
     messages: false,
     posts: false,

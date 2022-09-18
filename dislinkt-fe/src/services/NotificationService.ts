@@ -7,19 +7,18 @@ const ENDPOINTS = {
 
 export class NotificationService extends ApiService {
   getNotifications = async () => {
-    // const { data } = await this.apiClient.get(ENDPOINTS.NOTIFICATIONS);
+    const { data } = await this.apiClient.get(ENDPOINTS.NOTIFICATIONS);
 
-    // return data;
-
-    return { messages: true, connections: true, posts: true };
+    return data;
   };
 
   updateNotifications = async (settingsFormValues: SettingsFormValues) => {
-    // const { data } = await this.apiClient.put(ENDPOINTS.NOTIFICATIONS);
+    const { data } = await this.apiClient.put(
+      ENDPOINTS.NOTIFICATIONS,
+      settingsFormValues
+    );
 
-    // return data;
-
-    console.log(settingsFormValues);
+    return data;
   };
 }
 

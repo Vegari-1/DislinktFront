@@ -26,6 +26,7 @@ export function* handleUpdateNotifications({
 }: ReturnType<typeof updateNotifications>): Generator<any, void, void> {
   try {
     yield call(notificationService.updateNotifications, payload);
+    yield toast.success("Settings succesfully saved");
   } catch (error: any) {
     yield toast.error(error.response.data.Message);
   }
