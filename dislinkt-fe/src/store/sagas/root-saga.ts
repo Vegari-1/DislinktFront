@@ -17,6 +17,7 @@ import {
   DISLINK_WITH_PROFILE,
   GET_API_KEY,
   GET_CONNECTION_REQUESTS,
+  GET_CONVERSATIONS,
   GET_EVENTS,
   GET_JOB_OFFERS,
   GET_NOTIFICATIONS,
@@ -29,6 +30,7 @@ import {
   GET_PROFILE_SKILLS,
   GET_PROFILE_WORK_EXPERIENCE,
   GET_PUBLIC_PROFILES,
+  INIT_WS,
   LINK_WITH_PROFILE,
   LOG_OUT,
   REACT_TO_POST,
@@ -38,8 +40,11 @@ import {
   SEARCH_NOT_BLOCKED_PROFILES,
   SEARCH_POSTS,
   SEARCH_PUBLIC_PROFILES,
+  SEND_MESSAGE,
   SIGN_IN,
   SIGN_UP,
+  START_CONVERSATION,
+  TERMINATE_WS,
   UPDATE_NOTIFICATIONS,
 } from "../actions/action-types";
 import {
@@ -93,6 +98,13 @@ import {
   handleSearchNotBlockedProfiles,
   handleSearchPublicProfiles,
 } from "./profile-saga";
+import {
+  handleGetConversations,
+  handleInit,
+  handleSendMessage,
+  handleStartConversation,
+  handleTerminate,
+} from "./message-saga";
 
 export default function* rootSaga() {
   yield all([
@@ -137,5 +149,10 @@ export default function* rootSaga() {
     takeLatest(GET_NOTIFICATIONS, handleGetNotifications),
     takeLatest(UPDATE_NOTIFICATIONS, handleUpdateNotifications),
     takeLatest(GET_EVENTS, handleGetEvents),
+    takeLatest(GET_CONVERSATIONS, handleGetConversations),
+    takeLatest(INIT_WS, handleInit),
+    takeLatest(SEND_MESSAGE, handleSendMessage),
+    takeLatest(START_CONVERSATION, handleStartConversation),
+    takeLatest(TERMINATE_WS, handleTerminate),
   ]);
 }

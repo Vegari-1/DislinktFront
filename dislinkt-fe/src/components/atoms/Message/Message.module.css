@@ -44,5 +44,6 @@
 
 .response-time {
   margin-right: 10px;
-  margin-left: 80%;
+  margin-left: auto;
+  text-align: right;
 }

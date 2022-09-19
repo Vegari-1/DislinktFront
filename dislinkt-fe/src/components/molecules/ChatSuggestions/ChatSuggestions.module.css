@@ -1,0 +1,54 @@
+.suggestions {
+  box-sizing: border-box;
+  width: 100%;
+  height: 300px;
+
+  padding: 0 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2);
+  background-color: var(--SECONDARY-COLOR);
+  border-bottom: 1px solid white;
+}
+
+.suggestions .suggestion-items-container {
+  overflow-y: scroll;
+  flex: 1;
+  min-height: 0;
+  padding: 0;
+}
+
+.suggestions .suggestion-items-container::-webkit-scrollbar {
+  background: transparent;
+  height: 10px;
+  width: 0px;
+}
+
+.suggestion-items-container .suggestion-items {
+  flex: 1;
+  min-height: 0;
+}
+
+.suggestion-items .suggestion {
+  width: 100%;
+  height: 30px;
+  padding: 5px;
+  cursor: pointer;
+  margin-bottom: 2px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+
+  background-color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.suggestion .img {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
