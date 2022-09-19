@@ -1,20 +1,26 @@
 import { useEffect, useRef } from "react";
 import { ReactComponent as SendIcon } from "../../../assets/svg/send.svg";
+import MessageData from "../../../models/data/MessageData";
 import Message from "../../atoms/Message/Message";
+
 import classes from "./Chat.module.css";
 
 interface ChatProps {
+  userId: string;
   name: string;
   surname: string;
   picture: string;
-  messages: [];
+  messages: MessageData[];
+  text: string;
+  textChange: (text: string) => void
+  sendMessage: () => void
 }
 
-const Chat: React.FC<ChatProps> = ({ name, surname, picture, messages }) => {
+const Chat: React.FC<ChatProps> = ({ userId, name, surname, picture, messages, text, textChange, sendMessage }) => {
   const bottomDiv = useRef<null | HTMLDivElement>(null);
   useEffect(() => {
     bottomDiv.current?.scrollIntoView();
-  }, []);
+  }, [messages]);
 
   return (
     <div className={classes["chat"]}>
@@ -22,49 +28,31 @@ const Chat: React.FC<ChatProps> = ({ name, surname, picture, messages }) => {
         <p className={classes["name"]}>{`${name} ${surname}`}</p>
       </div>
       <div className={classes["messages-chat"]}>
-        <Message
-          text="Hello how are you?"
-          timestamp={new Date()}
-          firstMessage
-        />
-        <Message text="Great how are you?" timestamp={new Date()} response />
-        <Message text="Great how are you?" timestamp={new Date()} response />
-        <Message text="Great how are you?" timestamp={new Date()} response />
-        <Message
-          text="Hello how are you?"
-          timestamp={new Date()}
-          firstMessage
-        />
-        <Message text="Great how are you?" timestamp={new Date()} response />
-        <Message
-          text="Hello how are you?"
-          timestamp={new Date()}
-          firstMessage
-        />
-        <Message text="Hello how are you?" timestamp={new Date()} />
-        <Message text="Hello how are you?" timestamp={new Date()} />
-        <Message text="Hello how are you?" timestamp={new Date()} />
-        <Message text="Hello how are you?" timestamp={new Date()} />
-        <Message text="Great how are you?" timestamp={new Date()} response />
-        <Message text="Great how are you?" timestamp={new Date()} response />
-        <Message text="Great how are you?" timestamp={new Date()} response />
-        <Message text="Great how are you?" timestamp={new Date()} response />
-        <Message text="Great how are you?" timestamp={new Date()} response />
-        <Message text="Great how are you?" timestamp={new Date()} response />
-        <Message text="Great how are you?" timestamp={new Date()} response />
-        <Message text="Great how are you?" timestamp={new Date()} response />
-        <Message text="Great how are you?" timestamp={new Date()} response />
-        <Message text="Last message" timestamp={new Date()} response />
-
+        {
+          messages.map(message =>
+            <Message
+              key={message.id}
+              text={message.content}
+              timestamp={message.createdAt}
+              firstMessage={message.sender != userId}
+              response={message.sender == userId}
+              picture={picture}
+            />)
+        }
+        {
+          messages.length == 0 && `No messages, start conversation with ${name} ${surname}!`
+        }
         {/* scroll to end of chat div */}
         <div ref={bottomDiv} />
       </div>
       <div className={classes["footer-chat"]}>
         <textarea
+          value={text}
           className={classes["write-message"]}
           placeholder="Type a message..."
+          onChange={(event) => textChange(event.target.value)}
         ></textarea>
-        <div className={classes["send"]}>
+        <div className={`${classes["send"]} ${text.length == 0 && classes["disabled"]}`} onClick={sendMessage}>
           <SendIcon height={25} width={25} />
         </div>
       </div>

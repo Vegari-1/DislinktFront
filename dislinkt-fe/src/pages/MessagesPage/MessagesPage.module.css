@@ -4,3 +4,17 @@
 
   display: flex;
 }
+
+.layout .side {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+}
+
+.placeholder {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

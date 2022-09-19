@@ -5,6 +5,7 @@ interface ChatListProps {
   text: string;
   picture: string;
   active?: boolean;
+  chatSelected: () => void
 }
 
 const ChatListItem: React.FC<ChatListProps> = ({
@@ -12,12 +13,12 @@ const ChatListItem: React.FC<ChatListProps> = ({
   text,
   picture,
   active = false,
+  chatSelected
 }) => {
   return (
     <div
-      className={`${classes["discussion"]} ${
-        active && classes["message-active"]
-      }`}
+      className={`${classes["discussion"]} ${active && classes["message-active"]}`}
+      onClick={chatSelected}
     >
       <div
         className={classes["photo"]}

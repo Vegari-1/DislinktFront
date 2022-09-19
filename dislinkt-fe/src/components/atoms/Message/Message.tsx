@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import moment from "moment"
 import classes from "./Message.module.css";
 
 interface MessageProps {
@@ -36,7 +37,7 @@ const Message: React.FC<MessageProps> = ({
       <div
         className={`${classes["time"]} ${response && classes["response-time"]}`}
       >
-        {timestamp.toLocaleString()}
+        {moment(timestamp).fromNow()}
       </div>
     </Fragment>
   );
