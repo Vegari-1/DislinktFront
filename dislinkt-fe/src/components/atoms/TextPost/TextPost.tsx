@@ -38,9 +38,11 @@ const TextPost: React.FC<TextPostProps> = ({
             {name} {surname}
           </b>
         </span>
-        <span className={classes["username"]}>{username}</span>
+        <span className={classes["username"]}>@{username}</span>
         <span className={classes["dot"]}>&#8226;</span>
-        <span className={classes["date"]}> {timestamp.toLocaleString()}</span>
+        <span className={classes["date"]}>
+          {new Date(timestamp).toLocaleString()}
+        </span>
       </div>
       {hasBody && <div className={classes["post-body"]}>{content}</div>}
     </Fragment>

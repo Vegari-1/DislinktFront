@@ -27,6 +27,7 @@ const ProfilePostsPage: React.FC = () => {
     (state: RootState) => state.profile.profile
   );
   const posts: PostData[] = useSelector((state: RootState) => state.post.posts);
+  const reload: boolean = useSelector((state: RootState) => state.post.reload);
 
   useEffect(() => {
     if (userData.id) {
@@ -35,7 +36,7 @@ const ProfilePostsPage: React.FC = () => {
       dispatch(getProfile(id!));
     }
     dispatch(getProfilePosts(id!));
-  }, [dispatch, id]);
+  }, [dispatch, userData.id, id, reload]);
 
   const addPostHandler = () => {
     navigate("add");

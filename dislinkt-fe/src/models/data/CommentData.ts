@@ -3,7 +3,7 @@ interface CommentData {
   name: string;
   surname: string;
   username: string;
-  picture: string;
+  avatar: string;
   content: string;
   timestamp: Date;
 }

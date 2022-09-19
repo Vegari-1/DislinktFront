@@ -1,10 +1,10 @@
 import { Field, Formik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CommentFormValues from "../../../models/forms/CommentFormValues";
 import { createComment } from "../../../store/actions/post-actions";
+import { RootState } from "../../../store/store";
 import commentValidationSchema from "../../../validations/commentValidationSchema";
 import PrimaryTextArea from "../../atoms/PrimaryTextArea/PrimaryTextArea";
-import TextPost from "../../atoms/TextPost/TextPost";
 import classes from "./CommentForm.module.css";
 
 const commentFormInitialValues: CommentFormValues = {
@@ -16,14 +16,15 @@ interface CommentFormProps {
 }
 
 const CommentForm: React.FC<CommentFormProps> = ({ id }) => {
+  const userData = useSelector((state: RootState) => state.auth.userData);
   const dispatch = useDispatch();
   const submitHandler = (formValues: CommentFormValues) => {
+    formValues.profileId = userData.id;
     dispatch(createComment(id, formValues));
   };
 
   return (
     <div className={`${classes["new-comment"]} ${classes["comment"]}`}>
-      {/* <TextPost imageSize="45px" hasBody={false} /> */}
       <Formik
         initialValues={commentFormInitialValues}
         validationSchema={commentValidationSchema}

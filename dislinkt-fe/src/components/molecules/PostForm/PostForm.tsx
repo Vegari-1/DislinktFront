@@ -13,7 +13,7 @@ import PicturePost from "../PicturePost/PicturePost";
 import { useDispatch, useSelector } from "react-redux";
 import { addPost } from "../../../store/actions/post-actions";
 import { RootState } from "../../../store/store";
-import ProfileInfoData from "../../../models/data/ProfileInfoData";
+import { UserDataPayload } from "../../../models/slices/auth";
 
 const postFormInitialValues: PostFormValues = {
   content: "",
@@ -22,8 +22,8 @@ const postFormInitialValues: PostFormValues = {
 
 const PostForm: React.FC = () => {
   const dispatch = useDispatch();
-  const profileData: ProfileInfoData = useSelector(
-    (state: RootState) => state.profile.profile
+  const userData: UserDataPayload = useSelector(
+    (state: RootState) => state.auth.userData
   );
 
   const [postImages, setPostImages] = useState([] as string[]);
@@ -47,12 +47,8 @@ const PostForm: React.FC = () => {
   const navigate = useNavigate();
   const submitHandler = (formValues: PostFormValues) => {
     navigate("/profile/" + id + "/posts");
-    formValues.profile = {
-      globalId: profileData.id,
-      name: profileData.name,
-      surname: profileData.surname,
-      avatar: profileData.picture,
-    };
+    formValues.authorId = userData.id;
+    formValues.pictures = postImages;
     dispatch(addPost(formValues));
   };
 

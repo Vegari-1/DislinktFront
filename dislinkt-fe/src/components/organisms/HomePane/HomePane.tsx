@@ -12,8 +12,7 @@ const HomePane: React.FC = () => {
   const dispatch = useDispatch();
   const [query, setQuery] = useState("");
   const posts: PostData[] = useSelector((state: RootState) => state.post.posts);
-
-  useEffect(() => {}, [dispatch]);
+  const reload: boolean = useSelector((state: RootState) => state.post.reload);
 
   useEffect(() => {
     if (query.trim().length === 0) {
@@ -21,7 +20,7 @@ const HomePane: React.FC = () => {
     } else {
       dispatch(searchPosts(query));
     }
-  }, [query]);
+  }, [query, dispatch, reload]);
 
   const setSearchValueHandler = (query: string) => {
     setQuery(query);

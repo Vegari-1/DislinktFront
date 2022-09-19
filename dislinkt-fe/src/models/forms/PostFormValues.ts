@@ -1,9 +1,8 @@
-import ProfileNestedData from "../data/ProfileNestedData";
-
 interface PostFormValues {
   content: string;
   images?: File[];
-  profile?: ProfileNestedData;
+  pictures?: string[];
+  authorId?: string;
 }
 
 export default PostFormValues;

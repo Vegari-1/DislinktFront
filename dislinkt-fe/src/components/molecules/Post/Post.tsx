@@ -11,11 +11,13 @@ interface PostProps {
   name: string;
   surname: string;
   username: string;
-  picture: string;
+  avatar: string;
   content: string;
   timestamp: Date;
   likes: number;
   dislikes: number;
+  liked: boolean;
+  disliked: boolean;
   commentCount: number;
   pictures: string[];
   comments: CommentData[];
@@ -26,11 +28,13 @@ const Post: React.FC<PostProps> = ({
   name,
   surname,
   username,
-  picture,
+  avatar,
   content,
   timestamp,
   likes,
   dislikes,
+  liked,
+  disliked,
   commentCount,
   pictures,
   comments,
@@ -49,7 +53,7 @@ const Post: React.FC<PostProps> = ({
         name={name}
         surname={surname}
         username={username}
-        picture={picture}
+        picture={avatar}
         timestamp={timestamp}
         content={content}
         imageSize="60px"
@@ -59,6 +63,8 @@ const Post: React.FC<PostProps> = ({
         id={id}
         likes={likes}
         dislikes={dislikes}
+        liked={liked}
+        disliked={disliked}
         commentCount={commentCount}
         handleViewCommentsClick={onChangeCommentsHandler}
       />

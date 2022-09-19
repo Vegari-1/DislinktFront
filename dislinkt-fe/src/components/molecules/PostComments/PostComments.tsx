@@ -1,4 +1,6 @@
+import { useSelector } from "react-redux";
 import CommentData from "../../../models/data/CommentData";
+import { RootState } from "../../../store/store";
 import TextPost from "../../atoms/TextPost/TextPost";
 import CommentForm from "../CommentForm/CommentForm";
 import classes from "./PostComments.module.css";
@@ -14,6 +16,8 @@ const PostComments: React.FC<PostCommentsProps> = ({
   id,
   active,
 }) => {
+  const userData = useSelector((state: RootState) => state.auth.userData);
+
   return (
     <div
       className={classes["comments"]}
@@ -23,7 +27,7 @@ const PostComments: React.FC<PostCommentsProps> = ({
       }}
     >
       <h3>Comments</h3>
-      <CommentForm id={id} />
+      {userData.id !== undefined && <CommentForm key={"key"} id={id} />}
       {comments.map((comment) => (
         <div className={classes["comment"]}>
           <TextPost
@@ -31,7 +35,7 @@ const PostComments: React.FC<PostCommentsProps> = ({
             name={comment.name}
             surname={comment.surname}
             username={comment.username}
-            picture={comment.picture}
+            picture={comment.avatar}
             timestamp={comment.timestamp}
             content={comment.content}
             imageSize="45px"

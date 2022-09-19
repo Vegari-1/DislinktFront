@@ -1,8 +1,8 @@
 import { toast } from "react-toastify";
 import { call, put } from "redux-saga/effects";
-import CommentData from "../../models/data/CommentData";
 import PostData from "../../models/data/PostData";
 import postService from "../../services/PostService";
+import { GET_PROFILE_POSTS } from "../actions/action-types";
 import {
   addPost,
   createComment,
@@ -10,7 +10,7 @@ import {
   reactToPost,
   searchPosts,
 } from "../actions/post-actions";
-import { setPosts } from "../slices/post";
+import { setPosts, setReload } from "../slices/post";
 
 export function* handleGetProfilePosts({
   payload,
@@ -56,13 +56,19 @@ export function* handleCreateComment({
   payload,
 }: ReturnType<typeof createComment>): Generator<any, void, void> {
   try {
+    yield put(setReload(false));
+
     yield call(
       postService.createComment,
       payload.id,
       payload.commentFormValues
     );
 
-    yield handleGetPosts();
+    yield put(setReload(true));
+    // yield call(handleGetProfilePosts, {
+    //   type: GET_PROFILE_POSTS,
+    //   payload: { id: payload.commentFormValues.profileId! },
+    // });
   } catch (error: any) {
     yield toast.error(error.response.data.Message);
   }
@@ -85,6 +91,10 @@ export function* handleAddPost({
 }: ReturnType<typeof addPost>): Generator<any, void, void> {
   try {
     yield call(postService.addPost, payload);
+    yield call(handleGetProfilePosts, {
+      type: GET_PROFILE_POSTS,
+      payload: { id: payload.authorId! },
+    });
   } catch (error: any) {
     yield toast.error(error.response.data.Message);
   }

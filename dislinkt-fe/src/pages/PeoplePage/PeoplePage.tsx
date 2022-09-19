@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import EntititesEmptyList from "../../components/atoms/EntitiesEmptyList/EntititesEmptyList";
 import ProfileCard from "../../components/atoms/ProfileCard/ProfileCard";
 import Header from "../../components/molecules/Header/Header";
 import Layout from "../../components/organisms/Layout/Layout";
@@ -31,7 +32,7 @@ const PeoplePage: React.FC = () => {
     } else {
       dispatch(getNotBlockedProfiles());
     }
-  }, [dispatch]);
+  }, [dispatch, userData.id]);
 
   useEffect(() => {
     if (query.trim().length === 0) {
@@ -47,7 +48,7 @@ const PeoplePage: React.FC = () => {
         dispatch(searchNotBlockedProfiles(query));
       }
     }
-  }, [dispatch, query]);
+  }, [dispatch, query, userData.id]);
 
   const searchProfilesHandler = (query: string) => {
     setQuery(query);
@@ -67,6 +68,8 @@ const PeoplePage: React.FC = () => {
             picture={profile.picture}
           />
         ))}
+
+        {profiles.length === 0 && <EntititesEmptyList entities="profiles" />}
       </div>
     </Layout>
   );

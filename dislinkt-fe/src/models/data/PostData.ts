@@ -5,7 +5,7 @@ interface PostData {
   name: string;
   surname: string;
   username: string;
-  picture: string;
+  avatar: string;
   content: string;
   timestamp: Date;
   likes: number;
@@ -13,8 +13,8 @@ interface PostData {
   commentCount: number;
   pictures: string[];
   comments: CommentData[];
-  liked?: boolean;
-  disliked?: boolean;
+  liked: boolean;
+  disliked: boolean;
 }
 
 export default PostData;

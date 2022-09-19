@@ -1,4 +1,5 @@
 import PostData from "../../../models/data/PostData";
+import EntititesEmptyList from "../../atoms/EntitiesEmptyList/EntititesEmptyList";
 import Post from "../../molecules/Post/Post";
 import classes from "./PostsFeed.module.css";
 
@@ -12,6 +13,8 @@ const PostsFeed: React.FC<PostsFeedProps> = ({ posts }) => {
       {posts.map((post) => (
         <Post key={post.id} {...post} />
       ))}
+
+      {posts.length === 0 && <EntititesEmptyList entities="posts" />}
     </div>
   );
 };
