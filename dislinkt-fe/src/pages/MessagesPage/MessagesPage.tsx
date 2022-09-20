@@ -36,7 +36,7 @@ const MessagesPage: React.FC = () => {
 
   const profiles: ProfileSimple[] = useSelector((state: RootState) =>
     state.profile.profiles.filter(
-      (profile) => profile.id !== state.auth.userData.id
+      (profile) => profile.id != state.auth.userData.id
     )
   );
 
@@ -79,11 +79,11 @@ const MessagesPage: React.FC = () => {
   const startConversationWith = (profile: ProfileSimple) => {
     var conversation = conversations.find(
       (c) =>
-        c.participants.some((x) => x.globalId === profile.id) &&
-        c.participants.some((x) => x.globalId === userId)
+        c.participants.some((x) => x.globalId == profile.id) &&
+        c.participants.some((x) => x.globalId == userId)
     );
 
-    if (conversation === null)
+    if (conversation == null)
       conversation = {
         id: TEMP_CONVESATION,
         participants: [
@@ -103,13 +103,11 @@ const MessagesPage: React.FC = () => {
   const handleSendMessage = () => {
     if (!displayedConversation) return;
 
-    if (displayedConversation.id === TEMP_CONVESATION) {
+    if (displayedConversation.id == TEMP_CONVESATION) {
       dispatch(
         startConversation(
           user,
-          displayedConversation.participants.find(
-            (x) => x.globalId !== userId
-          )!,
+          displayedConversation.participants.find((x) => x.globalId != userId)!,
           text
         )
       );
@@ -134,17 +132,17 @@ const MessagesPage: React.FC = () => {
             userId={user.globalId}
             name={
               displayedConversation.participants.find(
-                (x) => x.globalId !== userId
+                (x) => x.globalId != userId
               )?.name || ""
             }
             surname={
               displayedConversation.participants.find(
-                (x) => x.globalId !== userId
+                (x) => x.globalId != userId
               )?.surname || ""
             }
             picture={
               displayedConversation.participants.find(
-                (x) => x.globalId !== userId
+                (x) => x.globalId != userId
               )?.avatar || ""
             }
             messages={displayedConversation.messages || []}

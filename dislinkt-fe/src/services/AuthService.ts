@@ -15,7 +15,6 @@ export class AuthService extends ApiService {
   };
 
   signUp = async (signUpData: SignUpValues) => {
-    console.log(signUpData);
     const { data } = await this.apiClient.post(ENDPOINTS.SIGNUP, signUpData);
 
     return data;

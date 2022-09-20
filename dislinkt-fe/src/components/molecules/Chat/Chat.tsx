@@ -42,12 +42,12 @@ const Chat: React.FC<ChatProps> = ({
             key={message.id}
             text={message.content}
             timestamp={message.createdAt}
-            firstMessage={message.sender !== userId}
-            response={message.sender === userId}
+            firstMessage={message.sender != userId}
+            response={message.sender == userId}
             picture={picture}
           />
         ))}
-        {messages.length === 0 &&
+        {messages.length == 0 &&
           `No messages, start conversation with ${name} ${surname}!`}
         {/* scroll to end of chat div */}
         <div ref={bottomDiv} />
@@ -61,7 +61,7 @@ const Chat: React.FC<ChatProps> = ({
         ></textarea>
         <div
           className={`${classes["send"]} ${
-            text.length === 0 && classes["disabled"]
+            text.length == 0 && classes["disabled"]
           }`}
           onClick={sendMessage}
         >

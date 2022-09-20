@@ -20,8 +20,8 @@ const ChatList: React.FC<ChatListProps> = ({
         <ChatListItem
           key={conversation.id}
           name={
-            conversation.participants.find((x) => x.globalId !== userId)
-              ?.name || ""
+            conversation.participants.find((x) => x.globalId != userId)?.name ||
+            ""
           }
           text={
             conversation.messages.length > 0
@@ -29,7 +29,7 @@ const ChatList: React.FC<ChatListProps> = ({
               : ""
           }
           picture={
-            conversation.participants.find((x) => x.globalId !== userId)
+            conversation.participants.find((x) => x.globalId != userId)
               ?.avatar || ""
           }
           active

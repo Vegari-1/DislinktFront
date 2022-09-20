@@ -20,20 +20,20 @@ const messageSlice = createSlice({
     },
     messageSent(state, action: PayloadAction<MessageChangeData>) {
       state.conversations = state.conversations.map((x) => {
-        if (x.id === action.payload.conversationId)
+        if (x.id == action.payload.conversationId)
           x.messages.push(action.payload.message);
 
-        if (x.id === state.displyedConversation?.id)
+        if (x.id == state.displyedConversation?.id)
           state.displyedConversation = x;
         return x;
       });
     },
     receivedMessage(state, action: PayloadAction<MessageChangeData>) {
       state.conversations = state.conversations.map((x) => {
-        if (x.id === action.payload.conversationId)
+        if (x.id == action.payload.conversationId)
           x.messages.push(action.payload.message);
 
-        if (x.id === state.displyedConversation?.id)
+        if (x.id == state.displyedConversation?.id)
           state.displyedConversation = x;
         return x;
       });
@@ -49,7 +49,7 @@ export const {
   setConversations,
   receivedMessage,
   setDisplayedConversation,
-  conversationCreated
+  conversationCreated,
 } = messageSlice.actions;
 
 export default messageSlice.reducer;
