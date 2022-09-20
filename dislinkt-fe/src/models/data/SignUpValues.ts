@@ -8,8 +8,8 @@ interface SignUpValues {
   dateOfBirth: Date;
   phone: string;
   public: boolean;
-  picture: string;
   biography: string;
+  picture?: string;
 }
 
 export default SignUpValues;

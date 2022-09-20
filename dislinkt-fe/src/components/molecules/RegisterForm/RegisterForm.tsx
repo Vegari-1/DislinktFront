@@ -24,7 +24,6 @@ const registerFormInitialValues: RegisterFormValues = {
   phone: "",
   biography: "",
   public: false,
-  picture: "",
 };
 
 const GENDER_OPTIONS = ["Other", "Female", "Male"];

@@ -6,7 +6,7 @@ interface RegisterFormValues {
   phone: string;
   biography: string;
   public: boolean;
-  picture: string;
+  picture?: string;
 }
 
 export default RegisterFormValues;
