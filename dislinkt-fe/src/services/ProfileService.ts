@@ -58,7 +58,9 @@ export class ProfileService extends ApiService {
     );
     data.map((elem) => {
       elem.startDate = new Date(elem.startDate);
-      elem.endDate = new Date(elem.endDate);
+      if (elem.endDate !== null) {
+        elem.endDate = new Date(elem.endDate);
+      }
       return elem;
     });
 
@@ -71,7 +73,9 @@ export class ProfileService extends ApiService {
     );
     data.map((elem) => {
       elem.startDate = new Date(elem.startDate);
-      elem.endDate = new Date(elem.endDate);
+      if (elem.endDate !== null) {
+        elem.endDate = new Date(elem.endDate);
+      }
       return elem;
     });
 

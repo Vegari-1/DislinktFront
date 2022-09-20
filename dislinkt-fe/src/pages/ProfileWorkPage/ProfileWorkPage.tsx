@@ -42,7 +42,7 @@ const ProfileWorkPage: React.FC = () => {
       dispatch(getProfile(id!));
     }
     dispatch(getProfileWorkExperience(id!));
-  }, [dispatch, id]);
+  }, [dispatch, id, userData.id]);
 
   const deleteWorkHandler = (workExpId: string) => {
     dispatch(deleteWorkExperience(workExpId, id!));

@@ -65,10 +65,6 @@ export function* handleCreateComment({
     );
 
     yield put(setReload(true));
-    // yield call(handleGetProfilePosts, {
-    //   type: GET_PROFILE_POSTS,
-    //   payload: { id: payload.commentFormValues.profileId! },
-    // });
   } catch (error: any) {
     yield toast.error(error.response.data.Message);
   }
@@ -78,9 +74,10 @@ export function* handleReactToPost({
   payload,
 }: ReturnType<typeof reactToPost>): Generator<any, void, void> {
   try {
+    yield put(setReload(false));
     yield call(postService.reactToPost, payload.id, payload.reactionData);
 
-    yield handleGetPosts();
+    yield put(setReload(true));
   } catch (error: any) {
     yield toast.error(error.response.data.Message);
   }

@@ -34,7 +34,7 @@ export class MessageService {
     const token = localStorage.getItem("dislinkt-token");
     if (token == null) return;
 
-    if (this.connection == null || this.userId != userId) {
+    if (this.connection == null || this.userId !== userId) {
       this.userId = userId;
       this.connection = new HubConnectionBuilder()
         .configureLogging(LogLevel.Debug)

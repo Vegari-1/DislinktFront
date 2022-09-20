@@ -42,7 +42,7 @@ const ProfileSkillsPage: React.FC = () => {
       dispatch(getProfile(id!));
     }
     dispatch(getProfileSkills(id!));
-  }, [id, dispatch]);
+  }, [id, dispatch, userData.id]);
 
   const deleteSkillHandler = (skillId: string) => {
     dispatch(deleteSkill(skillId, id!));

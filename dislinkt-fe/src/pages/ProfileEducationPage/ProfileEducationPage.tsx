@@ -42,7 +42,7 @@ const ProfileEducationPage: React.FC = () => {
       dispatch(getProfile(id!));
     }
     dispatch(getProfileEducation(id!));
-  }, [dispatch, id]);
+  }, [dispatch, id, userData.id]);
 
   const deleteEducationHandler = (eduId: string) => {
     dispatch(deleteEducation(eduId, id!));

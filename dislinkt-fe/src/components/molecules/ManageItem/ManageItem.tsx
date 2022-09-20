@@ -48,7 +48,11 @@ const ManageItem: React.FC<ManageItemProps> = ({ item, deleteItem }) => {
           {!item.name && (
             <div
               className={classes["dates"]}
-            >{`${item.startDate.toLocaleDateString()} - ${item.endDate.toLocaleDateString()}`}</div>
+            >{`${item.startDate.toLocaleDateString()} - ${
+              item.endDate === null
+                ? "Present"
+                : item.endDate.toLocaleDateString()
+            }`}</div>
           )}
         </div>
         {userData.id === id && (

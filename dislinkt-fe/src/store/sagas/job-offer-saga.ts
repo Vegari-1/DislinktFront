@@ -35,6 +35,8 @@ export function* handleAddJobOffer({
 }: ReturnType<typeof addJobOffer>): Generator<any, void, void> {
   try {
     yield call(jobOfferService.addJobOffer, payload);
+
+    yield call(handleGetJobOffers);
   } catch (error: any) {
     yield toast.error(error.response.data.Message);
   }

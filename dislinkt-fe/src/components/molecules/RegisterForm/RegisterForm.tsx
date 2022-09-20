@@ -49,7 +49,9 @@ const RegisterForm: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const submitHandler = (formValues: RegisterFormValues) => {
-    formValues.picture = profileImage;
+    if (profileImage !== BASE64_IMAGE_PREFIX) {
+      formValues.picture = profileImage;
+    }
     dispatch(register({ formValues, navigate }));
   };
 

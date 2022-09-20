@@ -28,7 +28,7 @@ const ProfileInfoPage: React.FC = () => {
     } else {
       dispatch(getProfile(id!));
     }
-  }, [id, dispatch]);
+  }, [id, dispatch, userData.id]);
 
   return (
     <Layout>

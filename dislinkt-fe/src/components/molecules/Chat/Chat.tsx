@@ -12,11 +12,20 @@ interface ChatProps {
   picture: string;
   messages: MessageData[];
   text: string;
-  textChange: (text: string) => void
-  sendMessage: () => void
+  textChange: (text: string) => void;
+  sendMessage: () => void;
 }
 
-const Chat: React.FC<ChatProps> = ({ userId, name, surname, picture, messages, text, textChange, sendMessage }) => {
+const Chat: React.FC<ChatProps> = ({
+  userId,
+  name,
+  surname,
+  picture,
+  messages,
+  text,
+  textChange,
+  sendMessage,
+}) => {
   const bottomDiv = useRef<null | HTMLDivElement>(null);
   useEffect(() => {
     bottomDiv.current?.scrollIntoView();
@@ -28,20 +37,18 @@ const Chat: React.FC<ChatProps> = ({ userId, name, surname, picture, messages, t
         <p className={classes["name"]}>{`${name} ${surname}`}</p>
       </div>
       <div className={classes["messages-chat"]}>
-        {
-          messages.map(message =>
-            <Message
-              key={message.id}
-              text={message.content}
-              timestamp={message.createdAt}
-              firstMessage={message.sender != userId}
-              response={message.sender == userId}
-              picture={picture}
-            />)
-        }
-        {
-          messages.length == 0 && `No messages, start conversation with ${name} ${surname}!`
-        }
+        {messages.map((message) => (
+          <Message
+            key={message.id}
+            text={message.content}
+            timestamp={message.createdAt}
+            firstMessage={message.sender !== userId}
+            response={message.sender === userId}
+            picture={picture}
+          />
+        ))}
+        {messages.length === 0 &&
+          `No messages, start conversation with ${name} ${surname}!`}
         {/* scroll to end of chat div */}
         <div ref={bottomDiv} />
       </div>
@@ -52,7 +59,12 @@ const Chat: React.FC<ChatProps> = ({ userId, name, surname, picture, messages, t
           placeholder="Type a message..."
           onChange={(event) => textChange(event.target.value)}
         ></textarea>
-        <div className={`${classes["send"]} ${text.length == 0 && classes["disabled"]}`} onClick={sendMessage}>
+        <div
+          className={`${classes["send"]} ${
+            text.length === 0 && classes["disabled"]
+          }`}
+          onClick={sendMessage}
+        >
           <SendIcon height={25} width={25} />
         </div>
       </div>
